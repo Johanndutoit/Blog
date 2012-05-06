@@ -1,0 +1,30 @@
+extends page
+
+block contents
+	include partials/about
+	mixin about_me
+
+	div#main-page-container.container
+		div.row
+			div.span8.offset2
+				center(align="center",style="margin-top:35px;")
+					p(style="font-size:20px;") Keep it Simple Stupid
+					small Now that's a Motto!
+				div(style="margin:20px;")
+					h3 Recent Posts
+					table.table(style="margin:0;margin-top:10px;")
+						tr
+							td
+								a(href="#") Testing
+							td(style="width:80px;")
+								small 20 Feb 2012
+						tr
+							td
+								a(href="#") Testing
+							td(style="width:80px;")
+								small 20 Feb 2012
+						tr
+							td
+								a(href="#") Testing
+							td(style="width:80px;")
+								small 20 Feb 2012

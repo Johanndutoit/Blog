@@ -1,0 +1,54 @@
+doctype 5
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+html(lang="en")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+
+		title= title
+		meta(name="description", content=description)
+
+		meta(itemprop="image",content="http://www.igvita.com/img/johann.jpg")
+		meta(name="viewport",content="width=device-width,initial-scale=1,maximum-scale=1")
+
+		link(rel="alternate",type="application/rss+xml",title="Johann du Toit - RSS Feed",href="http://www.johanndutoit.co.za/feed")
+		link(rel="canonical",href="http://www.igvita.com/")
+
+		link(href="http://fonts.googleapis.com/css?family=Open+Sans:400,600",rel="stylesheet",media="all")
+		link(href="/css/bootstrap.min.css",rel="stylesheet",type="text/css",media="all")
+		link(href="/css/bootstrap-responsive.min.css",rel="stylesheet",type="text/css",media="all")
+		link(href="/css/style.css",rel="stylesheet",type="text/css",media="all")
+
+		block head
+		
+	body
+		#headerblock.container-fluid
+			.container
+				.row
+					.span8.offset2
+						#title-bar
+							a(style="float:right;margin-top:2px;",href="/") About
+							a#blog-name(href="/")
+								h3 Johann du Toit
+							span(style="margin-left:5px;margin-top:5px;") |
+							p(style="margin-top:5px;") Check out my crazy adventures with Computers.
+						.clearfix(style="margin-bottom:10px;")
+		
+		#mainpage
+			block contents
+
+		footer
+			.container(style="margin: 0 auto;")
+				.span6.offset2
+					p Copyright 2012 - 2012 Johann du Toit
+				.span2
+					a(href="/feed",style="margin-right:10px;") Subscribe to RSS
+					a(href="/") About
+
+		script(src="/js/jquery-1.7.2.min.js",type="text/javascript")
+		script(src="/js/bootstrap.min.js",type="text/javascript")
+		script(src="/js/modernizr-2.0.6.min.js",type="text/javascript")
+		block scripts

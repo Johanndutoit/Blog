@@ -1,0 +1,166 @@
+body {
+  font-family:"Open Sans",Helvetica,Arial,sans-serif;
+  margin:0;
+  padding:0;
+
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  background-color:Black;
+}
+
+#mainpage {
+  background-color:White;
+}
+
+#headerblock {
+  background: black;
+  color: white;
+}
+
+#title-bar {
+  margin:15px;
+}
+
+footer a, #title-bar a {
+  color:white;
+}
+
+footer a:hover, #title-bar a:hover {
+  color:darkgrey;
+  text-decoration:none;
+}
+
+#title-bar #blog-name {
+  color:white;
+}
+
+#title-bar #blog-name:hover {
+  color:darkgrey;
+  text-decoration:none;
+}
+
+#title-bar > * {
+  float:left;
+  margin-right:5px;
+}
+
+#meta-block * {
+  color:White;
+}
+
+#meta-block {
+  background: #272727;
+  color: #858585;
+  min-height: 170px;
+}
+
+ul.aligned-lists {
+  list-style:none;
+  margin-left:0;
+}
+
+ul.aligned-lists li {
+  float:left;
+  margin-right:5px;
+}
+
+ul.aligned-lists li a:hover {
+  text-decoration:none;
+}
+
+ul#home-links {
+}
+
+ul#home-links li a img {
+  height:32px;
+}
+
+pre code {
+  font-family: Verdana, sans-serif;
+  font-size: 13px;
+  padding: 1em !important;
+  border-radius: 1em;
+  background: #272727;
+  display: block;
+  color: #bfbfbf;
+}
+
+code {
+  padding: 1px 4px 3px 4px;
+  background: #eee;
+  border-radius: 5px;
+  color: #666;
+}
+
+code a, code a:visited, code a:hover { color: #E6DB74; }
+
+div.download {
+  background: #dedede url('/images/download.png') no-repeat 1em;
+  padding: 0.75em 4em;
+  border-radius: 5px;
+  color: #666;
+}
+
+code.bash .nv {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+blockquote {
+  color: #888;
+  font-style:italic;
+}
+
+blockquote:before {
+  font-family: Helvetica;
+  content: '\201C';
+  font-size: 50px;
+  vertical-align: bottom;
+  margin-left: -40px;
+  padding-right: 20px;
+  line-height: 0px;
+}
+
+blockquote[cite]::after, blockquote footer {
+  display: block;
+  text-align: right;
+  content: attr(cite);
+  font-size: 13px;
+  padding-top:0.75em;
+  color: #333;
+}
+
+blockquote pre {
+  font-family: Verdana, sans-serif;
+  font-size: 12px;
+  margin-top: -1.5em;
+}
+
+blockquote footer a, blockquote footer a:visited, blockquote footer a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+@media(max-width:480px) {
+  #meta_image {
+    display:none;
+  }
+}
+
+@media(max-width:767px) {
+  #meta_image {
+    display:none;
+  }
+}
+
+footer {
+  background-color:Black;
+  color:White;
+  padding:10px;
+  padding-top:15px;
+}
