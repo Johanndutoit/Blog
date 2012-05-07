@@ -7,16 +7,36 @@ mixin about_me
 					p(style="margin-left:10px;") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel velit nisl, a dapibus leo. Aenean ut est at tortor dictum tristique quis et arcu. Donec mollis nisl a ligula gravida condimentum. Donec at iaculis eros. Quisque ipsum sapien, eleifend a venenatis vel, hendrerit a turpis. Suspendisse potenti. Phasellus ac iaculis libero. Suspendisse iaculis ligula ut felis lobortis mollis. Nam at sem quam. Phasellus at odio ut enim porttitor vehicula. Nam consectetur tempor malesuada. In hac habitasse platea dictumst. Aliquam placerat ipsum sed dui elementum consectetur. Proin eu mauris diam, eget ullamcorper risus. Quisque pharetra viverra urna dictum dignissim.
 
 					p(style="margin-left:10px;margin-top:15px;")
+						a(href="https://facebook.com/dutoit.johann")
+							img(rel="me",style="margin-right:10px;height:32px;",src="/img/facebook.png",title="My Facebook Profile")
 						a(href="#")
-							img(rel="me",style="margin-right:10px;height:32px;",src="/img/facebook.png")
+							img(rel="me",style="margin-right:10px;height:32px;",src="/img/google.png",title="My Google Plus Profile")
+						a(href="https://github.com/JohannduToit")
+							img(rel="me",style="margin-right:10px;height:32px;",src="/img/github.png",title="My Github Profile with all my Open Source Efforts")
 						a(href="#")
-							img(rel="me",style="margin-right:10px;height:32px;",src="/img/google.png")
-						a(href="#")
-							img(rel="me",style="margin-right:10px;height:32px;",src="/img/github.png")
-						a(href="#")
-							img(rel="me",style="margin-right:10px;height:32px;",src="/img/linkedin.png")
-						a(href="#")
-							img(rel="me",style="height:32px;",src="/img/twitter.png")
+							img(rel="me",style="margin-right:10px;height:32px;",src="/img/linkedin.png",title="My LinkedIn Profile")
+						a(href="https://twitter.com/exxonno")
+							img(rel="me",style="height:32px;",src="/img/twitter.png",title="My Twitter Profile")
 				.span3#meta_image
 					div(style="margin:15px;")
 						p Testing
+
+mixin about_me_footer(posts)
+	- if(posts.length > 0)
+		#meta-block
+			.container
+				.row
+					.span5.offset2(style="padding:15px;padding-top:10px;")
+						h3(style="margin:10px;") Recent Posts
+						ul(style="list-style-type: circle;")
+							- each post in posts
+								li
+									a(href=post.url) #{post.title}
+
+						p(style="margin-left:10px;margin-top:15px;")
+							a(href="/archive")
+								View all Posts
+
+					.span3#meta_image
+						div(style="margin:15px;")
+							p Testing

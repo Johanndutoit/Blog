@@ -3,6 +3,20 @@ express = require 'express'
 jade = require 'jade'
 util = require 'util'
 
+###
+@author Johann du Toit
+###
+template_parse = (filename, locals, fn) ->
+
+	file = __dirname + '/views/' + filename
+	file_content = fs.readFileSync(file,'utf8')
+	output = jade.compile file_content, {filename: file}
+	locals.asset_url = '/'
+	locals.base_asset_dir = __dirname + '/public/templates/' + template_name + '/assets/'
+	locals.base_template_dir = __dirname + '/public/templates/' + template_name + '/layout/'
+
+	fn undefined, output(locals)
+
 app = module.exports = express.createServer()
 
 app.set('view engine', 'jade')
@@ -21,22 +35,13 @@ app.configure('production', ->
 	app.use express.errorHandler()
 );
 
-###
-We setup a small page that displays docs etc. as we are already using jade for templates.
-###
 app.get '/', (req, res) ->
-	res.render 'home.jade', {title: 'Johann du Toit', description: "My Blog"}
+	res.render 'home.jade', {title: 'Johann du Toit', description: "My Blog", posts: [{title:"THis is me Testing this and bla", url:'/2012/01/29/testing', date: new Date()}]}
 
-###
-We setup a small page that displays docs etc. as we are already using jade for templates.
-###
 app.get '/:year/:month/:date/:title', (req, res) ->
-	res.render 'post.jade', {title: '', description: ''}
+	res.render 'post.jade', {title: 'Doing this and that | Johann du Toit', description: '',recent_posts: [], post: {title: 'Testin Title', content: 'Post Content'}}
 
-###
-We setup a small page that displays docs etc. as we are already using jade for templates.
-###
-app.get '/', (req, res) ->
+app.get '/jjjj', (req, res) ->
 	res.render 'post.jade'
 
 port = process.env.PORT or 3000
