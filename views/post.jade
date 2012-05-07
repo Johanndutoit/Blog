@@ -5,7 +5,11 @@ block contents
 		div.row
 			div.span8.offset2
 				div(style="margin:20px;")
-					=post.content
+					!{post.content}
+
+					hr(style="margin-top:5px;")
+					p(style="font-size:14px;")  Posted on !{post.date} by 
+						a(href="/") Johann du Toit
 
 	include partials/about
 	mixin about_me_footer(recent_posts)

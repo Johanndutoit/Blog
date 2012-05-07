@@ -1,48 +1,106 @@
 fs = require 'fs'
-express = require 'express'
 jade = require 'jade'
 util = require 'util'
+md = require("node-markdown").Markdown;
+path = require 'path'
+wrench = require 'wrench'
 
 ###
 @author Johann du Toit
 ###
-template_parse = (filename, locals, fn) ->
+view_parse = (filename, locals, fn) ->
 
 	file = __dirname + '/views/' + filename
 	file_content = fs.readFileSync(file,'utf8')
 	output = jade.compile file_content, {filename: file}
-	locals.asset_url = '/'
-	locals.base_asset_dir = __dirname + '/public/templates/' + template_name + '/assets/'
-	locals.base_template_dir = __dirname + '/public/templates/' + template_name + '/layout/'
+
+	locals.current_year = 2012 # Need to automate this!
 
 	fn undefined, output(locals)
 
-app = module.exports = express.createServer()
+read_blog_posts = (fn) ->
+	posts = []
+	years = []
 
-app.set('view engine', 'jade')
-app.use(express.static(__dirname + '/public'))
-app.set('views', __dirname + '/views');
-app.set('view options', { layout: false }) # Will do that on my own, thanks!
-app.use(express.methodOverride())
-app.use(express.bodyParser())
-app.use(app.router)
+	years = fs.readdirSync __dirname + "/posts/"
 
-app.configure('development', ->
-	app.use express.errorHandler({ dumpExceptions: true, showStack: true })
-);
+	for year in years
+		if 1*year not in years
+			years.push 
 
-app.configure('production', ->
-	app.use express.errorHandler()
-);
+		months = fs.readdirSync __dirname + "/posts/" + year
 
-app.get '/', (req, res) ->
-	res.render 'home.jade', {title: 'Johann du Toit', description: "My Blog", posts: [{title:"THis is me Testing this and bla", url:'/2012/01/29/testing', date: new Date()}]}
+		for month in months
+			days = fs.readdirSync __dirname + "/posts/" + year + "/" + month
 
-app.get '/:year/:month/:date/:title', (req, res) ->
-	res.render 'post.jade', {title: 'Doing this and that | Johann du Toit', description: '',recent_posts: [], post: {title: 'Testin Title', content: 'Post Content'}}
+			for day in days
+				post_files = fs.readdirSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/"
 
-app.get '/jjjj', (req, res) ->
-	res.render 'post.jade'
+				for post_name in post_files
+					post = {}
+					post.title = post_name.substr( 0, post_name.lastIndexOf( "." ) )
+					post.date = year + "/" + month + "/" + day
+					post.year = year
+					post.month = month
+					post.day = day
+					post.filename = post.title.toLowerCase().replace(/\ /g, '-') + ".html"
+					post.path = year + "/" + month + "/" + day + "/" + post.filename
+					post.url = '/' + post.path
+					post.content = md fs.readFileSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/" + post_name, 'UTF-8'
+					posts.push post
 
-port = process.env.PORT or 3000
-app.listen port, -> console.log 'Listening on Port ' + port + "..."
+	# Sort the Blog Posts
+	posts.reverse (a, b) ->
+		((1*b.year) + (1*b.month) + (1*b.day)) - ((1*a.year) + (1*a.month) + (1*a.day))
+
+	years.sort (a, b) ->
+		b - a
+
+	fn posts, years
+
+# res.render 'home.jade', {title: 'Johann du Toit', description: "My Blog", posts: [{title:"THis is me Testing this and bla", url:'/2012/01/29/testing', date: new Date()}]}
+
+# res.render 'post.jade', {title: 'Doing this and that | Johann du Toit', description: '',recent_posts: [], post: {title: 'Testin Title', content: 'Post Content'}}
+
+site_dir = 'site'
+
+read_blog_posts (posts, years) ->
+	# Now that we have the posts start creating the files.
+
+	path.exists 'site', (site_dir_exists) ->
+		if site_dir_exists == false
+			fs.mkdirSync 'site', 2
+
+		wrench.copyDirSyncRecursive(__dirname + '/assets', __dirname + '/' + site_dir + "/");
+
+		# Create the Homepage
+		view_parse 'home.jade', {title: 'Johann du Toit', description: "Testing", posts: posts.slice(0, 8)}, (err, output) ->
+			fs.writeFile site_dir + '/index.html', output, 'utf8', ->
+				true
+
+		view_parse 'archive.jade', {title: 'Johann du Toit', description: "Testing", posts: posts, 'years' : years}, (err, output) ->
+			fs.writeFile site_dir + '/archive.html', output, 'utf8', ->
+				true
+
+		posts.forEach (post) ->
+			path.exists 'site/' + post.year + "/" + post.month + "/" + post.day , (post_dir_exists) ->
+				if post_dir_exists == false
+					wrench.mkdirSyncRecursive 'site/' + post.year + "/" + post.month + "/" + post.day, 777
+
+				view_parse 'post.jade', {title: post.title + ' | Johann du Toit', description: "Testing", post: post, recent_posts:posts.slice(0, 8)}, (err, output) ->
+					fs.writeFile __dirname + "/" + site_dir + '/' + post.path, output, 'utf8', (err, a) ->
+						true
+			
+
+
+
+
+
+
+
+
+
+
+
+
+

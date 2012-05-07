@@ -1,0 +1,21 @@
+extends page
+
+block contents
+	include partials/about
+	mixin about_me
+
+	div#main-page-container.container
+		div.row
+			div.span8.offset2
+				div(style="margin:20px;")
+					- each year in years
+
+						h3 #{year}
+						table.table(style="margin-top:10px;")
+							- each post in posts
+								- if((1 * post.year) == year)
+									tr
+										td
+											a(href=post.url) #{post.title}
+										td(style="width:80px;")
+											small #{post.date}
