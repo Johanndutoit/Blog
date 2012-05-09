@@ -204,6 +204,10 @@ blockquote footer a, blockquote footer a:visited, blockquote footer a:hover {
   #footer_subscribe_link, #footer_about_link {
     display:none;
   }
+
+  .bigger-size {
+    font-size:15px;
+  }
 }
 
 @media print {
