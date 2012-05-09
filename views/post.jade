@@ -7,9 +7,9 @@ block contents
 				div(style="margin:20px;")
 					!{post.content}
 
-					hr(style="margin-top:5px;")
+					hr
 					p(style="font-size:14px;")  Posted on !{post.date} by 
 						a(href="/") Johann du Toit
 
-	include partials/about
+	include about
 	mixin about_me_footer(recent_posts)

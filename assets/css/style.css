@@ -56,6 +56,11 @@ footer a:hover, #title-bar a:hover {
   min-height: 170px;
 }
 
+/*#meta-image {
+  background: url(../img/johann.png) no-repeat right top;
+  min-height:299px;
+}*/
+
 ul.aligned-lists {
   list-style:none;
   margin-left:0;
@@ -146,14 +151,63 @@ blockquote footer a, blockquote footer a:visited, blockquote footer a:hover {
   text-decoration: underline;
 }
 
-@media(max-width:480px) {
-  #meta_image {
+@media(min-width:979px) {
+  #meta-image img {
+    /* background: #272727; */
+    height:250px;
+  }
+}
+
+@media(min-width:769px) {
+#footer_subscribe_link, #footer_about_link {
     display:none;
   }
 }
 
-@media(max-width:767px) {
-  #meta_image {
+@media(max-width:480px) {
+  #meta-image {
+    /* background: #272727; */
+    display:none;
+  }
+
+  #slogan-block {
+    display:none;
+  }
+
+  #profile-block {
+    display:none;
+  }
+
+  #footer_subscribe_link, #footer_about_link {
+    display:none;
+  }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 0px) {
+  .post-date {
+    display:none;
+  }
+
+  #meta-image {
+    /* background: #272727; */
+    display:none;
+  }
+
+  #slogan-block {
+    display:none;
+  }
+
+  #profile-block {
+    display:none;
+  }
+
+  #footer_subscribe_link, #footer_about_link {
+    display:none;
+  }
+}
+
+@media print {
+  .linksbelow, #header_about_link, #footer_subscribe_link, #footer_about_link {
     display:none;
   }
 }
@@ -163,4 +217,120 @@ footer {
   color:White;
   padding:10px;
   padding-top:15px;
+}
+
+/**
+* Prettify
+*/
+.str
+{
+    color: #EC7600;
+}
+.kwd
+{
+    color: #93C763;
+}
+.com
+{
+    color: #555555;
+}
+.typ
+{
+    color: #678CB1;
+}
+.lit
+{
+    color: #FACD22;
+}
+.pun
+{
+    color: #F1F2F3;
+}
+.pln
+{
+    color: #F1F2F3;
+}
+.tag
+{
+    color: #8AC763;
+}
+.atn
+{
+    color: #E0E2E4;
+}
+.atv
+{
+    color: #EC7600;
+}
+.dec
+{
+    color: purple;
+}
+pre.prettyprint
+{
+    border: 0px solid #888;
+}
+ol.linenums
+{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9
+{
+    color: #555555;
+}
+li.L1, li.L3, li.L5, li.L7, li.L9
+{
+    background: #111111;
+}
+pre {
+  /* background: #111111; */
+  background: #272727;
+}
+@media print
+{
+    .str
+    {
+        color: #060;
+    }
+    .kwd
+    {
+        color: #006;
+        font-weight: bold;
+    }
+    .com
+    {
+        color: #600;
+        font-style: italic;
+    }
+    .typ
+    {
+        color: #404;
+        font-weight: bold;
+    }
+    .lit
+    {
+        color: #044;
+    }
+    .pun
+    {
+        color: #440;
+    }
+    .pln
+    {
+        color: #000;
+    }
+    .tag
+    {
+        color: #006;
+        font-weight: bold;
+    }
+    .atn
+    {
+        color: #404;
+    }
+    .atv
+    {
+        color: #060;
+    }
 }

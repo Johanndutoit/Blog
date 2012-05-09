@@ -1,7 +1,7 @@
 extends page
 
 block contents
-	include partials/about
+	include about
 	mixin about_me
 
 	div#main-page-container.container
@@ -11,11 +11,11 @@ block contents
 					- each year in years
 
 						h3 #{year}
-						table.table(style="margin-top:10px;")
+						table.table(style="margin-top:10px;width:100%;")
 							- each post in posts
 								- if((1 * post.year) == year)
 									tr
 										td
 											a(href=post.url) #{post.title}
-										td(style="width:80px;")
+										td.post-date(style="width:80px;")
 											small #{post.date}

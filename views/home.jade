@@ -1,7 +1,7 @@
 extends page
 
 block contents
-	include partials/about
+	include about
 	mixin about_me
 
 	div#main-page-container.container
@@ -13,10 +13,10 @@ block contents
 				div(style="margin:20px;")
 					a(href="/archive.html",style="float:right;margin:5px;") View All Posts
 					h3 Recent Posts
-					table.table(style="margin:0;margin-top:10px;")
+					table.table(style="margin:0;margin-top:10px;width:100%;")
 						- each post in posts
 							tr
 								td
 									a(href=post.url) #{post.title}
-								td(style="width:80px;")
+								td.post-date(style="width:80px;")
 									small #{post.date}

@@ -1,0 +1,47 @@
+mixin about_me
+	#meta-block
+		.container
+			.row
+				.span8.offset2(style="padding:15px;padding-top:10px;background-color:transparent;")
+						.row
+							.span4
+								h2(style="margin:10px;") Johann du Toit
+								p(style="margin-left:10px;") I have real passion for technology and making systems that help others in their day-to-day lives. Currently based in Cape Town, South-Africa
+
+								ul(style="list-style-type: circle;margin:10px;margin-left:30px;")
+									li Developer
+									li Server Administrator
+									li Network Engineer
+									li Enthusiast
+
+								p(style="margin-left:10px;margin-top:15px;")
+									a(href="https://facebook.com/dutoit.johann",width="32px",height="32px")
+										img(rel="me",style="margin-right:10px;height:32px;",src="/img/facebook.png",title="My Facebook Profile",width="32px",height="32px")
+									a(href="https://plus.google.com/u/0/117104219955586986512")
+										img(rel="me",style="margin-right:10px;height:32px;",src="/img/google.png",title="My Google Plus Profile",width="32px",height="32px")
+									a(href="https://github.com/JohannduToit")
+										img(rel="me",style="margin-right:10px;height:32px;",src="/img/github.png",title="My Github Profile with all my Open Source Efforts",width="32px",height="32px")
+									a(href="http://www.linkedin.com/pub/johann-du-toit/2a/40/402")
+										img(rel="me",style="margin-right:10px;height:32px;",src="/img/linkedin.png",title="My LinkedIn Profile",width="32px",height="32px")
+									a(href="https://twitter.com/exxonno")
+										img(rel="me",style="height:32px;",src="/img/twitter.png",title="My Twitter Profile",width="32px",height="32px")
+							#meta-image.span4.hidden-phone
+								div(style="margin:15px;",align="center")
+									center
+										img(src="/img/johann.png")
+
+mixin about_me_footer(posts)
+	- if(posts.length > 0)
+		#meta-block.linksbelow
+			.container
+				.row
+					.span8.offset2(style="padding:15px;padding-top:10px;")
+						h3(style="margin:10px;") Recent Posts
+						ul(style="list-style-type: circle;")
+							- each post in posts
+								li
+									a(href=post.url) #{post.title}
+
+						p(style="margin-left:10px;margin-top:15px;")
+							a(href="/archive.html")
+								View all Posts
