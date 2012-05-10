@@ -11,8 +11,6 @@ This is how I built the script that generates the blog.
 
 ### But first a Q & A
 
-<hr />
-
 #### How the Blog is setup
 
 I have a repo up on github that I keep the script and my blog posts - Named surprisingly <a href="https://github.com/Johanndutoit/Blog">Blog</a> ...
@@ -91,7 +89,6 @@ Going to be implementing hooks so everytime I commit a blog post the site is upd
 <br />
 #### Why a Static Site?
 
-<br />
 I don't need a bloated platform to write. I simply want something that will allow me write without restrictions such as Admin Backends etc...
 
 Another reason would be that this site is purely for me to express myself. I don't need any sessions, cookies or users. My Site, My Script My Rules.
@@ -104,11 +101,7 @@ The Entire blog is open source. Check it out at <a href="https://github.com/Joha
 
 Want your own blog just like this ? Fork the repo, edit it to your liking and put it online!
 
-<br />
-
 ### So how did I build this?
-
-<hr />
 
 Thought I'd write a guide on how I went about this and what I learned along the way. 
 

@@ -10,6 +10,11 @@ body {
   background-color:Black;
 }
 
+#mainpage h1, #mainpage h2, #mainpage h3, #mainpage h4, #mainpage h5, #mainpage h6 {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
 #mainpage {
   background-color:White;
 }
@@ -158,11 +163,11 @@ blockquote footer a, blockquote footer a:visited, blockquote footer a:hover {
   }
 }
 
-@media(min-width:769px) {
+/*@media(min-width:769px) {
 #footer_subscribe_link, #footer_about_link {
     display:none;
   }
-}
+}*/
 
 @media(max-width:480px) {
   #meta-image {

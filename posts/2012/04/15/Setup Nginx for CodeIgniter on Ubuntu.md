@@ -20,8 +20,6 @@ Thanks to apt this is really easy.
 
 That just too easy isn't it no need to compile! Test that you Nginx is indeed working by going to localhost:80, if not use some Google-fu.
 
-<br /><br />
-
 <h3>Step 3 - Installing PHP5</h3>
 
 Again thanks to Apt this is just as easy. This is the&nbsp;usual&nbsp;suite of modules that I install so customize to your own needs.
@@ -38,7 +36,7 @@ Check if install by&nbsp;successful by issues the command
 <pre class="prettyprint">php -v</pre>
 
 If your Version of PHP is shown all is OK if not, check for any errors that may have&nbsp;occurred&nbsp;during install.
-<br /><br />
+
 <h3>Step 4 - Installing PHP-FPM</h3>
 
 Nginx is quite diffrent from Apache. First and foremost it's non-blocking while Apache blocks, but for our context Nginx does not run PHP itself. Nginx was built as a reverse proxy, so it simply forwards requests to the specified url / address. So to run PHP we need a container that would run the PHP and act as the host where Nginx is sending requests to.
@@ -52,7 +50,6 @@ This is where PHP-FPM comes in. PHP runs as a container and runs the PHP files w
 
 That should install FPM and start the service. Great so we are half-way there!
 
-<br /><br />
 <h3>Step 5 - Configure Nginx to forward requests for PHP to PHP-FPM</h3>
 
 Now we have a default installation of Nginx and PHP-FPM running. Wow!
