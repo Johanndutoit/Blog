@@ -120,7 +120,7 @@ read_blog_posts (posts, years) ->
 				if post_dir_exists == false
 					wrench.mkdirSyncRecursive 'site/' + post.year + "/" + post.month + "/" + post.day, 777
 
-				summary = post.content.substring(0, Math.min(150,post.content.length)) + "..."
+				summary = post.content.substring(0, Math.min(255,post.content.length)) + "..."
 
 				view_parse 'post.jade', {title: post.title + ' | Johann du Toit', description: summary, post: post, recent_posts:posts.slice(0, 8)}, (err, output) ->
 					fs.writeFile __dirname + "/" + site_dir + '/' + post.path, output, 'utf8', (err, a) ->
