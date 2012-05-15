@@ -91,9 +91,9 @@ read_blog_posts (posts, years) ->
 		feed = new RSS({
 			title: 'Johann du Toit',
 			description: 'description',
-			feed_url: 'http://www.johanndutoit.co.za/atom.xml',
-			site_url: 'http://www.johanndutoit.co.za',
-			image_url: 'http://www.johanndutoit.co.za/img/logo.png',
+			feed_url: 'http://www.johanndutoit.net/atom.xml',
+			site_url: 'http://www.johanndutoit.net',
+			image_url: 'http://www.johanndutoit.net/img/logo.png',
 			author: 'Johann du Toit'
 		})
 
