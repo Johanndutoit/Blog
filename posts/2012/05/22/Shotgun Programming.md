@@ -1,4 +1,4 @@
-Was working with the Tridion System, not that I know much about it, and something my <a href="http://www.linkedin.com/in/nicoesterhuyse">Collegue</a> mentioned has been resonating in my head.
+Was working with the Tridion System, not that I know much about it, and something my <a href="http://www.linkedin.com/in/nicoesterhuyse">colleague</a> mentioned has been resonating in my head.
 
 He called it:
 
@@ -43,6 +43,6 @@ public static void main(String[] args) {
 
 So we can see the error occurs right after "Before Sum". Which narrows the error range quite a bit.
 
-You may say that this is madness. Yes we should probally be logged up for this as the compiler would even tell us which line to check for the exception. But if you cant get the STD-Out of the Program ? I cant see anyone having much choice?
+You may say that this is madness. Yes we should probally be locked up for this as the compiler would even tell us which line to check for the exception. But if you cant get the STD-Out of the Program ? I cant see anyone having much choice?
 
 But there you have it <code>Shotgun Programming</code> use it wisely.
