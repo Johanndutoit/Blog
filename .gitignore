@@ -6,6 +6,9 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.DS_Store
+*.DS
+*.ds_store
 
 pids
 logs
