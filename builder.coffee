@@ -37,35 +37,33 @@ read_blog_posts = (fn) ->
 		if year.indexOf('.') != -1
 
 			if 1*year not in years
-				years.push 1*year
+				years.push 
 
 			months = fs.readdirSync __dirname + "/posts/" + year
 
 			for month in months
-				
 				if month.indexOf('.') != -1
 
 					days = fs.readdirSync __dirname + "/posts/" + year + "/" + month
 
-					for day in days
-
 						if day.indexOf('.') != -1
 
-							post_files = fs.readdirSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/"
+							for day in days
+								post_files = fs.readdirSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/"
 
-							for post_name in post_files
-								if post_name.indexOf('.draft') == -1
-									post = {}
-									post.title = post_name.substr( 0, post_name.lastIndexOf( "." ) )
-									post.date = year + "/" + month + "/" + day
-									post.year = year
-									post.month = month
-									post.day = day
-									post.filename = post.title.toLowerCase().replace(/\ /g, '-') + ".html"
-									post.path = year + "/" + month + "/" + day + "/" + post.filename
-									post.url = '/' + post.path
-									post.content = md fs.readFileSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/" + post_name, 'UTF-8'
-									posts.push post
+								for post_name in post_files
+									if(post_name.indexOf('.draft') == -1)
+										post = {}
+										post.title = post_name.substr( 0, post_name.lastIndexOf( "." ) )
+										post.date = year + "/" + month + "/" + day
+										post.year = year
+										post.month = month
+										post.day = day
+										post.filename = post.title.toLowerCase().replace(/\ /g, '-') + ".html"
+										post.path = year + "/" + month + "/" + day + "/" + post.filename
+										post.url = '/' + post.path
+										post.content = md fs.readFileSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/" + post_name, 'UTF-8'
+										posts.push post
 
 	# Sort the Blog Posts
 	posts.reverse (a, b) ->
