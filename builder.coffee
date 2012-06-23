@@ -28,27 +28,33 @@ This function also builds objects with the parsed content from markdown.
 ####
 read_blog_posts = (fn) ->
 	posts = []
-	years = []
+	filtered_years = []
 
 	years = fs.readdirSync __dirname + "/posts/"
 
 	for year in years
 
-		if year.indexOf('.') != -1
+		if year.indexOf('.') == -1
 
-			if 1*year not in years
-				years.push 
+			console.log year
+			if 1*year not in filtered_years
+				filtered_years.push 1*year
 
 			months = fs.readdirSync __dirname + "/posts/" + year
 
 			for month in months
-				if month.indexOf('.') is not -1
+				if month.indexOf('.') is -1
+
+
+					console.log month
 
 					days = fs.readdirSync __dirname + "/posts/" + year + "/" + month
 
 					for day in days
 
-						if day.indexOf('.') is not -1
+						if day.indexOf('.') is -1
+
+							console.log day
 
 							post_files = fs.readdirSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/"
 
@@ -70,10 +76,10 @@ read_blog_posts = (fn) ->
 	posts.reverse (a, b) ->
 		((1*b.year) + (1*b.month) + (1*b.day)) - ((1*a.year) + (1*a.month) + (1*a.day))
 
-	years.sort (a, b) ->
+	filtered_years.sort (a, b) ->
 		b - a
 
-	fn posts, years
+	fn posts, filtered_years
 
 site_dir = 'site'
 
