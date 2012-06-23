@@ -42,17 +42,18 @@ read_blog_posts = (fn) ->
 			months = fs.readdirSync __dirname + "/posts/" + year
 
 			for month in months
-				if month.indexOf('.') != -1
+				if month.indexOf('.') is not -1
 
-				days = fs.readdirSync __dirname + "/posts/" + year + "/" + month
+					days = fs.readdirSync __dirname + "/posts/" + year + "/" + month
 
-					if day.indexOf('.') != -1
+					for day in days
 
-						for day in days
+						if day.indexOf('.') is not -1
+
 							post_files = fs.readdirSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/"
 
 							for post_name in post_files
-								if(post_name.indexOf('.draft') == -1)
+								if post_name.indexOf('.draft') is -1
 									post = {}
 									post.title = post_name.substr( 0, post_name.lastIndexOf( "." ) )
 									post.date = year + "/" + month + "/" + day
