@@ -6,6 +6,8 @@ So in this post I'm going to be guiding you through what I did. It might not be 
 
 Here's a basic Flow Chart of the entire process of Authenticating a Registering, obviously skipping a few if's but you get the picture.
 
+Before I continue, this is a open-source so feel free to join me at <a href="https://github.com/CurriculumVitae/CV-Data-Service">CV-Data-Service</a>
+
 <center>
 <img src="/img/posts/curriculumvitae/ApiServiceOverview.png" alt="Flow Chart of Authentication and Registering" style="width:90%;" />
 </center>
@@ -14,7 +16,7 @@ Here's a basic Flow Chart of the entire process of Authenticating a Registering,
 
 I went searching around the internet for the solution to this problem.
 
-I found a ton of useful reads as such as http://stackoverflow.com/questions/4574868/securing-my-rest-api-with-oauth-while-still-allowing-authentication-via-third-pa, which all tries to bring across the same message. There is a difference between Authentication and Authorization. Which had me stretching my head a few times?
+I found a ton of useful reads as such as <a href="http://stackoverflow.com/questions/4574868/securing-my-rest-api-with-oauth-while-still-allowing-authentication-via-third-pa">REST and OAuth Stackoverflow Question</a>, which all tries to bring across the same message. There is a difference between Authentication and Authorization. Which had me stretching my head a few times?
 
 What's so important about this difference?
 
