@@ -9,7 +9,7 @@ Here's a basic Flow Chart of the entire process of Authenticating a Registering,
 Before I continue, this is a open-source so feel free to join me at <a href="https://github.com/CurriculumVitae/CV-Data-Service">CV-Data-Service</a>
 
 <center>
-<img src="/img/posts/curriculumvitae/ApiServiceOverview.png" alt="Flow Chart of Authentication and Registering" style="width:90%;" />
+<img src="/img/posts/curriculumvitae/APIServiceOverview.png" alt="Flow Chart of Authentication and Registering" style="width:90%;" />
 </center>
 
 ### 1. Authentication and Autherization
