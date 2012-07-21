@@ -6,7 +6,9 @@ So in this post I'm going to be guiding you through what I did. It might not be 
 
 Here's a basic Flow Chart of the entire process of Authenticating a Registering, obviously skipping a few if's but you get the picture.
 
-<img src="/img/posts/curriculumvitae/ApiServiceOverview.png" alt="Flow Chart of Authentication and Registering" />
+<center>
+<img src="/img/posts/curriculumvitae/ApiServiceOverview.png" alt="Flow Chart of Authentication and Registering" style="width:90%;" />
+</center>
 
 ### 1. Authentication and Autherization
 
