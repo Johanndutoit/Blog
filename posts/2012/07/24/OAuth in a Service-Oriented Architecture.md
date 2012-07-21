@@ -20,7 +20,12 @@ What's so important about this difference?
 
 Then one day while doing some more searching it hit me. OAuth 2.0 allows you to authorize other applications to certain parts of a user’s profile. And it does not matter that I login using other providers as it's still just OAuth 2.0. 
 
-So the process would be: * Request Authorization from the API with your Client application. * The API checks that everything is in order and redirects us to the OAuth Authorization Screen. * We check if the user is logged in. If not we redirect them to the 'connect' page. This page shows various options for logging in with providers such as Facebook, Google and Twitter. * We then let the user login, and once they are logged in we send them back to the authorization page. * The page then lets the user authorize the application and we do all the callbacks to finish the transaction.
+So the process would be: 
+
+* Request Authorization from the API with your Client application. 
+* The API checks that everything is in order and redirects us to the OAuth Authorization Screen. 
+* We check if the user is logged in. If not we redirect them to the 'connect' page. This page shows various options for logging in with providers such as Facebook, Google and Twitter. * We then let the user login, and once they are logged in we send them back to the authorization page. 
+* The page then lets the user authorize the application and we do all the callbacks to finish the transaction.
 
 Quite simply, except for the time it took me to understand what they all mean. So the important part is that it shouldn’t matter what we are using for authentication, I know OAuth 2.0 was never meant to be used for authentication but we're all just sheep following Google, Twitter and Facebook so there!, as we only want to authorize so authentication has nothing to do with the authorization call. We simply provide it responses and the clients get access or not.
 
@@ -50,6 +55,7 @@ Now we have to authenticate and registers users. To do this I built two handlers
 These handlers are 'auth/authenticate' and 'auth/register', only internal applications may access these. The 'auth/authenticate' handles all authentication from an app. The app will have the same keys and secrets as the API and authenticate the user. 
 
 The login process is as follows: 
+
 * User views the Connect page and decides which provider to use to login. 
 * The user goes through the entire process of authenticating with the provider. 
 * When the user gets the response with the access token for the user in that provider we call the 'auth/authenticate' method of the API. This method takes the access token and verifies that it's our app and that the token is valid by calling the API of the providers. 
