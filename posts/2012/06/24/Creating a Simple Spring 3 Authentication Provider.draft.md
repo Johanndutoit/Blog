@@ -14,9 +14,11 @@ I'm going to assume you know a bit of JSP. And if you don't it's not quite that 
 
 First we need to create a new project and setup spring with it.
 
-I'm in Eclipse so I'm going to go to <code>File -> New -> Project</code> and Select a JSP (Java) Site.
+I'm in Eclipse so I'm going to go to <code>File -> New -> Project</code> and Select a JSP (Dynamic Web) Site.
 
-<img src="#" />
+<center>
+	<img src="/img/posts/spring/eclipse_new_dynamic_web.png" style="width:90%;" />
+</center>
 
 Right, so now we have a basic JSP site and if we run it we get.
 
