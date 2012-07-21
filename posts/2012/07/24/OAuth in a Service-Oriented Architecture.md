@@ -4,6 +4,10 @@ Which sounds very good on paper but it's a bit harder when you add in that your 
 
 So in this post I'm going to be guiding you through what I did. It might not be the best way, but it's my way and it worked.
 
+Here's a basic Flow Chart of the entire process of Authenticating a Registering, obviously skipping a few if's but you get the picture.
+
+<img src="/img/posts/curriculumvitae/ApiServiceOverview.png" alt="Flow Chart of Authentication and Registering" />
+
 ### 1. Authentication and Autherization
 
 I went searching around the internet for the solution to this problem.
