@@ -1,6 +1,6 @@
 Was browsing Stackoverflow recently, as I and most programmers I know do.
 
-And saw a question come up about how Stackoverflow site knows when a vote is processed, a comment added or a new answer posted. As the OP chcked firebug but the site does not post any AJAX requests.
+And saw a question come up about how Stackoverflow site knows when a vote is processed, a comment added or a new answer posted. As the OP checked firebug but the site does not post any AJAX requests.
 
 And I saw the usual barrage of Programmers going:
 
