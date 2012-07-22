@@ -16,5 +16,7 @@ This could have been a great chance to teach some beginner or even someone that 
 
 Not all newbie just ask without experimenting first, as it seems most SO users think. See that the OP tried firebug ? They actually tried looking at the traffic and how SO does what it does!
 
+h4 The OP ended up removing the Question, seconds later to avoid the hail storm of big ego programmers.
+
 Rage done, back to Stackoverflow....
 
