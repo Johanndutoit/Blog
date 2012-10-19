@@ -17,11 +17,13 @@
     h1, h2, h3, h4, h5, h6 {
         color: #C04355;
     }
+
+    .pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}pre.prettyprint{padding:2px;border:1px solid #888}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
     </style>
     
 </head>
 
-<body class="impress-not-supported">
+<body class="impress-not-supported" onload="prettyPrint()">
 
 <div class="fallback-message">
     <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
@@ -38,7 +40,8 @@
 
             <h2 style="font-size: 50px;">IdentiChip</h2>
             <p style="margin-top: 25px;margin-bottom: 25x;">Search All Registered Microchip / Tag Providers</p>
-            <p style="">Visit the site @ <strong>www.identichip.org</strong></p>
+            <p style="margin-top:10px;">Visit the site @ <strong>www.identichip.org</strong></p>
+            <p style="margin-top:10px;">27 Oct 2012</p>
 
         </div>
 
@@ -186,7 +189,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/first_version_homepage.png" style="width:90%;" />
 
             </center>
 
@@ -196,7 +199,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/first_version_providers.png" style="width:90%;" />
 
             </center>
 
@@ -212,9 +215,9 @@
         <br />
         <p>You would head to the site and do a search with a microchip / tag number</p>
 
-        <center style="margin-bottom:20px;">
+        <center style="margin-bottom:20px;margin-top:25px;">
 
-            <img src="#" style="width:70%;" />
+            <img src="img/first_version_homepage.png" style="height: 450px;" />
 
         </center>
 
@@ -230,7 +233,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/first_version_search_details.png" style="width:90%;" />
 
             </center>
 
@@ -240,7 +243,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/first_version_contact.png" style="width:90%;" />
 
             </center>
 
@@ -328,7 +331,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/two_version_homepage.png" style="width:90%;" />
 
             </center>
 
@@ -338,7 +341,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/two_version_providers.png" style="width:90%;" />
 
             </center>
 
@@ -356,9 +359,9 @@
         <br />
         <p>With the new look it was much easier to figure out what to do:</p>
 
-        <center style="margin-bottom:20px;">
+        <center style="margin-bottom:20px;margin-top:20px;">
 
-            <img src="#" style="width:70%;" />
+            <img src="img/two_version_homepage.png" style="width:70%;" />
 
         </center>
 
@@ -374,7 +377,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/two_version_search_details.png" style="width:90%;" />
 
             </center>
 
@@ -384,7 +387,7 @@
 
             <center style="margin-bottom:20px;">
 
-                <img src="#" style="width:90%;" />
+                <img src="img/two_version_search_details_other.png" style="width:90%;" />
 
             </center>
 
@@ -400,11 +403,26 @@
         <br />
         <p>Searching are made by each provider opening up a endpoint as per our online documentation. Succesfull output looks something like this:</p>
         <br />
-        <pre>
-            <code>
-
-                Provider Output
-
+        <pre class="prettyprint">
+            <code style="font-size: 11px;">{
+    "uid":"xxxxxxxxx",
+    "name":"Bruno",
+    "gender":"male",
+    "distinctive_features":"Some Descriptive Features of Pet",
+    "dob":"2012",
+    "species":"Dog",
+    "breed":"Cross - Labrador & Border Collie",
+    "created":"2012-08-04",
+    "lastupdated":"2012-08-04",
+    "owner_name":"Mr. Do it",
+    "contact_url":"http://www.identichip.org/apis/v1/contact?token={token}&key={key}&provider={provider},
+    "provider": {
+        "name": "Name of Provider",
+        "logo": "Logo of Provider",
+        "website": "Website of Provider",
+        "id": "ID of provider"
+    }
+}
             </code>
         </pre>
 
@@ -542,6 +560,7 @@ if ("ontouchstart" in document.documentElement) {
 
 <script src="impress.js"></script>
 <script>impress().init();</script>
+<script type="text/javascript" src="prettify.js"></script>
 
 </body>
 </html>
