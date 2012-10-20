@@ -1,187 +1,226 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=1024" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>GDG Cape Town - 27 Oct 2012 | IdentiChip</title>
+
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>Presentation</title>
+
+    <meta charset='utf-8'>
+    <script
+      src='http://html5slides.googlecode.com/svn/trunk/slides.js'></script>
+  </head>
+  
+  <style>
+    /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
     
-    <meta name="description" content="IdentiChip presentation for GDG 27 October 2012" />
-    <meta name="author" content="Johann du Toit" />
-
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
-
-    <link href="slides.css" rel="stylesheet" />
-
-    <style type="text/css">
-    h1, h2, h3, h4, h5, h6 {
-        color: #C04355;
+       h1, h2, h3, h4, h5, h6 {
+        color: #C04355 !important;
     }
 
-    .pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}pre.prettyprint{padding:2px;border:1px solid #888}ol.linenums{margin-top:0;margin-bottom:0}li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8{list-style-type:none}li.L1,li.L3,li.L5,li.L7,li.L9{background:#eee}
-    </style>
+    article.fill h3 {
+      background-color: black !important;
+      color:white !important;
+    }
+
     
-</head>
+  </style>
 
-<body class="impress-not-supported" onload="prettyPrint()">
+  <body style='display: none'>
 
-<div class="fallback-message">
-    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
-    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
-</div>
+    <section class='slides layout-regular template-default'>
+      
+      <article class="nobackground">
 
-<div id="impress">
+          <h1 style="font-size: 50px;">IdentiChip</h1>
+          <p style="margin-top: 25px;margin-bottom: 25x;">Search All Registered Microchip / Tag Providers</p>
+          <p style="margin-top:10px;">Visit the site @ <strong>www.identichip.org</strong></p>
 
-    <div id="bored" class="step slide" data-x="-1000" data-y="-1500">
+       <img style="position:absolute;right:0;bottom:0;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+
+      </article>
+      
+      <article class="nobackground">
+
+          <p><h3 style="margin-top:0;">About Me</h3></p>
+
+          <div style="clear:both;margin-bottom:35px;"></div>
+
+          <div style="float:left;width: 48%;margin-right: 20px;">
+
+              <center>
+
+                  <img src="http://www.johanndutoit.net/img/johann.png" style="width:90%;" />
+
+              </center>
+
+          </div>
+
+          <div style="float:left;width: 48%;">
+
+              <p><h4 style="margin-top:0;">Johann du Toit</h4></p>
+
+              <ul>
+                <li>Based in Stellenbosch</li>
+                <li>Work at Amakozi Technologies, visit us at <a href="http://www.amakozi.com">www.amakozi.com</a></li>
+                <li>Blog and Playground at <a href="http://www.johanndutoit.net">www.johanndutoit.net</a></li>
+              </ul>
+
+          </div>
+
+          <div style="clear:both;"></div>
+
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
         
-        <div style="position:relative;margin-top: 15px;height: 640px;width: 835px;">
+        <p><h3 style="font-size: 30px;margin-top:0;">Google Apps Developer Challenge</h3></p>
 
-            <img style="position:absolute;right:0;bottom:0;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+        <ul>
+          <li>Global challenge for Developers to develop new innovative applications built using the Google Apps and Google Drive APIs.</li>
+          <li>18 Winners are picked accross 6 Regions and 3 categories.</li>
+          <li>Winners are selected using a set of criteria and will be anounced on the 12 / 13 November at <span  style="color: #C04355;">gAfrica</span> in Cape Town and will be live streamed.</li>
+          <li>Follow the updates with the <span  style="color: #C04355;">#gappschallenge</span> on Google+</li>
+        </ul>
 
-            <h2 style="font-size: 50px;">IdentiChip</h2>
-            <p style="margin-top: 25px;margin-bottom: 25x;">Search All Registered Microchip / Tag Providers</p>
-            <p style="margin-top:10px;">Visit the site @ <strong>www.identichip.org</strong></p>
-            <p style="margin-top:10px;">27 Oct 2012</p>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-        </div>
+      </article>
 
-    </div>
+      <article class="nobackground">
 
-    <div class="step slide" data-x="0" data-y="-1500">
+        <p><h3 style="font-size: 30px;margin-top:0;">Idea behind <strong>IdentiChip</strong></h3></p>
 
-        <h2 style="font-size: 30px;">Who am I</h2>
-
-        <div style="clear:both;margin-bottom:35px;"></div>
-
-        <div style="float:left;width: 48%;margin-right: 20px;">
-
-            <center>
-
-                <img src="http://www.johanndutoit.net/img/johann.png" style="width:90%;" />
-
-            </center>
-
-        </div>
-
-        <div style="float:left;width: 48%;">
-
-            <h2 style="font-size: 40px;">Johann du Toit</h2>
-            <br />
-
-            <p>Based in Stellenbosch</p>
-
-            <br />
-            <p>Works at Amakozi Technologies, visit us at <a href="http://www.amakozi.com">www.amakozi.com</a></p>
-            <br />
-
-            <p>Blog and Playground at <a href="http://www.johanndutoit.net">www.johanndutoit.net</a></p>
-
-        </div>
-
-        <div style="clear:both;"></div>
-    </div>
-
-    <div class="step slide" data-x="1000" data-y="-1500">
-
-        <h2 style="font-size: 30px;">Google Apps Developer Challenge</h2>
-        <br />
-
-        <p>Global challenge for Developers to develop new innovative applications built using the Google Apps and Google Drive APIs.</p>
-        <br />
-
-        <p>18 Winners are picked accross 6 Regions and 3 categories.</p>
-        <br />
-
-        <p>Winners are selected using a set of criteria and will be anounced on the 12 / 13 November at <span  style="color: #C04355;">gAfrica</span> in Cape Town and will be live streamed.</p>
-        <br />
-
-        <p>Follow the updates with the <span  style="color: #C04355;">#gappschallenge</span> on Google+</p>
-
-    </div>
-
-    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
-        <span class="try">Let's get to it, introducing</span>
-        <h1>Identichip</h1>
-    </div>
-
-    <div class="step slide" data-x="2000" data-y="-1500">
-
-        <q>Idea behind <strong>IdentiChip</strong></q>
-
-        <br />
         <p>As the developer and administrator of <a href="http://www.getmeknown.co.za">www.getmeknown.co.za</a> and <a href="http://www.getmehome.co.za">www.getmehome.co.za</a> it's become abundantly clear that the Microchip / Tag / Animal Identification world is in dire need of a easy to use single point of search.</p>
 
         <br />
         <p>And that's what <strong>IdentiChip</strong> tries to solve. By allowing providers to register and open their data through a custom endpoint and have their results included in the search.</p>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step slide" data-x="3000" data-y="-1500">
+      </article>
 
-        <q><strong>Fragmentation</strong></q>
+      <article class="nobackground">
+        <h3>
+          Current Workflow for finding animal information
+        </h3>
+        <ul class="build">
+          <li>
+            You find a lost animal and scan it for it's UID
+          </li>
+          <li>
+            Great, now where do you search for details on this microchip ?
+          </li>
+          <li>
+            Each provider has it's own database and search implementation. So do you visit each provider ?
+          </li>
+          <li>
+            Do you know all providers that cover you area ?
+          </li>
+          <li>Google them ? Sure you'll only find all the providers that matched your query !</li>
+          <li>
+            There is no single regonized search site / app, which is exactly the problem.
+          </li>
+          <li>
+        </ul>
 
-        <br />
-        <p>Each Provider has their own database with their own search implementation. This is all good and well if you are the only database of animals in town. But what happens when we have 4 main providers, like at the moment in South-Africa.</p>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-        <br />
-        <p>Well let's walk you through a typical sitiation that can happen to a VET or someone who picked up and scanned a dog.</p>
+      </article>
 
-    </div>
+      <article class="nobackground">
+        <h3>
+          The workflow IdentiChip is aiming for
+        </h3>
+        <ul class="build">
+          <li>
+            You find a lost animal and scan it for it's UID
+          </li>
+          <li>
+            You head to identichip.org or a app using the api and do the search.
+          </li>
+          <li>
+            IdentiChip searches all registered providers and gives the user details on the animal
+          </li>
+          <li>
+            The owner is contacted and the animal is returned home.
+          </li>
+          <li>
+            Simple, quick and easy to use. Why should we not have this in todays age?
+          </li>
+        </ul>
 
-    <div class="step slide" data-x="4000" data-y="-1500">
+        <div class="build">
+          <br />
+          <p>So that's why I built IdentiChip</p>
+        </div>
 
-        <q>The utter confusion.</q>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-        <br />
-        <p>Let's say you find a lost dog on the streets. You scan this dog and find it's UID. Great! Let's go get it's details.</p>
+      </article>
 
-        <br />
-        <p>But wait to which provider do I go ? And if you don't know of all the providers, you'll have no luck.</p>
+      <article class="nobackground">
+        <h3>
+          Provider Definition
+        </h3>
+        <p>A Provider represents a single service supplying and handling data for a database of animals, of any species.</p>
+        <p>To be listed on the site a provider must be approved and tested.</p>
 
-    </div>
+        <table class="build">
+          <tr>
+            <td>Approval</td>
+            <td>Providers are approved by our administrators that do basic checks to see if the supplied information is valid and the registering provider is actually a provider.</td>
+          </tr>
+          <tr>
+            <td>Tested</td>
+            <td>Providers are marked as tested when they have passed one validation test from our site. Which will also configure their API url.</td>
+          </tr>
+        </table>
 
-    <div id="google_search_for_providers" class="step" data-x="-4000" data-y="-4000" data-scale="2">
-        <span class="try"><h2>Do a Google Search</h2> I hear you say ? Doing a search just gives you the list of Providers who matched your search. And your going to try them all ?</span>
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+      </article>
 
-    <div id="" class="step" data-x="-4000" data-y="-4000" data-scale="2" data-z="-20000">
-        <span class="try">That's where <span style="color: #C04355;">IdentiChip</span> steps in. Allowing you to search all those providers (If they are registered) to find details on the Dog and contact the owner.</span>
-    </div>
+      <article class="nobackground">
+        <h3>
+          So whats the Plan
+        </h3>
+        <ul>
+          <li>
+            We need a website / api where users / clients can search all these providers
+          <li>
+            Providers should be able to register and be approved in a simple and compelling way.
+          <li>
+            Instructions are provided to assist you in using this
+            presentation template effectively
+          <li>
+            At all times strive to maintain Google's corporate look and feel
+        </ul>
 
-    <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
-        <p>Be it through our Site</p>
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+      </article>
 
-    <div id="tiny" class="step" data-x="2825" data-y="2325" data-z="-3000" data-rotate="300" data-scale="1">
-        <p>or a App / Website using our API</p>
-    </div>
-
-    <div class="step slide" data-x="5000" data-y="-1500">
-
-        <q>Single Location for Searching</q>
-
-        <br />
-        <p>By providing a single of point for searching it allows for many integration and options.</p>
-
-        <br />
-        <p>With the biggest option avaialable to use being that we can organize and notify others of global and regional search statistics and events.</p>
-
-        <br />
-        <p>And providing a central list of providers for use by other developers and companies.</p>
-
-    </div>
-
-    <div class="step" data-x="10825" data-y="10325" data-z="-5000" data-rotate="300" data-scale="1">
-        <p>Great Idea right ? So I set out to create it.</p>
-    </div>
-
-    <div class="step slide" data-x="6000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">First Version</h2>
-        <br />
+      <article class="nobackground">
+        <h3>
+          First Version
+        </h3>
 
         <p>On 14 Auth I created the <strong>IdentiChip</strong> public repo and started making the system.</p>
-        <br />
 
         <p>Took about 2 weeks and I had my first prototype on App Engine in Python. Was more focuessed on Functionality and trying to get a basic version up.</p>
 
@@ -207,77 +246,50 @@
 
         <div style="clear:both;"></div>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step slide" data-x="7000" data-y="-1500">
+      </article>
 
-        <h2 style="font-size: 40px;">Finally a single place to search</h2>
-        <br />
-        <p>You would head to the site and do a search with a microchip / tag number</p>
+      <article class="fill current">
+        <h3>
+          Finally a single place to search
+        </h3>
+        <p>
+          <img src="img/first_version_homepage.png">
+        </p>
+      </article>
 
-        <center style="margin-bottom:20px;margin-top:25px;">
+      <article class="fill current">
+        <h3>
+          Animal Details will be shown
+        </h3>
+        <p>
+          <img src="img/first_version_search_details.png">
+        </p>
+      </article>
 
-            <img src="img/first_version_homepage.png" style="height: 450px;" />
+      <article class="fill current">
+        <h3>
+          Owner can be Contacted
+        </h3>
+        <p>
+          <img src="img/first_version_contact.png">
+        </p>
+      </article>
 
-        </center>
+      <article class="fill current">
+        <h3>
+          List of Approved and Registered Providers
+        </h3>
+        <p>
+          <img src="img/first_version_providers.png">
+        </p>
+      </article>
 
-    </div>
-
-    <div class="step slide" data-x="8000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">The site will show the results</h2>
-        <br />
-        <p>All Registered Providers will be queried and the information displayed.</p>
-
-        <div style="float:left;width:48%;margin-top: 30px;">
-
-            <center style="margin-bottom:20px;">
-
-                <img src="img/first_version_search_details.png" style="width:90%;" />
-
-            </center>
-
-        </div>
-
-        <div style="float:left;width:48%;margin-top: 30px;">
-
-            <center style="margin-bottom:20px;">
-
-                <img src="img/first_version_contact.png" style="width:90%;" />
-
-            </center>
-
-        </div>
-
-        <div style="clear:both;"></div>
-
-    </div>
-
-    <div class="step" data-x="14825" data-y="14325" data-z="-5000" data-rotate="300" data-scale="1">
-
-        <p>Ugly right ? But it worked ! And was already helpful.</p>
-
-    </div>
-
-    <div class="step slide" data-x="9000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">Edge Cases</h2>
-        <br />
-        <p>During development I stumbled on some edge cases in the searches</p>
-        <br />
-        <ul style="margin-left: 25px;">
-            <li>Duplicates from providers</li>
-            <li>Providers that are down for whatever reason.</li>
-        </ul>   
-
-    </div>
-
-    <div class="step slide" data-x="10000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">So Result of Version 1</h2>
-        <br />
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">So Result of Version 1</h3>
         <p>On the submission deadline for the first round I had:</p>
-        <br />
         <ul style="margin-left: 25px;">
             <li>A Site that could search multiple providers</li>
             <li>Handles some of the first search edge cases</li>
@@ -285,26 +297,20 @@
             <li>List All Registered and Approved Providers for use by anyone needing the information.</li>
             <li>Allowed Providers to Register and view their search statistics.</li>
         </ul>   
-        <br />
         <p>The Basics really and that what I aimed for.</p>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step" data-x="13825" data-y="13325" data-z="-5000" data-rotate="300" data-scale="1">
+      </article>
 
-        <p>And what do you know ! The App made it to the finals !</p>
-
-    </div>
-
-    <div class="step slide" data-x="11000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">Round 2 & Goals</h2>
-        <br />
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Round 2 & Goals</h3>
         <p>Now that the App made it through to the finals I had some goals:</p>
-        <br />
         <ul style="margin-left: 25px;">
             <li>
                 Implementation of a API to:
+                <br />
                 <ul>
                     <li>Search from your App / Site</li>
                     <li>List all Providers in JSON for integration</li>
@@ -314,17 +320,17 @@
             </li>
             <li>Complete redesign. <strong style="color:red;">Something not so UGLY</strong></li>
             <li>Creation of a Brand</li>
-            <li>Start talks with Associatons for Integration possiblities.</li>
-        </ul>   
-        <br />
+            <li>Start talks with Associatons for Integration</li>
+        </ul>
         <p>And some more I can't think of now</p>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step slide" data-x="12000" data-y="-1500">
+      </article>
 
-        <h2 style="font-size: 40px;">Redesign and Brand</h2>
-        <br />
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Redesign and Brand</h3>
         <p>Redid the entire site and aimed for simple but usable.</p>
         <br />
         <div style="float:left;width:48%;margin-top: 30px;">
@@ -348,63 +354,75 @@
         </div>
 
         <div style="clear:both;"></div>
-        <br />
-        <p>Much better right ?</p>
+        <p>Much better right ? Along with the redesign came the new brand, which is visible accross all products.</p>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step slide" data-x="13000" data-y="-1500">
+      </article>
 
-        <h2 style="font-size: 40px;">Finally a single place to search</h2>
-        <br />
-        <p>With the new look it was much easier to figure out what to do:</p>
+      <article class="fill current">
+        <h3>
+          Finally a single place to search
+        </h3>
+        <p>
+          <img src="img/two_version_homepage.png">
+        </p>
+      </article>
 
-        <center style="margin-bottom:20px;margin-top:20px;">
+      <article class="fill current">
+        <h3>
+          View a Animals Details
+        </h3>
+        <p>
+          <img src="img/two_version_search_details_other.png">
+        </p>
+      </article>
 
-            <img src="img/two_version_homepage.png" style="width:70%;" />
+      <article class="fill current">
+        <h3>
+          View a Animals Details with a Flag
+        </h3>
+        <p>
+          <img src="img/two_version_search_details.png">
+        </p>
+      </article>
 
-        </center>
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">IdentiChip API</h3>
+        <p>The most important part of IdentiChip, apart from single location for search.</p>
 
-    </div>
+        <p>The API allows third-party applications to:</p>
 
-    <div class="step slide" data-x="14000" data-y="-1500">
+        <ul>
+          <li>Perform a Search</li>
+          <li>List Registered and Approved Providers</li>
+          <li>Include your Provider in the Searches</li>
+          <li>Pull Search Details for use to list searches of a UID for a provider</li>
+          <li>Pull search statistics</li>
+        </ul>
 
-        <h2 style="font-size: 40px;">The site will show the results</h2>
-        <br />
-        <p>All Registered Providers will be queried and the information displayed.</p>
+        <p>Here's a quick walk through</p>
 
-        <div style="float:left;width:48%;margin-top: 30px;">
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-            <center style="margin-bottom:20px;">
+      </article>
 
-                <img src="img/two_version_search_details.png" style="width:90%;" />
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Building your Provider Endpoint</h3>
+        <p>Each provider has to build a endpoint if they wish to be included in the search.</p>
+        <p>Our service authenticates with a hash generated from a secret key given to your provider.</p>
+        <p>A search is done by asynchronously calling all the endpoints of our providers with a 4 seconds timeout.</p>
 
-            </center>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-        </div>
+      </article>
 
-        <div style="float:left;width:48%;margin-top: 30px;">
-
-            <center style="margin-bottom:20px;">
-
-                <img src="img/two_version_search_details_other.png" style="width:90%;" />
-
-            </center>
-
-        </div>
-
-        <div style="clear:both;"></div>
-
-    </div>
-
-    <div class="step slide" data-x="15000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">Looks good now let's get technical</h2>
-        <br />
-        <p>Searching are made by each provider opening up a endpoint as per our online documentation. Succesfull output looks something like this:</p>
-        <br />
-        <pre class="prettyprint">
-            <code style="font-size: 11px;">{
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Example of a Successful Response</h3>
+        <pre class="prettyprint">{
     "uid":"xxxxxxxxx",
     "name":"Bruno",
     "gender":"male",
@@ -422,94 +440,41 @@
         "website": "Website of Provider",
         "id": "ID of provider"
     }
-}
-            </code>
-        </pre>
+}</code></pre>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step slide" data-x="16000" data-y="-1500">
+      </article>
 
-        <h2 style="font-size: 40px;">Search Results</h2>
-        <br />
-        <p>With all these results we then compile a detailed list of responses and combine them all to produce our search output.</p>
-        <br />
-
-        <center style="margin-bottom:20px;">
-
-            <img src="#" style="width:70%;" />
-
-        </center>
+      <article class="nobackground">
         
+        <h3 style="font-size: 40px;">Example of a Not Found Response</h3>
+        <pre class="prettyprint">{
+  "search_result":"false",
+  "message":"Could not find that Tag"
+}</code></pre>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step slide" data-x="17000" data-y="-1500">
+      </article>
 
-        <h2 style="font-size: 40px;">Demo of Site and Search Integration</h2>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <center style="margin-bottom:20px;">
-
-            <p>[DEMO]</p>
-
-        </center>
+      <article class="nobackground">
         
+        <h3 style="font-size: 40px;">Example of a Failed Response</h3>
+        <pre class="prettyprint">{
+  status: "failure",
+  message: "No Access Key Provided"
+}</code></pre>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step" data-x="16825" data-y="16325" data-z="-5000" data-rotate="300" data-scale="1">
-
-        <p>That's all great but without traction this is going nowhere.</p>
-
-    </div>
-
-    <div class="step slide" data-x="18000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">Goverment Task Team</h2>
-        <br />
-
-        <p>I'm currently in talks with a the Task Team.</p>
-
-        <br />
-        <p>As mentioned there is a <strong>Dire</strong> need for such a system and the task team agrees. We may see IdentiChip becoming a requirement !</p>
-
-        <br />
-        <p>A couple improvements have already come up from their feedback.</p>
-
-        <br />
-        <div style="float:left;width:48%;margin-top: 0px;">
-
-            <p>Such as a Flagging option to tell the user searching that the animal was stolen etc.</p>
-
-        </div>
-
-        <div style="float:left;width:48%;margin-top: -40px;">
-
-            <center style="margin-bottom:0;">
-
-                <img src="#" style="width:90%;" />
-
-            </center>
-
-        </div>
+      </article>
+      
+      <article class="nobackground">
         
-
-    </div>
-
-    <div class="step slide" data-x="19000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">The Trinity, just imagine</h2>
-        <br />
+        <h3 style="font-size: 40px;">The Trinity, just imagine</h3>
 
         <p>My vision is to have 3 sites.</p>
-
-        <br />
 
         <ul style="margin-left: 25px;">
             <li>Identichip to search providers</li>
@@ -517,50 +482,27 @@
             <li>Some site to list and view all registered vet with a API.</li>
         </ul>
 
-        <br />
-        <p><strong>Why ?</strong></p>
-        <br />
-        <p>The Goal would be to:</p>
-        <ul style="margin-left: 25px;">
-            <li>Allow searches with no results to automaticly get a chance to register the pet as lost.</li>
-            <li>Notify Task Teams when a Flagged Dog is Searched</li>
-            <li>Allow Charity Sites to Search and List Stolen dogs with a API</li>
-            <li>And so much more!</li>
-        </ul>
+        <p>Just Imagine having a Service orientated service framework for animals</p>
 
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-    <div class="step slide" data-x="20000" data-y="-1500">
-
-        <h2 style="font-size: 40px;">Ham and Bacon</h2>
-        <br />
+      </article>
+      
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Ham and Bacon</h3>
 
         <p>That's it. Thanks for listening.</p>
-        <br />
 
         <p>Any feedback is welcome and anyone interested in building out more of these services , I would really appreciate the help !</p>
-        <br />
 
         <p>The source code is up on <a href="https://github.com/Johanndutoit/IdentiChip">https://github.com/Johanndutoit/IdentiChip</a>. Which will soon be moving to it's own organization to handle all the others services that are going to be created.</p>
-    </div>
 
-    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
-    </div>
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
-</div>
+      </article>
 
-<div class="hint">
-    <p>Use a spacebar or arrow keys to navigate</p>
-</div>
-<script>
-if ("ontouchstart" in document.documentElement) { 
-    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right or space to navigate</p>";
-}
-</script>
+    </section>
 
-<script src="impress.js"></script>
-<script>impress().init();</script>
-<script type="text/javascript" src="prettify.js"></script>
-
-</body>
+  </body>
 </html>
