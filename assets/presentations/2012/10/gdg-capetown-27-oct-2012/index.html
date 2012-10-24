@@ -121,7 +121,7 @@
 
       <article class="nobackground">
 
-        <p><h3 style="font-size: 30px;margin-top:0;">Idea behind <strong>IdentiChip</strong></h3></p>
+        <p><h3 style="font-size: 30px;margin-top:0;">What does <strong>IdentiChip</strong> try to solve</h3></p>
 
         <p>As the developer and administrator of <a href="http://www.getmeknown.co.za">www.getmeknown.co.za</a> and <a href="http://www.getmehome.co.za">www.getmehome.co.za</a> it's become abundantly clear that the Microchip / Tag / Animal Identification world is in dire need of a easy to use single point of search.</p>
 
@@ -153,7 +153,6 @@
           <li>
             There is no single regonized search site / app, which is exactly the problem.
           </li>
-          <li>
         </ul>
 
         <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
@@ -193,10 +192,37 @@
 
       <article class="nobackground">
         <h3>
-          Provider Definition
+          Providers
         </h3>
         <p>A Provider represents a single service supplying and handling data for a database of animals, of any species.</p>
         <p>To be listed on the site a provider must be approved and tested.</p>
+        <ul class="build">
+          <li>
+            Providers Register on the site
+          </li>
+          <li>
+            They open up a endpoint that the server will call during a search
+          </li>
+          <li>
+            The Provider is included in the search and listed on the site and through the API.
+          </li>
+        </ul>
+
+        <div class="build">
+          <br />
+          <p>Easy</p>
+        </div>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        <h3>
+          Provider Approval and Testing
+        </h3>
+
+        <p>Only Approved and Tested providers are used in a search and listed on the website</p>
 
         <table class="build">
           <tr>
@@ -222,10 +248,9 @@
           <li>
             Providers should be able to register and be approved in a simple and compelling way.
           <li>
-            Instructions are provided to assist you in using this
-            presentation template effectively
+            Send a Detailed Mail to the Owners
           <li>
-            At all times strive to maintain Google's corporate look and feel
+            Google Apps Integration using Google Apps for member management and Google App Script for cron jobs.
         </ul>
 
         <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
@@ -304,7 +329,7 @@
 
       <article class="nobackground">
         
-        <h3 style="font-size: 40px;">So Result of Version 1</h3>
+        <h3 style="font-size: 40px;">Result of Version 1</h3>
         <p>On the submission deadline for the first round I had:</p>
         <ul style="margin-left: 25px;">
             <li>A Site that could search multiple providers</li>
@@ -312,12 +337,46 @@
             <li>Allowed users to contact the owners.</li>
             <li>List All Registered and Approved Providers for use by anyone needing the information.</li>
             <li>Allowed Providers to Register and view their search statistics.</li>
+            <li>A site that integrated with Google Api's</li>
         </ul>   
+
         <p>The Basics really and that what I aimed for.</p>
 
         <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
       </article>
+
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Judgement Time</h3>
+        <br />
+        <br />
+
+        <center>
+          <p>Quite a stresfull experience, and didn't want to touch the app in fear of breaking it.</p>
+        </center>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Semi-Finals</h3>
+        <br />
+
+        <center>
+          <p>On the 13th of September the finalists were anounced on</p>
+          <p><a href="http://www.google.com/events/gadc2012/finalists/">http://www.google.com/events/gadc2012/finalists/</a></p>
+          <p>And what do you know <strong>IdentiChip</strong> made the cut</p>
+        </center>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
 
       <article class="nobackground">
         
@@ -347,7 +406,7 @@
       <article class="nobackground">
         
         <h3 style="font-size: 40px;">Redesign and Brand</h3>
-        <p>Redid the entire site and aimed for simple but usable.</p>
+        <p>Re-did the entire site and aimed for simple but usable.</p>
         <br />
         <div style="float:left;width:48%;margin-top: 30px;">
 
@@ -405,6 +464,48 @@
 
       <article class="nobackground">
         
+        <h3 style="font-size: 40px;">Edge cases</h3>
+        <p>Also updated the sites to handle edge cases I found such as Duplicates:</p>
+        <br />
+        <div style="float:left;width:96%;margin-top: 30px;">
+
+            <center style="margin-bottom:20px;">
+
+                <img src="img/two_version_duplicates.png" style="width:100%;" />
+
+            </center>
+
+        </div>
+
+        <div style="clear:both;"></div>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Contact Limiting</h3>
+        <p>And limiting mails to one per search</p>
+        <br />
+        <div style="float:left;width:96%;margin-top: 30px;">
+
+            <center style="margin-bottom:20px;">
+
+                <img src="img/two_version_contacted.png" style="width:100%;" />
+
+            </center>
+
+        </div>
+
+        <div style="clear:both;"></div>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        
         <h3 style="font-size: 40px;">IdentiChip API</h3>
         <p>The most important part of IdentiChip, apart from single location for search.</p>
 
@@ -437,33 +538,6 @@
 
       <article class="nobackground">
         
-        <h3 style="font-size: 40px;">Example of a Successful Response</h3>
-        <pre class="prettyprint">{
-    "uid":"xxxxxxxxx",
-    "name":"Bruno",
-    "gender":"male",
-    "distinctive_features":"Some Descriptive Features of Pet",
-    "dob":"2012",
-    "species":"Dog",
-    "breed":"Cross - Labrador & Border Collie",
-    "created":"2012-08-04",
-    "lastupdated":"2012-08-04",
-    "owner_name":"Mr. Do it",
-    "contact_url":"http://www.identichip.org/apis/v1/contact?token={token}&key={key}&provider={provider},
-    "provider": {
-        "name": "Name of Provider",
-        "logo": "Logo of Provider",
-        "website": "Website of Provider",
-        "id": "ID of provider"
-    }
-}</code></pre>
-
-        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
-
-      </article>
-
-      <article class="nobackground">
-        
         <h3 style="font-size: 40px;">Example of a Not Found Response</h3>
         <pre class="prettyprint">{
   "search_result":"false",
@@ -481,6 +555,122 @@
   status: "failure",
   message: "No Access Key Provided"
 }</code></pre>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Example of a Successful Response from Provider</h3>
+        <pre class="prettyprint">
+"uid":"xxxxxxxxx",
+"name":"Bruno",
+"gender":"male",
+"distinctive_features":"Some Descriptive Features about Bruno",
+"dob":"2012",
+"species":"Dog",
+"breed":"Cross - Labrador & Border Collie",
+"created":"2012-08-04",
+"lastupdated":"2012-08-04",
+"owner": {
+"name":"Mr. Do it",
+"email":"test@example.com",
+"tel":"xxx xxxx xxxxx"
+}
+}</code></pre>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Doing a Search with the API</h3>
+        <br />
+        <p>With a centralized search all apps can perform the same search.</p>
+        <p>You'll just need a API Client's Secret Key to Authenticate with the API</p>
+        <p>The system expects a post with the information of the client</p>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Search Response from Service</h3>
+        <pre class="prettyprint">{
+  "result": "found / notfound",
+  "token": "{search_token}",
+  "url": "http://www.identichip.org/view/{token}",
+  "success": [ ... Succesfull search responses ... ],
+  "failed": [ ... Failed search responses ... ],
+  "daily_limit": 500
+  "remaining_limit": 410
+}</code></pre>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Detailed Search Record Details</h3>
+        <pre class="prettyprint">{
+  "uid":"xxxxxxxxx",
+  "name":"Bruno",
+  "gender":"male",
+  "distinctive_features":"Some Descriptive Features of Pet",
+  "dob":"2012",
+  "species":"Dog",
+  "breed":"Cross - Labrador & Border Collie",
+  "created":"2012-08-04",
+  "lastupdated":"2012-08-04",
+  "owner_name":"Mr. Do it",
+  "contact_url":"http://www.identichip.org/apis/v1/contact?token={token}&key={key}&provider={provider},
+  "provider": {
+    "name": "Name of Provider",
+    "logo": "Logo of Provider",
+    "website": "Website of Provider",
+    "id": "ID of provider"
+  }
+}</code></pre>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">Listing Providers</h3>
+        <br />
+        <p>With a centralized we can list all the providers for use by other developers.</p>
+        <p>The endpoint does not need authentication and responds with a array of:</p>
+
+        <pre class="prettyprint">{
+    "name": "Name of Provider",
+    "logo": "Logo of Provider",
+    "website": "Website of Provider",
+    "id": "ID of provider"
+  },</code></pre>
+
+        <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
+
+      </article>
+      
+      <article class="nobackground">
+        
+        <h3 style="font-size: 40px;">The standard in Microchip / Tag Searching</h3>
+
+        <p>We are currently in Talks with associations and other microchip providers to make IdentiChip the Standard. As it provides:</p>
+
+        <ul style="margin-left: 25px;margin-top:5px;">
+            <li>A Common set of data fields that each provider should provide</li>
+            <li>One location to search all providers</li>
+            <li>One location for Associations to list and manage these providers too</p>
+        </ul>
+
+        <p><strong>And we are proud to anounce that during November this will be made offical through Kusa, requiring it for any Provider</strong></p>
 
         <img style="position:absolute;right:-90px;bottom:-90px;width: 500px;" src="http://www.identichip.org/img/planet.png" />
 
