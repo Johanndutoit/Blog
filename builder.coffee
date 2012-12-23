@@ -36,7 +36,6 @@ read_blog_posts = (fn) ->
 
 		if year.indexOf('.') == -1
 
-			console.log year
 			if 1*year not in filtered_years
 				filtered_years.push 1*year
 
@@ -45,16 +44,11 @@ read_blog_posts = (fn) ->
 			for month in months
 				if month.indexOf('.') is -1
 
-
-					console.log month
-
 					days = fs.readdirSync __dirname + "/posts/" + year + "/" + month
 
 					for day in days
 
 						if day.indexOf('.') is -1
-
-							console.log day
 
 							post_files = fs.readdirSync __dirname + "/posts/" + year + "/" + month + "/" + day + "/"
 
@@ -113,11 +107,12 @@ read_blog_posts (posts, years) ->
 
 		feed_posts = posts.slice 0, 20
 		feed_posts.forEach (post) ->
+
 			feed.item({
 				title:  post.title,
 				description: post.content,
-				url: post.url,
-				date: 'May 27, 2012' 
+				url: "http://www.johanndutoit.net" + post.url,
+				date: post.date 
 			})
 
 		fs.writeFile site_dir + '/atom.xml', feed.xml(), 'utf8', ->
