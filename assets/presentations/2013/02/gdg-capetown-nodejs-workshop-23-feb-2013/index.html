@@ -1,0 +1,754 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google IO 2012</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/nodejs_logo.png" style="height:300px;width:600px;"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>About Me</h2>
+    </hgroup>
+    <article>
+
+      <img src="http://www.johanndutoit.net/img/johann.png" style="width:300px;float:right;" />
+
+      <h4>Been using Node for a year with a few production implementations.</h4>
+
+      <br />
+      <br />
+
+      <ul>
+       <li>Based in Stellenbosch</li>
+                <li>Work at Amakozi Technologies, visit us at <a href="http://www.amakozi.com">www.amakozi.com</a></li>
+                <li>Blog and Playground at <a href="http://www.johanndutoit.net">www.johanndutoit.net</a></li>
+      </ul>
+
+
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+        <p><b>We'll start at the beginging and end with implementation</b></p>
+        <br />
+        <ul>
+          <li>
+            What NodeJs is, how it works and components used to write services
+          </li>
+          <li>
+            Writing TCP Servers in NodeJS (Live Session)
+          </li>
+          <li>
+            Common NodeJS libraries / frameworks - we have our Rails too !
+          </li>
+          <li>
+            Writing a Website in NodeJS (Live Session)
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>This Talk / Workshop</h2>
+      <h3>Whats on the Up Up ? (Press P)</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Intro to NodeJS</h2>
+      <h3>Part 1</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What is Node</h2>
+      <h3>Let's get to it</h3>
+    </hgroup>
+    <article>
+      <p>Started as a seperate project but was made the default package manager</p>
+      <p>Each Node App / Module contains a <code>package.json</code> file which specifies:</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Global Scopes</h2>
+      <h3>Dangerous but usefull sometimes</h3>
+    </hgroup>
+    <article>
+      <p>In the browser you have <code>window</code> and in Node you have <code>GLOBAL</code>. When anything is assigned to global any files in the server can access them.</p>
+
+      <p><code>main.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func = function() { return 2 * 2; }</pre>
+
+      <p><code>other.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func()</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="images/npm_logo.png" alt="NPM" title="Node Package Manager">
+      <h3 class="build">Node Package manager</h3>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Node Package Manager</h2>
+      <h3>Cough Cough Gems</h3>
+    </hgroup>
+    <article>
+      <p>Started as a seperate project but was made the default package manager</p>
+      <p>Each Node App / Module contains a <code>package.json</code> file which specifies:</p>
+      <ul>
+          <li>The Dependent Modules and their versions Required</li>
+          <li>Repo of the Project</li>
+          <li>Version of the Project</li>
+          <li>Authors</li>
+          <li>for more check <code>npm --help</code></li>
+      </ul>
+      <p>View more at <a href="https://npmjs.org">npmjs.org</a></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>npmjs.org</h2>
+      <h3>Publishing a Module</h3>
+    </hgroup>
+    <article>
+      <p>All Modules that are installed with NPM have been published to <code>npmjs.org</code></p>
+      <p>These modules can be searched and this gives all node developers a central repository where all modules are listed and querable.</p>
+      <p>Anyone can create a account and publish a module.</p>
+
+      <p>Example of Publishing:</p>
+      <pre class="prettyprint" data-lang="JSON">npm publish {tarball}
+npm publish {folder}</article>
+  </pre>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Node Package Manager</h2>
+      <h3>Package Definition File</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JSON">{
+  "name": "project-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "underscore": ">= 1.0"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Node Package Manager</h2>
+      <h3>Command Samples</h3>
+    </hgroup>
+    <article>
+      <p>Interactive prompts to quickly create a new <code>package.json</code></p>
+      <pre class="prettyprint" data-lang="BASH">npm init</pre>
+      <p>Read all the required modules from <code>package.json</code> and update / install them</p>
+      <pre class="prettyprint" data-lang="BASH">npm update</pre>
+      <p>Example of installing underscore (we'll see what is does later)</p>
+      <pre class="prettyprint" data-lang="BASH">npm install underscore</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Global Modules</h2>
+      <h3>Install a module globally</h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <p>Globally install underscore for example</p>
+      <pre class="prettyprint" data-lang="BASH">npm install -g underscore</pre>
+      <p>Any NodeJS application will have access to this module without installing it at a application level</p>
+      <p>Modules with executables will have the PATH registered</p>
+      <p>For example after installing the CoffeeScript Interpreter</p>
+      <pre class="prettyprint" data-lang="BASH">coffee -v</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Installing Node</h2>
+      <h3>Feel the Source, Luke ...</h3>
+    </hgroup>
+    <article>
+      <p>Head over to <code>nodejs.org</code> and download either the executable for Windows or Download the Source for Linux / Mac (It's a bit easier :D)</p>
+      <p>Install from Source:</p>
+      <pre class="prettyprint" data-lang="BASH">./configure
+make
+make install</pre>
+      <p>Check your Installation:</p>
+      <pre class="prettyprint" data-lang="BASH">node -v
+npm -v</pre>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>Break to Install Node</q>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Writing a TCP Server in NodeJS</h2>
+      <h3>Part 2</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Popular NodeJS Libraries</h2>
+      <h3>Part 3</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <h3 class="build">List of Modules</h3>
+      <p style="text-align:center;">Community kept list of modules <br /><code>https://github.com/joyent/node/wiki/modules</code><br /> for quick easy browsing or just or <code>npmjs.org</code></p> 
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Jade</h2>
+      <h3>My Favourite Template Engine that we'll be using</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+
+    title Test Title
+
+  body
+  p A
+  p
+    a(href="test.com") C</pre>
+    <p>Produces</p>
+    <pre class="prettyprint" data-lang="HTML">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;A&lt;/p&gt;<br />&lt;p&gt;&lt;a href=&quot;test.com&quot;&gt;C&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>Variables</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="JADE">p #{page_name} !{raw_html}</pre>
+
+      <p>Mixins</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="JADE">mixin my_block_func(a, b)
+  p #{a * b}
+
+mixin my_block_func(1, 2)</pre>
+
+      <p>Includes</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="JADE">include template_block.jade</pre>
+
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Inheritance</h2>
+    </hgroup>
+    <article>
+
+      <p>'Master Template' <code>layout.jade</code></p>
+
+      <pre class="prettyprint" data-lang="JADE">p Main page
+block layout_content</pre>
+
+      <p>'Page Template' <code>somepage.jade</code></p>
+
+      <pre class="prettyprint" data-lang="JADE">extends layout.jade
+
+block layout_content
+  p testing testing testing</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Async</h2>
+      <h3>Asynchronous Utilities</h3>
+    </hgroup>
+    <article>
+      <p>Execution Flow util library that allows you to write very powerfull scripts / functions with minimal code.</p>
+      <p>Use it in your Browser or install for node with:</p>
+      <pre class="prettyprint" data-lang="BASH">npm install async</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>forEach(arr, iterator, callback)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">text_vals = ['a', 'b', 'c'];
+async.forEach(text_vals, console.log, function(err){
+    // Output all the Values and Call this when done !
+});</pre>
+
+      <p>forEachSeries(arr, iterator, callback)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">text_vals = ['a', 'b', 'c'];
+async.forEach(text_vals, console.log, function(err){
+    // Output all the Values in series and Call this when done !
+});</pre>
+
+      <p>forEachLimit(arr, limit, iterator, callback)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">text_vals = ['a', 'b', 'c'];
+async.forEachLimit(text_vals, 5, console.log, function(err){
+    // Output all the Values and Call this when done !
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>parallel(tasks, [callback])</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">async.parallel([
+    function(callback){
+        setTimeout(function(){
+            callback(null, 'one');
+        }, 200);
+    },
+    function(callback){
+        setTimeout(function(){
+            callback(null, 'two');
+        }, 100);
+    }
+],
+// optional callback
+function(err, results){
+    // the results array will equal ['one','two'] even though
+    // the second function had a shorter timeout.
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>queue(worker, concurrency)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">var q = async.queue(function (task, callback) {
+    console.log('hello ' + task.name);
+    callback();
+}, 2);
+
+
+// assign a callback
+q.drain = function() {
+    console.log('all items have been processed');
+}
+
+// add some items to the queue
+
+q.push({name: 'foo'}, function (err) {
+    console.log('finished processing foo');
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Writing a Web App in NodeJS</h2>
+      <h3>Part 4</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Code Slide (with Subtitle Placeholder)</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+    <article>
+      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
+      <pre class="prettyprint" data-lang="javascript">
+&lt;script type='text/javascript'&gt;
+  // Say hello world until the user starts questioning
+  // the meaningfulness of their existence.
+  function helloWorld(world) {
+    <b>for (var i = 42; --i &gt;= 0;) {
+      alert('Hello ' + String(world));
+    }</b>
+  }
+&lt;/script&gt;
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Code Slide (Smaller Font)</h2>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="javascript">
+// Say hello world until the user starts questioning
+// the meaningfulness of their existence.
+function helloWorld(world) {
+  for (var i = 42; --i &gt;= 0;) {
+    alert('Hello ' + String(world));
+  }
+}
+</pre>
+<pre class="prettyprint" data-lang="css">
+&lt;style&gt;
+  p { color: pink }
+  b { color: blue }
+&lt;/style&gt;
+</pre>
+<pre class="prettyprint" data-lang="html">
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+  &lt;title>My Awesome Page&lt;/title>
+&lt;/head>
+&lt;body>
+  &lt;p&gt;Hello world&lt;/p&gt;
+&lt;body>
+&lt;/html>
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Point I wanted to make #1</li>
+          <li>Point I wanted to make #2</li>
+          <li>Point I wanted to make #3</li>
+          <li>Example <a href="#">link</a> in notes.</li>
+        </ul>
+        <p><b>Remember to say this tag line!</b></p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Slide with Speaker Notes</h2>
+    </hgroup>
+    <article>
+      <p>Press 'p' to toggle speaker notes.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
+        </ul>
+        <p><b>Remember to say this tag line!</b></p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>Presenter Mode</h2>
+    </hgroup>
+    <article>
+      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
+      This setting is sticky, meaning refreshing the page will persist presenter
+      mode.</p>
+      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Slide with Image</h2>
+    </hgroup>
+    <article>
+      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
+      <footer class="source">source: place source info here</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Slide with Image (Centered horz/vert)</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/barchart.png" alt="Description" title="Description">
+      <footer class="source">source: place source info here</footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Table Option A</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+    <article>
+      <table>
+        <tr>
+          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
+        </tr>
+        <tr>
+          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Table Option A (Smaller Text)</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+    <article class="smaller">
+      <table>
+        <tr>
+          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
+        </tr>
+        <tr>
+          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Table Option B</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+    <article>
+      <table class="rows">
+        <tr>
+          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+        <tr>
+          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Slide Styles</h2>
+    </hgroup>
+    <article class="smaller">
+      <div class="columns-2">
+        <ul>
+          <li class="red">class="red"</li>
+          <li class="red2">class="red2"</li>
+          <li class="red3">class="red3"</li>
+          <li class="blue">class="blue"</li>
+          <li class="blue2">class="blue2"</li>
+          <li class="blue3">class="blue3"</li>
+          <li class="green">class="green"</li>
+          <li class="green2">class="green2"</li>
+        </ul>
+        <ul>
+          <li class="green3">class="green3"</li>
+          <li class="yellow">class="yellow"</li>
+          <li class="yellow2">class="yellow2"</li>
+          <li class="yellow3">class="yellow3"</li>
+          <li class="gray">class="gray"</li>
+          <li class="gray2">class="gray2"</li>
+          <li class="gray3">class="gray3"</li>
+          <li class="gray4">class="gray4"</li>
+        </ul>
+      </div>
+      <div class="centered" style="margin-top:2em">
+        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
+      </div>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Segue Slide</h2>
+      <h3>Subtitle Placeholder</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
+    <hgroup>
+      <h2 class="white">Full Image (with Optional Header)</h2>
+    </hgroup>
+    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+        This is an example of quote text.
+      </q>
+      <div class="author">
+        Name<br>
+        Company
+      </div>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+      <p>www.johanndutoit.net</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
