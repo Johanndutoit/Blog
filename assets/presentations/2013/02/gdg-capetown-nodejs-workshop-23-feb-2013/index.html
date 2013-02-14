@@ -137,7 +137,7 @@ URL: https://code.google.com/p/io-2012-slides
         <li>File Library</li>
         <li>Crypto Library</li>
         <li>Streams</li>
-        <li>And much more - View more at <a href="#">nodejs.org/api</a></li>
+        <li>And much more - View more at <a href="http://nodejs.org/api/">nodejs.org/api</a></li>
       </ul>
     </article>
   </slide>
@@ -153,7 +153,7 @@ URL: https://code.google.com/p/io-2012-slides
 
       <pre class="prettyprint" data-lang="BASH">node app.js</pre>
 
-      <p>Can also be run as a interpreter:</p>
+      <p>Can also be run as REPL:</p>
 
       <pre class="prettyprint" data-lang="BASH">node
 > 4 + 4
@@ -195,7 +195,14 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>Sample Code, That's why !</h3>
     </hgroup>
     <article>
-      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func = function() { return 2 * 2; }</pre>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var net = require('net');
+
+var server = net.createServer(function (socket) {
+  socket.write('Echo server\r\n');
+  socket.pipe(socket);
+});</pre>
+      <pre class="prettyprint" data-lang="BASH">node example.js
+Server running at http://127.0.0.1:1337/</pre>
     </article>
   </slide>
 
@@ -205,11 +212,34 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>Sample Code, That's why !</h3>
     </hgroup>
     <article>
-      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func = function() { return 2 * 2; }</pre>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(1337, '127.0.0.1');
+console.log('Server running at http://127.0.0.1:1337/');</pre>
+      <pre class="prettyprint" data-lang="BASH">node example.js
+Server running at http://127.0.0.1:1337/</pre>
     </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image: url(images/why-so-asynchronous.jpg);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Async vs Synchronous</h2>
+    </hgroup>
+    <article>
+      <br />
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var result = db.query("select * from T");
+console.log(result);</pre>
+      <br />
+      <pre class="prettyprint" data-lang="JAVASCRIPT">db.query("select * from T", function (err, result) { 
+    // Use result 
+    console.log(result);
+}); </pre>
+    </article>
   </slide>
 
   <slide>
@@ -516,20 +546,105 @@ npm -v</pre>
     <hgroup>
       <h2>Express</h2>
       <h3>The defacto Web Framework for Node</h3>
+      <h4><a href="http://expressjs.com/">expressjs.com</a></h4>
     </hgroup>
     <article>
-      <pre class="prettyprint" data-lang="JADE">doctype 5
-html
-  head
+      <p>Quick to start a service</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var express = require('express');
+var app = express();
+app.listen(3000);</pre>
+      <p>Also use the tool to quick start a project, much like rails huh ?</p>
+      <pre class="prettyprint" data-lang="BASH">npm install -g express
+express --sessions --css stylus --ejs myapp</pre>
+    </article>
+  </slide>
 
-    title Test Title
+  <slide>
+    <hgroup>
+      <h2>Handling Requests in Express</h2>
+      <h3>Sinatra inspired ...</h3>
+    </hgroup>
+    <article>
+      <p>Handling a Get</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.get('/getrequest', function(req, res) {
+        res.send('HELLO!');
+      });</pre>
+      <p>Handling a POST</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.post('/postrequest', function(req, res) {
+        res.send('Hi ' + req.body.name + '!');
+      });</pre>
+      <p>Handling a PUT</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.put('/postrequest', function(req, res) {
+        res.send('Hi ' + req.body.name + '!');
+      });</pre>
+      <p>Handling a PUT</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.delete('/delete/:item_number', function(req, res) {
+        res.send('delete ' + req.params.item_number + '!');
+      });</pre>
+      <p>Or <strong>app.all()</strong></p>
+    </article>
+  </slide>
 
-  body
-    p A
-    p
-      a(href="test.com") C</pre>
-    <p>Produces</p>
-    <pre class="prettyprint" data-lang="HTML">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;A&lt;/p&gt;<br />&lt;p&gt;&lt;a href=&quot;test.com&quot;&gt;C&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</pre>
+  <slide>
+    <hgroup>
+      <h2>Middleware</h2>
+      <h3>Anyone know Rack for Rails ?</h3>
+    </hgroup>
+    <article>
+      <p>You can build a chain of events that should fire and pass data to a request</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">
+var handle_some_other_item = function(req, res, next) {
+    db.query('select * from users where id=$', [req.params.user_item], function(err, user_obj){
+
+      req.requested_user_obj = user_obj;
+      next();
+
+  });
+};
+app.get('/user/:user_item', handle_some_other_item, function(req, res) {
+        res.send('Hi ' + req.requested_user_obj.name + ' !');
+      });</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Middleware</h2>
+      <h3>Listen for all parameters</h3>
+    </hgroup>
+    <article>
+      <p>You can build a chain of events that should fire and pass data to a request</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">
+app.param('user_item', function(req, res, next, user_item) {
+    db.query('select * from users where id=$', [user_item], function(err, user_obj){
+
+      req.requested_user_obj = user_obj;
+      next();
+
+  });
+});
+app.get('/user/:user_item', function(req, res) {
+        res.send('Hi ' + req.requested_user_obj.name + ' !');
+      });</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Also handles all the other Jazz</h2>
+    </hgroup>
+    <article>
+      <p>Sessions</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">req.session.user_id = 'test';
+res.send(req.session.user_id);</pre>
+      <p>CSRF Protection</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.use(express.csrf());</pre>
+      <p>View Rendering - Set any template library you want</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.get('/', function(req, res) {
+  res.render 'homepage', {
+    "title": "Homepage !"
+  }
+});</pre>
     </article>
   </slide>
 
