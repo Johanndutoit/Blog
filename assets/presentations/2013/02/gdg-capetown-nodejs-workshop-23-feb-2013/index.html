@@ -562,7 +562,6 @@ express --sessions --css stylus --ejs myapp</pre>
   <slide>
     <hgroup>
       <h2>Handling Requests in Express</h2>
-      <h3>Sinatra inspired ...</h3>
     </hgroup>
     <article>
       <p>Handling a Get</p>
@@ -577,11 +576,6 @@ express --sessions --css stylus --ejs myapp</pre>
       <pre class="prettyprint" data-lang="JAVASCRIPT">app.put('/postrequest', function(req, res) {
         res.send('Hi ' + req.body.name + '!');
       });</pre>
-      <p>Handling a PUT</p>
-      <pre class="prettyprint" data-lang="JAVASCRIPT">app.delete('/delete/:item_number', function(req, res) {
-        res.send('delete ' + req.params.item_number + '!');
-      });</pre>
-      <p>Or <strong>app.all()</strong></p>
     </article>
   </slide>
 
