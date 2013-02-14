@@ -107,12 +107,140 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
+      <h2>How was Node Started?</h2>
+      <h3>When a miracle is born</h3>
+    </hgroup>
+    <article>
+      <p>In 2009 Ryan was playing with building a framework to make building push based apps like GMail so much easier.</p>
+      <p>He tried a few languages but then settled on the V8 engine and javascript. Node is now developed under Joyent the organization founded for NodeJS. They also host Node ...</p>
+      <p>And from there it took off, now being used at:</p>
+      <ul>
+        <li>LinkedIn - New Mobile Touch site is written in NodejS</li>
+        <li>Microsoft - Hosting on the Azure Cloud</li>
+        <li>Github - Download Server (DOn't know if they still use it)</li>
+        <li>And you probally know more !</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>What is Node</h2>
       <h3>Let's get to it</h3>
     </hgroup>
     <article>
-      <p>Started as a seperate project but was made the default package manager</p>
-      <p>Each Node App / Module contains a <code>package.json</code> file which specifies:</p>
+      <p>A Wrapper for V8 giving the JS Engine IO Libraries. And at it's core that's all it is.</p>
+      <p>Along with normal IO the Node API contains libraries for just about everything:</p>
+      <ul>
+        <li>Networking (Sockets)</li>
+        <li>HTTP Server / Client</li>
+        <li>File Library</li>
+        <li>Crypto Library</li>
+        <li>Streams</li>
+        <li>And much more - View more at <a href="#">nodejs.org/api</a></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The Node Executable</h2>
+      <h3>Running Node</h3>
+    </hgroup>
+    <article>
+      <p>When you install / compile node you get access to the node executable. And that's just about all there is to node.</p>
+      <p>This executable will run your server / script.</p>
+
+      <pre class="prettyprint" data-lang="BASH">node app.js</pre>
+
+      <p>Can also be run as a interpreter:</p>
+
+      <pre class="prettyprint" data-lang="BASH">node
+> 4 + 4
+8
+> </pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <h2 style="text-align:center;margin-top:80px;">What makes writing for Node diffrent ?</h2>
+      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. It's not a by request model like PHP and global modules will keep using your memory till you stop it or cleared in your code.</h4>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What's Node Good at ?</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li></li>
+      </ul>
+    </article>
+    <hgroup>
+      <h2>What does Node not handle quite as good ?</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Sites were large amounts of processing occurs in each request.</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example of Socket server from NodeJS Site</h2>
+      <h3>Sample Code, That's why !</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func = function() { return 2 * 2; }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example of HTTP server from NodeJS Site</h2>
+      <h3>Sample Code, That's why !</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func = function() { return 2 * 2; }</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/why-so-asynchronous.jpg);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>So Why so Asynchronous?</h2>
+    </hgroup>
+    <article>
+      <p>The reason Javascript was chosen as the language it was that there was a lack of IO libraries. This allowed Ryan to create async functions that he envisisoned.</p>
+      <p>All Callback in NodeJS follow the same pricinple. Of first passing back the error and second the results and additional parameters.</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">function(err, user_obj) { 
+
+  if(err) {
+    // Log the error and do what's needed !
+  } else {
+    // Do Something with the user obj
+  }
+
+}</pre>
+      <p>Most if not all methods form the Node API also have Synchronous methods</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Scalible</h2>
+      <h3>No more waiting</h3>
+    </hgroup>
+    <article>
+      <p>Due to the Async Nature of Node it means the CPU is never waiting. This allows us to build scallable and fast applications.</p>
+      <p>NodeJS runs in a single thread. Meaning it will only use one core. Though the api of node includes the cluster module</p>
+      <p>The cluster module allows you to share a single port and load balance to a set of workers running. So you could use your entire processor.</p>
     </article>
   </slide>
 
@@ -129,6 +257,104 @@ URL: https://code.google.com/p/io-2012-slides
 
       <p><code>other.js</code></p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func()</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Modules</h2>
+      <h3>Feel Modular ?</h3>
+    </hgroup>
+    <article>
+      <p>Node uses Modules which are "libraries" in a sense. These libraries can be installed. Much like the idea of Gems in Ruby.</p>
+      <p>Each module contains a package.json (as mentioned previosly) which specifies the version, name etc.</p>
+      <p>Modules are installed in the node_modules directory, so normal node app folder would look like this:</p>.
+      <pre class="prettyprint" data-lang="FOLDER / FILESYSTEM">app.js
+package.json
+node_modules/</pre>
+    <p>These modules are installed using NPM, which we will be getting to soon</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Require</h2>
+      <h3>Know #include , import and using. Well come right in !</h3>
+    </hgroup>
+    <article>
+      <p>Require can be used to load local files in your app and modules that were installed. The require function is smart enough for you to exlude the extension. It will load the file based on the extension.</p>
+      <p>Loading a Local / Global Module:</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var net = require('networking');
+var _ = require('underscore');</pre>
+      <p>Loading a Local File in your App:</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var mylib = require('./mylib');
+var samelib = require('./mylib.js');
+// Up one folder
+var otherlib = require('../myotherlib');</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>module.exports / exports</h2>
+      <h3>What do you want to expose</h3>
+    </hgroup>
+    <article>
+      <p>Any code in a file will just be executed when it is called. But what if you want to expose certain methods / variables ?</p>
+      <p>For this we have module.exports / exports. With these we define what is returned when we <code>require</code> the file</p>
+      <p><code>mylib.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">exports.public_name = 'test';
+var private_name = 'here ?';</pre>
+      <p><code>app.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var lib = require('./mylib');
+console.log(lib.public_name); // test
+console.log(lib.private_name); // undefined</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>How would you deploy a Node App</h2>
+      <h3>Deployment is important</h3>
+    </hgroup>
+    <article>
+      <p>Node runs itself. This means the normal setup would be much like the normal ruby Setup.</p>
+
+      <div style="width:48%;float:left;">
+
+        <p>Node would be started and restarted when needed by a few scripts that were written for this:</p>
+        <ul>
+          <li>Forever</li>
+          <li>Always</li>
+          <li>And more...</li>
+        </ul>
+
+      </div>
+      <div style="width:48%;float:left;">
+
+        <center>
+          <p>Image of Diagram</p>
+        </center>
+
+      </div>
+
+      <div style="clear:both;"></div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Configuration for your Node Server</h2>
+    </hgroup>
+    <article>
+      <p>You can do it any way you like but it's mostly done in one of 2 ways:</p>
+      <p>1 - YAML / JSON Settings File</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var settings = require('./settings.json');</pre>
+      <p>2 - ENVIRONMENT Variables</p>
+      <pre class="prettyprint" data-lang="BASH">EXPORT database_url="{url here}"
+node app.js</pre>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var database url = process.env.database_url;</pre>
     </article>
   </slide>
 
@@ -263,6 +489,7 @@ npm -v</pre>
     <hgroup class="auto-fadein">
       <h2>Writing a TCP Server in NodeJS</h2>
       <h3>Part 2</h3>
+      <h4>https://github.com/Johanndutoit/GDG-Node-Broadcast-Chat-Server</h4>
     </hgroup>
   </slide>
 
@@ -282,6 +509,48 @@ npm -v</pre>
     <article class="flexbox vcenter">
       <h3 class="build">List of Modules</h3>
       <p style="text-align:center;">Community kept list of modules <br /><code>https://github.com/joyent/node/wiki/modules</code><br /> for quick easy browsing or just or <code>npmjs.org</code></p> 
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Express</h2>
+      <h3>The defacto Web Framework for Node</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+
+    title Test Title
+
+  body
+    p A
+    p
+      a(href="test.com") C</pre>
+    <p>Produces</p>
+    <pre class="prettyprint" data-lang="HTML">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;A&lt;/p&gt;<br />&lt;p&gt;&lt;a href=&quot;test.com&quot;&gt;C&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Express Middleware</h2>
+      <h3>Express being based on Connect makes use of the principle of middleware</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+
+    title Test Title
+
+  body
+    p A
+    p
+      a(href="test.com") C</pre>
+    <p>Produces</p>
+    <pre class="prettyprint" data-lang="HTML">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;A&lt;/p&gt;<br />&lt;p&gt;&lt;a href=&quot;test.com&quot;&gt;C&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</pre>
     </article>
   </slide>
 
@@ -447,6 +716,66 @@ q.push({name: 'foo'}, function (err) {
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Underscore</h2>
+      <h3>Collection and Util Library for Node</h3>
+    </hgroup>
+    <article>
+      <p>Advance Filtering, Sorting and Grouping Libraries giving the Javascript Array SO much more power.</p>
+      <p>Can be used in the browser or in Node</p>
+      <pre class="prettyprint" data-lang="BASH">npm install underscore</pre>
+      <p>View the docs at <a href="#">underscorejs.org</a></p>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>_.find(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">obj = _.find([1,2,3,4], function(value_numb){
+  return value_numb == 2;
+});</pre>
+
+      <p>_.filter(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">objs = _.filter([1,2,3,4], function(value_numb){
+  return value_numb > 2;
+});</pre>
+
+<p>_.reject(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">obj = _.reject([1,2,3,4], function(value_numb){
+  return value_numb < 2;
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>_.groupBy(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">obj = _.find([1,2,3,4], function(value_numb){
+  return value_numb == 2;
+});</pre>
+
+      <p>_.sortBy(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">objs = _.filter([1,2,3,4], function(value_numb){
+  return value_numb > 2;
+});</pre>
+
+    </article>
+  </slide>
+
   <slide class="segue dark nobackground">
     <aside class="note">
       <section>
@@ -456,8 +785,37 @@ q.push({name: 'foo'}, function (err) {
     <hgroup class="auto-fadein">
       <h2>Writing a Web App in NodeJS</h2>
       <h3>Part 4</h3>
+      <h4>https://github.com/Johanndutoit/GDG-Node-Photobooth</h4>
     </hgroup>
   </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Questions ?</h2>
+      <h3>&nbsp;</h3>
+      <h4>Don't make me look too dumb ...</h4>
+    </hgroup>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+      <p>www.johanndutoit.net</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+  <!--
 
   <slide>
     <hgroup>
@@ -719,18 +1077,7 @@ function helloWorld(world) {
     </article>
   </slide>
 
-  <slide class="thank-you-slide segue nobackground">
-    <aside class="gdbar right"><img src="images/js_logo.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <h2>Thank You!</h2>
-      <p>www.johanndutoit.net</p>
-    </article>
-    <p class="auto-fadein" data-config-contact>
-      <!-- populated from slide_config.json -->
-    </p>
-  </slide>
-
-  <slide class="backdrop"></slide>
+  -->
 
 </slides>
 
