@@ -72,7 +72,7 @@ URL: https://code.google.com/p/io-2012-slides
         <br />
         <ul>
           <li>
-            What NodeJs is, how it works and components used to write services
+            What is NodeJs, how it works and it's verious components
           </li>
           <li>
             Writing TCP Servers in NodeJS (Live Session)
@@ -81,7 +81,13 @@ URL: https://code.google.com/p/io-2012-slides
             Common NodeJS libraries / frameworks - we have our Rails too !
           </li>
           <li>
+            Guide to Writing a Simple Website with Node
+          </li>
+          <li>
             Writing a Website in NodeJS (Live Session)
+          </li>
+          <li>
+            Do it yourself. Add some functionality to the site
           </li>
         </ul>
       </section>
@@ -107,17 +113,17 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>How was Node Started?</h2>
+      <h2>How Node Started</h2>
       <h3>When a miracle is born</h3>
     </hgroup>
     <article>
-      <p>In 2009 Ryan was playing with building a framework to make building push based apps like GMail so much easier.</p>
-      <p>He tried a few languages but then settled on the V8 engine and javascript. Node is now developed under Joyent the organization founded for NodeJS. They also host Node ...</p>
+      <p>In 2009 Ryan was playing with building a framework to make building push based apps like GMail much easier.</p>
+      <p>He tried a few languages but then settled on the V8 engine and javascript. Node is now developed under Joyent the organization founded for NodeJS.</p>
       <p>And from there it took off, now being used at:</p>
       <ul>
         <li>LinkedIn - New Mobile Touch site is written in NodejS</li>
         <li>Microsoft - Hosting on the Azure Cloud</li>
-        <li>Github - Download Server (DOn't know if they still use it)</li>
+        <li>Github - Download Server (Don't know if they still use it)</li>
         <li>And you probally know more !</li>
       </ul>
     </article>
@@ -144,16 +150,30 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
+      <h2>General Overview of Node</h2>
+      <h3>From 3000 feet</h3>
+    </hgroup>
+    <article>
+
+      <center>
+        <img src="images/node_overview.png" />
+      </center>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>The Node Executable</h2>
       <h3>Running Node</h3>
     </hgroup>
     <article>
-      <p>When you install / compile node you get access to the node executable. And that's just about all there is to node.</p>
+      <p>When you install / compile node you get access to the node executable.</p>
       <p>This executable will run your server / script.</p>
 
       <pre class="prettyprint" data-lang="BASH">node app.js</pre>
 
-      <p>Can also be run as REPL:</p>
+      <p>Can also be run as REPL (READ-EVAL-PRINT-LOOP):</p>
 
       <pre class="prettyprint" data-lang="BASH">node
 > 4 + 4
@@ -164,28 +184,49 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 
   <slide>
+    <hgroup>
+      <h2>How would you deploy a Node App</h2>
+      <h3>Deployment is important</h3>
+    </hgroup>
     <article>
-      <h2 style="text-align:center;margin-top:80px;">What makes writing for Node diffrent ?</h2>
-      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. It's not a by request model like PHP and global modules will keep using your memory till you stop it or cleared in your code.</h4>
+      
+      <div style="width:48%;float:left;">
+
+        <p>Node runs itself. This means the normal setup would be much like the normal ruby Setup.</p>
+
+        <p>Node would be started and restarted when needed by a few scripts that were written for this:</p>
+        <ul>
+          <li>Forever</li>
+          <li>Always</li>
+        </ul>
+
+        <p>But this is a multi server setup. All these services are usually run on a single machine for smaller site.</p>
+
+      </div>
+      <div style="width:48%;float:left;margin-top:-90px;">
+
+        <center>
+          <img src="images/multiple_server_diagram.png" />
+        </center>
+
+      </div>
+
+      <div style="clear:both;"></div>
+
     </article>
   </slide>
 
   <slide>
-    <hgroup>
-      <h2>What's Node Good at ?</h2>
-    </hgroup>
     <article>
-      <ul>
-        <li></li>
-      </ul>
-    </article>
-    <hgroup>
-      <h2>What does Node not handle quite as good ?</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Sites were large amounts of processing occurs in each request.</li>
-      </ul>
+      <h2 style="text-align:center;margin-top:80px;">What makes writing for Node different ?</h2>
+      <h4 style="text-align:center;margin-top:10px;">As Developers we have grown used writing for a request that will start and cleanup after the request is done.</h4>
+      <br />
+      <center>
+        <img src="images/normal_web_request.png" />
+      </center>
+      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. Not per request.</h4>
+      <br />
+      <h5>In Node you are writing Network Servers and that should be kept in mind.</h5>
     </article>
   </slide>
 
@@ -223,18 +264,20 @@ Server running at http://127.0.0.1:1337/</pre>
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image: url(images/why-so-asynchronous.jpg);">
+  <slide class="fill nobackground" style="background-image: url(images/why-so-asynchronous.jpg);background-position: 0 -120px;">
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Async vs Synchronous</h2>
+      <h2>Asynchronous vs Synchronous</h2>
     </hgroup>
     <article>
+      <p><strong>Synchronous</strong>: Commands are executed step by step and we have to wait for all those blocking calculations...</p>
       <br />
       <pre class="prettyprint" data-lang="JAVASCRIPT">var result = db.query("select * from T");
 console.log(result);</pre>
       <br />
+      <p><strong>Asynchronous</strong>: Uses a Event Emiter and code is executed based on the event happening. In our world this means callbacks !</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">db.query("select * from T", function (err, result) { 
     // Use result 
     console.log(result);
@@ -244,7 +287,7 @@ console.log(result);</pre>
 
   <slide>
     <hgroup>
-      <h2>So Why so Asynchronous?</h2>
+      <h2>Why so Asynchronous?</h2>
     </hgroup>
     <article>
       <p>The reason Javascript was chosen as the language it was that there was a lack of IO libraries. This allowed Ryan to create async functions that he envisisoned.</p>
@@ -264,13 +307,49 @@ console.log(result);</pre>
 
   <slide>
     <hgroup>
-      <h2>Scalible</h2>
+      <h2>Forking & the Cluster Module</h2>
       <h3>No more waiting</h3>
     </hgroup>
     <article>
-      <p>Due to the Async Nature of Node it means the CPU is never waiting. This allows us to build scallable and fast applications.</p>
-      <p>NodeJS runs in a single thread. Meaning it will only use one core. Though the api of node includes the cluster module</p>
-      <p>The cluster module allows you to share a single port and load balance to a set of workers running. So you could use your entire processor.</p>
+      <p>Due to the Async Nature of Node it means the CPU is never waiting. </p>
+      <p>NodeJS runs in a single thread and a single event loop.</p>
+
+      <br />
+      <div style="float:right;with:48%;">
+
+        <center>
+          <img src="images/fork_model.png" style="width:85%;margin-top:-35px;" />
+        </center>
+
+      </div>
+
+      <div style="float:left;width:48%;">
+
+        <p>Node includes a cluster module in it's core API.</p>
+
+        <p>This module allows you to fork and create multiple running instances of your app load sharing accross a single port.</p>
+
+        <p>So you could use that big 16 core processor if you really wanted to ...</p>
+
+      </div>
+
+      <div style="clear:both;"></div>
+      
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Configuration for your Node Server</h2>
+    </hgroup>
+    <article>
+      <p>You can do it any way you like but it's mostly done in one of 2 ways:</p>
+      <p>1 - YAML / JSON Settings File</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var settings = require('./settings.json');</pre>
+      <p>2 - ENVIRONMENT Variables</p>
+      <pre class="prettyprint" data-lang="BASH">EXPORT database_url="{url here}"
+node app.js</pre>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var database url = process.env.database_url;</pre>
     </article>
   </slide>
 
@@ -339,52 +418,6 @@ var private_name = 'here ?';</pre>
       <pre class="prettyprint" data-lang="JAVASCRIPT">var lib = require('./mylib');
 console.log(lib.public_name); // test
 console.log(lib.private_name); // undefined</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>How would you deploy a Node App</h2>
-      <h3>Deployment is important</h3>
-    </hgroup>
-    <article>
-      <p>Node runs itself. This means the normal setup would be much like the normal ruby Setup.</p>
-
-      <div style="width:48%;float:left;">
-
-        <p>Node would be started and restarted when needed by a few scripts that were written for this:</p>
-        <ul>
-          <li>Forever</li>
-          <li>Always</li>
-          <li>And more...</li>
-        </ul>
-
-      </div>
-      <div style="width:48%;float:left;">
-
-        <center>
-          <p>Image of Diagram</p>
-        </center>
-
-      </div>
-
-      <div style="clear:both;"></div>
-
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Configuration for your Node Server</h2>
-    </hgroup>
-    <article>
-      <p>You can do it any way you like but it's mostly done in one of 2 ways:</p>
-      <p>1 - YAML / JSON Settings File</p>
-      <pre class="prettyprint" data-lang="JAVASCRIPT">var settings = require('./settings.json');</pre>
-      <p>2 - ENVIRONMENT Variables</p>
-      <pre class="prettyprint" data-lang="BASH">EXPORT database_url="{url here}"
-node app.js</pre>
-      <pre class="prettyprint" data-lang="JAVASCRIPT">var database url = process.env.database_url;</pre>
     </article>
   </slide>
 
@@ -644,27 +677,6 @@ res.send(req.session.user_id);</pre>
 
   <slide>
     <hgroup>
-      <h2>Express Middleware</h2>
-      <h3>Express being based on Connect makes use of the principle of middleware</h3>
-    </hgroup>
-    <article>
-      <pre class="prettyprint" data-lang="JADE">doctype 5
-html
-  head
-
-    title Test Title
-
-  body
-    p A
-    p
-      a(href="test.com") C</pre>
-    <p>Produces</p>
-    <pre class="prettyprint" data-lang="HTML">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;A&lt;/p&gt;<br />&lt;p&gt;&lt;a href=&quot;test.com&quot;&gt;C&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Jade</h2>
       <h3>My Favourite Template Engine that we'll be using</h3>
     </hgroup>
@@ -892,9 +904,148 @@ q.push({name: 'foo'}, function (err) {
     </aside>
     <aside class="gdbar"><img src="images/js_logo.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Writing a Web App in NodeJS</h2>
+      <h2>Guide to Writing a Web App</h2>
       <h3>Part 4</h3>
-      <h4>https://github.com/Johanndutoit/GDG-Node-Photobooth</h4>
+    </hgroup>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>INIT</h2>
+    </hgroup>
+    <article>
+      <p>We start by creating our <code>package.json</code></p>
+      <pre class="prettyprint" data-lang="BASH">npm init</pre>
+      <p>And update our package.json with the modules we are going to need:</p>
+      <pre class="prettyprint" data-lang="JSON">"dependencies": {
+  "express": "latest",
+  "mongodb": "latest",
+  "jade": "latest"
+},</pre>
+      <p>And of course start our Mongo Service ...</p>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Setup Express for a Basic Page</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var express = require('express');
+var app = express();
+app.configure(function(){
+  
+  app.use(express.static(__dirname + '/public/'))
+  app.set('views', './views')
+  app.set('view engine', 'jade')
+  app.use(express.favicon())
+  app.use(express.bodyParser())
+
+});
+app.get('/', function(req, res){
+  res.render 'homepage', {
+    'title': 'Welcome to the super cool site !'
+  }
+});
+app.listen(3000);</pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>View Page</h2>
+    </hgroup>
+    <article>
+      <p><code>homepage.jade</code></p>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+    title Test Title
+
+  body
+    p Super Test</pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Edit to Show List of Uploaded Files</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var fs = require('fs');
+app.get('/', function(req, res){
+
+  fs.readdir('uploaded_files', function(err, files){
+
+    res.render('homepage', {
+      'title': 'Welcome to the super cool site !',
+      'files': files
+    });
+
+  });
+
+  
+});</pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Edit to Show List of Uploaded Files</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+    title Test Title
+
+  body
+    p Upload new File
+    form(method="post",action="/post",enctype="multipart/form-data")
+      input(type="file",name="new_file_to_upload")
+      button Upload my File
+    p Uploaded Files
+    ul
+      // or just files
+      -each file in locals.files
+        li #{file}
+      </pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Edit to Show List of Uploaded Files</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.post('/post', function(req, res){
+  var tmp_path = req.files.new_file_to_upload.path;
+  var target_path = 'uploaded_files/' + req.files.new_file_to_upload.name;
+  fs.rename(tmp_path, target_path, function(err) {
+    if (err) throw err;
+    // Delete the TMP file
+    fs.unlink(tmp_path, function() {
+      if (err) throw err;
+
+        // Redirect back to frontpage
+        res.redirect('/');
+
+    });
+  });
+});</pre>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Writing Web App (LIVE)</h2>
+      <h3>Part 5</h3>
+      <h4>https://github.com/Johanndutoit/GDG-Node-Simple-Crud</h4>
     </hgroup>
   </slide>
 
@@ -906,7 +1057,7 @@ q.push({name: 'foo'}, function (err) {
     <aside class="gdbar"><img src="images/js_logo.png"></aside>
     <hgroup class="auto-fadein">
       <h2>Questions ?</h2>
-      <h3>&nbsp;</h3>
+      <br />
       <h4>Don't make me look too dumb ...</h4>
     </hgroup>
   </slide>
