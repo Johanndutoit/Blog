@@ -72,7 +72,7 @@ URL: https://code.google.com/p/io-2012-slides
         <br />
         <ul>
           <li>
-            What is NodeJs, how it works and it's verious components
+            What is NodeJs, how it works and it's various components
           </li>
           <li>
             Writing TCP Servers in NodeJS (Live Session)
@@ -113,6 +113,19 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
+      <h2>Our Approach</h2>
+    </hgroup>
+    <article>
+
+      <center>
+        <img src="images/node_slides_quick_overview.png", style="margin-top:-30px;" />
+      </center>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>How Node Started</h2>
       <h3>When a miracle is born</h3>
     </hgroup>
@@ -135,7 +148,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h3>Let's get to it</h3>
     </hgroup>
     <article>
-      <p>A Wrapper for V8 giving the JS Engine IO Libraries. And at it's core that's all it is.</p>
+      <p>Node is a Evented API using the V8 engine.</p>
       <p>Along with normal IO the Node API contains libraries for just about everything:</p>
       <ul>
         <li>Networking (Sockets)</li>
@@ -149,16 +162,10 @@ URL: https://code.google.com/p/io-2012-slides
   </slide>
 
   <slide>
-    <hgroup>
-      <h2>General Overview of Node</h2>
-      <h3>From 3000 feet</h3>
-    </hgroup>
     <article>
-
-      <center>
-        <img src="images/node_overview.png" />
+      <center style="margin-top:0;">
+        <img src="images/node_platform.png" style="width:98%;" />
       </center>
-
     </article>
   </slide>
 
@@ -216,54 +223,6 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
-  <slide>
-    <article>
-      <h2 style="text-align:center;margin-top:80px;">What makes writing for Node different ?</h2>
-      <h4 style="text-align:center;margin-top:10px;">As Developers we have grown used writing for a request that will start and cleanup after the request is done.</h4>
-      <br />
-      <center>
-        <img src="images/normal_web_request.png" />
-      </center>
-      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. Not per request.</h4>
-      <br />
-      <h5>In Node you are writing Network Servers and that should be kept in mind.</h5>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Example of Socket server from NodeJS Site</h2>
-      <h3>Sample Code, That's why !</h3>
-    </hgroup>
-    <article>
-      <pre class="prettyprint" data-lang="JAVASCRIPT">var net = require('net');
-
-var server = net.createServer(function (socket) {
-  socket.write('Echo server\r\n');
-  socket.pipe(socket);
-});</pre>
-      <pre class="prettyprint" data-lang="BASH">node example.js
-Server running at http://127.0.0.1:1337/</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Example of HTTP server from NodeJS Site</h2>
-      <h3>Sample Code, That's why !</h3>
-    </hgroup>
-    <article>
-      <pre class="prettyprint" data-lang="JAVASCRIPT">var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');</pre>
-      <pre class="prettyprint" data-lang="BASH">node example.js
-Server running at http://127.0.0.1:1337/</pre>
-    </article>
-  </slide>
-
   <slide class="fill nobackground" style="background-image: url(images/why-so-asynchronous.jpg);background-position: 0 -120px;">
   </slide>
 
@@ -277,7 +236,7 @@ Server running at http://127.0.0.1:1337/</pre>
       <pre class="prettyprint" data-lang="JAVASCRIPT">var result = db.query("select * from T");
 console.log(result);</pre>
       <br />
-      <p><strong>Asynchronous</strong>: Uses a Event Emiter and code is executed based on the event happening. In our world this means callbacks !</p>
+      <p><strong>Asynchronous</strong>: In Node's case means that the event is added to the relevant thread pool and executed when the specific event is called.</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">db.query("select * from T", function (err, result) { 
     // Use result 
     console.log(result);
@@ -286,8 +245,59 @@ console.log(result);</pre>
   </slide>
 
   <slide>
+    <article>
+      <center style="margin-top:25px;">
+        <img src="images/sync_request.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:25px;">
+        <h3>The Normal solution to the problem</h3>
+        <h2>Create multiple threads / processes of the App</h2>
+        <br />
+        <img src="images/multiple_threads.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:25px;">
+        <h3>Moving IO operations to a seperate thread pool</h3>
+        <br />
+        <img src="images/breaking_away_libs.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:25px;">
+        <img src="images/node_event_loop.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:50px;">
+        <h2>1 Thread !</h2>
+        <br />
+        <p>Due to this architecture any CPU intensive operations should be avoided.</p>
+        <br />
+        <p>This does not mean that Node won't be able to handle them but it will affect the other actions waiting in your queue.</p>
+        <br />
+        <p>Rather let a backend process handle that.</p>
+      </center>
+    </article>
+  </slide>
+
+  <slide>
     <hgroup>
-      <h2>Why so Asynchronous?</h2>
+      <h2>Why Javascript ?</h2>
     </hgroup>
     <article>
       <p>The reason Javascript was chosen as the language it was that there was a lack of IO libraries. This allowed Ryan to create async functions that he envisisoned.</p>
@@ -311,7 +321,6 @@ console.log(result);</pre>
       <h3>No more waiting</h3>
     </hgroup>
     <article>
-      <p>Due to the Async Nature of Node it means the CPU is never waiting. </p>
       <p>NodeJS runs in a single thread and a single event loop.</p>
 
       <br />
@@ -338,6 +347,95 @@ console.log(result);</pre>
     </article>
   </slide>
 
+   <slide>
+    <article>
+      <h2 style="text-align:center;margin-top:80px;">Considerationg when Writing for Node</h2>
+      <h4 style="text-align:center;margin-top:10px;">As Developers we have grown used writing for a request that will start and cleanup after the request is done.</h4>
+      <br />
+      <center>
+        <img src="images/normal_web_request.png" />
+      </center>
+      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. Not per request.</h4>
+      <br />
+      <h5>In Node you are writing Network Servers and that should be kept in mind.</h5>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>So Javascript on the Server ?</h2>
+    </hgroup>
+    <article>
+      <p>As Developers all we have probally used:</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">setTimeout(function() {
+  console.log('test');
+},2000);</pre>
+    <p>Would it be such a strange concept to write server code in this manner ?</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example of Socket server from NodeJS Site</h2>
+      <h3>Sample Code, That's why !</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var net = require('net');
+
+var server = net.createServer(function (socket) {
+
+  socket.write('Echo server\r\n');
+  socket.pipe(socket);
+
+});</pre>
+      <pre class="prettyprint" data-lang="BASH">node example.js
+Server running at http://127.0.0.1:1337/</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example of HTTP server from NodeJS Site</h2>
+      <h3>Sample Code, That's why !</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var http = require('http');
+
+http.createServer(function (req, res) {
+
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+
+}).listen(1337, '127.0.0.1');
+
+console.log('Server running at http://127.0.0.1:1337/');</pre>
+      <pre class="prettyprint" data-lang="BASH">node example.js
+Server running at http://127.0.0.1:1337/</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Handling Large Files with Streams</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var fs = require('fs');
+var stream = fs.createReadStream('huge.txt');
+
+stream.on('data', function(data){
+  console.log(data);
+});
+
+stream.on('end', function(){
+  console.log('done');
+});
+
+stream.on('error', function(err) {
+  console.log(err);
+});</pre>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>Configuration for your Node Server</h2>
@@ -356,7 +454,6 @@ node app.js</pre>
   <slide>
     <hgroup>
       <h2>Global Scopes</h2>
-      <h3>Dangerous but usefull sometimes</h3>
     </hgroup>
     <article>
       <p>In the browser you have <code>window</code> and in Node you have <code>GLOBAL</code>. When anything is assigned to global any files in the server can access them.</p>
@@ -366,6 +463,8 @@ node app.js</pre>
 
       <p><code>other.js</code></p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func()</pre>
+
+      <p>I use it mainly when I have data that has to be accessed by the entire application / modules. But only if I can't pass it directly as it does make debugging a bit harder.</p>
     </article>
   </slide>
 
@@ -388,7 +487,7 @@ node_modules/</pre>
   <slide>
     <hgroup>
       <h2>Require</h2>
-      <h3>Know #include , import and using. Well come right in !</h3>
+      <h3>Know #include , import and using? Well come right in !</h3>
     </hgroup>
     <article>
       <p>Require can be used to load local files in your app and modules that were installed. The require function is smart enough for you to exlude the extension. It will load the file based on the extension.</p>
@@ -417,7 +516,8 @@ var private_name = 'here ?';</pre>
       <p><code>app.js</code></p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">var lib = require('./mylib');
 console.log(lib.public_name); // test
-console.log(lib.private_name); // undefined</pre>
+console.log(lib.private_name); // undefined
+console.log(private_name); // undefined</pre>
     </article>
   </slide>
 
@@ -525,7 +625,7 @@ npm publish {folder}</article>
       <h3>Feel the Source, Luke ...</h3>
     </hgroup>
     <article>
-      <p>Head over to <code>nodejs.org</code> and download either the executable for Windows or Download the Source for Linux / Mac (It's a bit easier :D)</p>
+      <p>Head over to <code>nodejs.org</code> and download either the executable for Windows or Download the Source for Linux / Mac</p>
       <p>Install from Source:</p>
       <pre class="prettyprint" data-lang="BASH">./configure
 make
@@ -564,6 +664,8 @@ npm -v</pre>
     <aside class="gdbar"><img src="images/js_logo.png"></aside>
     <hgroup class="auto-fadein">
       <h2>Popular NodeJS Libraries</h2>
+      <br />
+      <h4>The Eco-System</h4>
       <h3>Part 3</h3>
     </hgroup>
   </slide>
@@ -599,16 +701,16 @@ express --sessions --css stylus --ejs myapp</pre>
     <article>
       <p>Handling a Get</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">app.get('/getrequest', function(req, res) {
-        res.send('HELLO!');
-      });</pre>
+  res.send('HELLO!');
+});</pre>
       <p>Handling a POST</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">app.post('/postrequest', function(req, res) {
-        res.send('Hi ' + req.body.name + '!');
-      });</pre>
+  res.send('Hi ' + req.body.name + '!');
+});</pre>
       <p>Handling a PUT</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">app.put('/postrequest', function(req, res) {
-        res.send('Hi ' + req.body.name + '!');
-      });</pre>
+  res.send('Hi ' + req.body.name + '!');
+});</pre>
     </article>
   </slide>
 
@@ -621,16 +723,17 @@ express --sessions --css stylus --ejs myapp</pre>
       <p>You can build a chain of events that should fire and pass data to a request</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">
 var handle_some_other_item = function(req, res, next) {
-    db.query('select * from users where id=$', [req.params.user_item], function(err, user_obj){
+  var params = [req.params.user_item];
+  db.query('select * from users where id=$', params, function(err, user_obj){
 
-      req.requested_user_obj = user_obj;
-      next();
+    req.requested_user_obj = user_obj;
+    next();
 
   });
 };
 app.get('/user/:user_item', handle_some_other_item, function(req, res) {
-        res.send('Hi ' + req.requested_user_obj.name + ' !');
-      });</pre>
+  res.send('Hi ' + req.requested_user_obj.name + ' !');
+});</pre>
     </article>
   </slide>
 
@@ -643,16 +746,16 @@ app.get('/user/:user_item', handle_some_other_item, function(req, res) {
       <p>You can build a chain of events that should fire and pass data to a request</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">
 app.param('user_item', function(req, res, next, user_item) {
-    db.query('select * from users where id=$', [user_item], function(err, user_obj){
+  db.query('select * from users where id=$', [user_item], function(err, user_obj){
 
-      req.requested_user_obj = user_obj;
-      next();
+    req.requested_user_obj = user_obj;
+    next();
 
   });
 });
 app.get('/user/:user_item', function(req, res) {
-        res.send('Hi ' + req.requested_user_obj.name + ' !');
-      });</pre>
+  res.send('Hi ' + req.requested_user_obj.name + ' !');
+});</pre>
     </article>
   </slide>
 
@@ -922,7 +1025,8 @@ q.push({name: 'foo'}, function (err) {
   "mongodb": "latest",
   "jade": "latest"
 },</pre>
-      <p>And of course start our Mongo Service ...</p>
+      <p>And then install / update the packages</p>
+      <pre class="prettyprint" data-lang="BASE">npm update</pre>
     </article>
   </slide>
 
@@ -1045,7 +1149,20 @@ html
     <hgroup class="auto-fadein">
       <h2>Writing Web App (LIVE)</h2>
       <h3>Part 5</h3>
-      <h4>https://github.com/Johanndutoit/GDG-Node-Simple-Crud</h4>
+      <h4>https://github.com/Johanndutoit/GDG-Node-Blog</h4>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Do it yourself. Add Comments</h2>
+      <h3>Part 6</h3>
+      <h4>https://github.com/Johanndutoit/GDG-Node-Blog</h4>
     </hgroup>
   </slide>
 
@@ -1075,275 +1192,11 @@ html
 
   <slide class="backdrop"></slide>
 
-  <!--
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (with Subtitle Placeholder)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
-      <pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    <b>for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }</b>
-  }
-&lt;/script&gt;
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
-    </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="javascript">
-// Say hello world until the user starts questioning
-// the meaningfulness of their existence.
-function helloWorld(world) {
-  for (var i = 42; --i &gt;= 0;) {
-    alert('Hello ' + String(world));
-  }
-}
-</pre>
-<pre class="prettyprint" data-lang="css">
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-&lt;/style&gt;
-</pre>
-<pre class="prettyprint" data-lang="html">
-&lt;!DOCTYPE html>
-&lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
-&lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
-&lt;body>
-&lt;/html>
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>Point I wanted to make #1</li>
-          <li>Point I wanted to make #2</li>
-          <li>Point I wanted to make #3</li>
-          <li>Example <a href="#">link</a> in notes.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Slide with Speaker Notes</h2>
-    </hgroup>
-    <article>
-      <p>Press 'p' to toggle speaker notes.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Presenter Mode</h2>
-    </hgroup>
-    <article>
-      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
-      This setting is sticky, meaning refreshing the page will persist presenter
-      mode.</p>
-      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Image</h2>
-    </hgroup>
-    <article>
-      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Image (Centered horz/vert)</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A (Smaller Text)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article class="smaller">
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option B</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table class="rows">
-        <tr>
-          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide Styles</h2>
-    </hgroup>
-    <article class="smaller">
-      <div class="columns-2">
-        <ul>
-          <li class="red">class="red"</li>
-          <li class="red2">class="red2"</li>
-          <li class="red3">class="red3"</li>
-          <li class="blue">class="blue"</li>
-          <li class="blue2">class="blue2"</li>
-          <li class="blue3">class="blue3"</li>
-          <li class="green">class="green"</li>
-          <li class="green2">class="green2"</li>
-        </ul>
-        <ul>
-          <li class="green3">class="green3"</li>
-          <li class="yellow">class="yellow"</li>
-          <li class="yellow2">class="yellow2"</li>
-          <li class="yellow3">class="yellow3"</li>
-          <li class="gray">class="gray"</li>
-          <li class="gray2">class="gray2"</li>
-          <li class="gray3">class="gray3"</li>
-          <li class="gray4">class="gray4"</li>
-        </ul>
-      </div>
-      <div class="centered" style="margin-top:2em">
-        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
-      </div>
-    </article>
-  </slide>
-
-  <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Segue Slide</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
-    <hgroup>
-      <h2 class="white">Full Image (with Optional Header)</h2>
-    </hgroup>
-    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
-  </slide>
-
-  <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/google_developers_icon_128.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <q>
-        This is an example of quote text.
-      </q>
-      <div class="author">
-        Name<br>
-        Company
-      </div>
-    </article>
-  </slide>
-
-  -->
-
 </slides>
 
 <script>
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_setAccount', 'UA-13256670-7']);
 _gaq.push(['_trackPageview']);
 
 (function() {
