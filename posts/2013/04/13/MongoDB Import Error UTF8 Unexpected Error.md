@@ -10,6 +10,6 @@ First run:
 
 This command simply convert the file to UTF-8. You can then run the normal Mongo Import:
 
-<pre class="prettyprint">./bin/mongoimport -d {db_name} -c {collection} --type csv --file a8.txt --headerline
+<pre class="prettyprint">./bin/mongoimport -d {db_name} -c {collection} --type csv --file a8.txt --headerline</pre>
 
 Just remember to change the filenames to your own !
