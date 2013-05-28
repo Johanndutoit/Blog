@@ -380,12 +380,12 @@ console.log(result);</pre>
    <slide>
     <article>
       <h2 style="text-align:center;margin-top:80px;">Considerations when Writing for Node</h2>
-      <h4 style="text-align:center;margin-top:10px;">As Developers we have grown used writing for a request that will start and cleanup after the request is done.</h4>
+      <h4 style="text-align:center;margin-top:10px;">As Developers we have grown used to writing for a request that will start and do a cleanup after the request is done.</h4>
       <br />
       <center>
         <img src="images/normal_web_request.png" />
       </center>
-      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. Not per request.</h4>
+      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. Not a single request.</h4>
       <br />
       <h5>In Node you are writing Network Servers and that should be kept in mind.</h5>
     </article>
@@ -398,11 +398,15 @@ console.log(result);</pre>
     <article>
       <br />
       <br />
-      <p>As Developers all we have probably used:</p>
+      <p>As Developers we all have probably used:</p>
+      <br />
+      <br />
       <pre class="prettyprint" data-lang="JAVASCRIPT">setTimeout(function() {
   console.log('test');
 },2000);</pre>
-    <p>Would it be such a strange concept to write server code in this manner ?</p>
+      <br />
+      <br />
+    <p>Would it be such a strange concept to write server code in this same manner ?</p>
     </article>
   </slide>
 
@@ -473,7 +477,7 @@ stream.on('error', function(err) {
       <h2>Configuration for your Node Server</h2>
     </hgroup>
     <article>
-      <p>You can do it any way you like but it's mostly done in one of 2 ways:</p>
+      <p>You can do it any way you like but most commonly in one of the following ways:</p>
       <p>1 - YAML / JSON Settings File</p>
       <pre class="prettyprint" data-lang="JAVASCRIPT">var settings = require('./settings.json');</pre>
       <pre class="prettyprint" data-lang="JAVASCRIPT">var database url = settings.database_url;</pre>
@@ -513,7 +517,7 @@ node app.js</pre>
       <pre class="prettyprint" data-lang="FOLDER / FILESYSTEM">app.js
 package.json
 node_modules/</pre>
-    <p>These modules are installed using NPM, which we will be getting to soon</p>
+    <p>These modules are installed using NPM, which we will be getting to shortly</p>
     </article>
   </slide>
 
@@ -567,7 +571,7 @@ console.log(private_name); // undefined</pre>
       <h3>Cough Cough Gems</h3>
     </hgroup>
     <article>
-      <p>Started as a seperate project but was made the default package manager</p>
+      <p>Started as a seperate project but grown the default package manager</p>
       <p>Each Node App / Module contains a <code>package.json</code> file which specifies:</p>
       <ul>
           <li>The Dependent Modules and their versions Required</li>
@@ -587,7 +591,7 @@ console.log(private_name); // undefined</pre>
     </hgroup>
     <article>
       <p>All Modules that are installed with NPM have been published to <code>npmjs.org</code></p>
-      <p>These modules can be searched and this gives all node developers a central repository where all modules are listed and querable.</p>
+      <p>These modules can be searched and this gives all node developers a central repository where all modules are listed and accessible queries.</p>
       <p>Anyone can create a account and publish a module.</p>
 
       <p>Example of Publishing:</p>
@@ -771,9 +775,11 @@ npm -v</pre>
     <article>
 
       <p>I've recently switched all my NodeJS development to CoffeeScript.</p>
-      <p>Why ? Then you haven't checked the site</p>
+      <p>Why ? Then you haven't checked the site yet !</p>
 
-      <p>Was using for a while but could'nt in Node as I had to compile till I found I can do it at runtime</p>
+      <p>Was using the language for a while but not in NodeJS</p>
+
+      <p>Till I Found a way to write NodeJS code in Coffeescript without compiling to JS, before running everytime</p>
     </article>
   </slide>
 
