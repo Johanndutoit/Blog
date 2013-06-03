@@ -63,7 +63,9 @@ ship.status.on('change', function(status_obj){
 
 </pre>
 
-	The ship's senior crew would then able to access the main system and view all the programs running and stop / delete them based on their permissions. And what if the Security Officer want to restrict all crew to quarters but wants the security staff to be able to open all doors while the alert level is on red.
+The ship's senior crew would then able to access the main system and view all the programs running and stop / delete them based on their permissions.
+
+	 What if the Security Officer want to restrict all crew to quarters but wants the security staff to be able to open all doors while the alert level is on red.
 
 <pre class="prettyprint">
 
@@ -92,7 +94,7 @@ ship.status.on('change', function(status_obj){
 
 </pre>
 
-	What if the bridge encounters a spacial anomily that forces the crew to shutdown life support on lower levels and divert that power to the first 3 levels and direct more power to the shields to provide better protection while they travel through the raditian for the next 3 days.
+	What if the bridge encounters a spacial anomaly that forces the crew to shutdown life support on lower levels and divert that power to the first 3 levels and direct more power to the shields to provide better protection while they travel through the raditian for the next 3 days.
 
 <pre class="prettyprint">
 
