@@ -1,7 +1,9 @@
 Captains Log - Star Date <strong>-309579.20506722486</strong> (That's <strong>June 3,  2013, Time: 14:09:48</strong>, check it !)
 
 <center>
-<img src="http://wall.alphacoders.com/big.php?i=248611" style="width:90%;" />
+<img src="http://thetrektrek.files.wordpress.com/2012/06/tttvoyager.jpg" style="width:90%;" />
+
+<a href="http://thetrektrek.files.wordpress.com/2012/06/tttvoyager.jpg">http://thetrektrek.files.wordpress.com/2012/06/tttvoyager.jpg</a>
 </center>
 
 Star Trek has always made me think. How do does the crew allow the ship to do dozens of unique actions with only their few buttons... 
