@@ -1,0 +1,444 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Node Meetup - Cape Town 29 May 2013</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!-- <meta name="viewport" content="initial-scale=0.4"> -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+   <slide class="fill nobackground" style="background-image: url(images/front.jpg);background-position: -80px 0;">
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Bot ??? Explain !!!</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>When I say bot ...</h2>
+    </hgroup>
+    <article>
+
+      <h3>I'm talking about a some script / program you wrote that's doing a few things in the background while you go through your day so you don't have to.</h3>
+
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Introducing Jarvis</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The not so original Jarvis ...</h2>
+    </hgroup>
+    <article>
+
+      <h3>Was inpspired by Github's Hubot - http://hubot.github.com/</h3>
+
+      <h4>Worth a look and has quite a few supported commands.</h4>
+
+      <h4>But I liked it but wanted my own bot that was built according to what I wanted</h4>
+
+      <h2 style="text-align:center;margin-top:20px;">So I built Jarvis.</h3>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Ok so first introductions ?</h2>
+    </hgroup>
+    <article>
+
+      <h3>Built Jarvis in NodeJS and it connects as user to GTalk. So I'm talking to Jarvis 24/7.</h3>
+
+      <h3 style="text-align:center;margin-top:35px;" class="build">What does Jarvis do ?</h3>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Checks the News</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Google is stopping reader so I was looking for new one. But never found one I liked and built it into Jarvis.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">So every 30 min Jarvis checks all my registered rss / news feeds.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Then has a trained Bayesian Classifier on what news I like. So I only get my news, mostly about tech and not ever anything about Barbie that have a new model ...</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/yoda_clonewars.jpg);background-position: -80px 0;">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/yodaspeak.png);background-position: -80px 0;">
+  </slide>
+
+  <slide style="overflow:hidden;">
+    <article>
+
+      <h2 style="text-align:center;">Yoda doesn't read the news too well</h2>
+      <br />
+
+      <center>
+
+        <img src="images/joda-module.png" style="width:45%;" />
+
+        <center>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Downloads my Youtube Subscriptions</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Runs every morning 11AM and downloads all the latest videos from my Youtube Subscriptions.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">And tells me during the day when and what videos are downloaded.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Also accepts url to download with the command youtube {url} or youtube mp3 {url} to download the mp3.</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Tells me about public holidays</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Tells me the day before and on the day if today is a public holiday.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Scraping this from SA Goverment site</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Checks for me on the Internet</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Checks the Google Alerts feed every hour to see if my name pops up anywhere online.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Some advance stuff here.</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Downloads my Podcasts</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Every Morning at 4AM my podcasts are downloaded and I'm notified as soon as they are done.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">The podcasts for all my shows !</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Weather</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Send me the weather forcast for the day every morning at 6AM.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Also keeps this as record and runs it through the prediction API from Google to see if I can do better based on averages and past conditions. Both results are sent.</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Checks DSTV</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Has a list of shows I like loadded into a Bayesian Classifier and tells me when shows that I would like are showing tonight.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Does the same with Movies.</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Checks DSTV</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Has a list of shows I like loadded into a Bayesian Classifier and tells me when shows that I would like are showing tonight.</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Does the same with Movies.</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <h2>Any only does this in certain hours</h2>
+      <br />
+
+      <div style="float:right;width:49%;">
+
+        <center>
+
+        <img src="images/news_check.png" style="width:90%;" />
+
+        <center>
+
+      </div>
+
+      <div style="float:left;width:49%;">
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Only bothers me with msg's from 6AM till 10PM on weekdays and 10AM till 12PM weekends and holidays</h3>
+
+        <br />
+
+        <h3 style="font-size: 27px;line-height:1.2;" class="build">Woke up too many mornings with Jarvis</h3>
+
+      </div>
+
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Intro to NodeJS</h2>
+      <h3>Part 1</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Our Approach</h2>
+    </hgroup>
+    <article>
+
+      <center>
+        <img src="images/node_slides_quick_overview.png", style="margin-top:-30px;" />
+      </center>
+
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+      <p>www.johanndutoit.net</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-13256670-7']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
