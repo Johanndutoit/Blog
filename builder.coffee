@@ -91,7 +91,7 @@ read_blog_posts (posts, years) ->
 		wrench.copyDirSyncRecursive(__dirname + '/assets', __dirname + '/' + site_dir + "/");
 
 		# Create the Homepage
-		view_parse 'home.jade', {title: 'Johann du Toit', description: "I have real passion for technology and making systems that help others in their day-to-day lives. Currently based in Stellenbosch, South-Africa.", posts: posts.slice(0, 8)}, (err, output) ->
+		view_parse 'home.jade', {title: 'Johann du Toit', description: "I have real passion for technology and making systems that help others in their day-to-day lives. Currently based in Cape Town, South-Africa.", posts: posts.slice(0, 8)}, (err, output) ->
 			fs.writeFile site_dir + '/index.html', output, 'utf8', ->
 				true
 

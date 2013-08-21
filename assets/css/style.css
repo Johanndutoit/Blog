@@ -28,6 +28,78 @@ body {
   margin:15px;
 }
 
+.bigbutton {
+
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .5), 0 2px #fff;
+  color: #fff;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1;
+  min-width: 160px;
+  padding: 20px 10px 20px 87px;
+  position: relative;
+  text-align: left;
+
+  text-decoration: none;
+
+}
+
+.separator {
+
+  -webkit-box-shadow: 0 1px #fff;
+  -moz-box-shadow: 0 1px #fff;
+  box-shadow: 0 1px #fff;
+  background: #fff;
+  border: 1px solid #d6cfd4;
+  border-width: 1px 0;
+  height: 1px;
+
+}
+
+.google {
+    background: #cc3732;
+    background: -webkit-gradient(linear, left top, left bottom, from(#cc3732), to(#dd4b39));
+    background: -moz-linear-gradient(top, #cc3732, #dd4b39);
+    background: -o-linear-gradient(top, #cc3732, #dd4b39);
+    background: -webkit-linear-gradient(top, #dd4b39, #dd4b39);
+    background: linear-gradient(top, #cc3732, #dd4b39);
+    border: 1px solid #dd4b39;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cc3732', endColorstr='#dd4b39');
+    text-shadow: 0 -1px #dd4b39;
+}
+.google:hover {
+
+    background: #dd4b39;
+    background: -webkit-gradient(linear, left top, left bottom, from(#dd4b39), to(#de4b39));
+    background: -moz-linear-gradient(top, #dd4b39, #de4b39);
+    background: -o-linear-gradient(top, #dd4b39, #de4b39);
+    background: -webkit-linear-gradient(top, #dd4b39, #de4b39);
+    background: linear-gradient(top, #dd4b39, #de4b39);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dd4b39', endColorstr='#de4b39');
+
+  color:white;
+
+  text-decoration: none;
+
+}
+.google .logo {
+
+  background-color: #5f75a9;
+  background-color: rgba(255, 255, 255, .2);
+    background-image: url('/images/google_btn_red_32.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 62px;
+}
+
 footer a, #title-bar a {
   color:white;
 }
