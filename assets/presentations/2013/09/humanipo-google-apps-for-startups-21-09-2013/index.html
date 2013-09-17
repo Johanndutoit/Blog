@@ -1,0 +1,316 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HumanIPO Google Apps for startups</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!-- <meta name="viewport" content="initial-scale=0.4"> -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+   <slide class="fill nobackground" style="background-image: url(images/apps_ring_grey-logo2_nov2010.jpg);background-position: center;background-size:490px;
+background-repeat:no-repeat;">
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/apps_highres.jpg"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Introduction Here</h2>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+        <p><b>Index</b></p>
+        <br />
+        <ul>
+          <li>
+            What features does a domain give your startup from a technical view
+          </li>
+          <li>
+            Preview of using the Google Admin tools to manage your domain
+          </li>
+          <li>
+            Single Signon and how it can either provide the service or integrate with your current implementation
+          </li>
+          <li>
+            Working with the Google Apps toolset
+          </li>
+          <li>
+            Creating custom workflows that all integrate with your domain using App Engine / Cloud compute
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/apps_highres.jpg"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Google Apps in your Business</h2>
+      <h3>What's the plan ? (Press P)</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Before we begin</h2>
+    </hgroup>
+    <article>
+
+      <h3>Google Apps is a toolset. It's not meant to replace your business process but to enchance it by:</h3>
+
+      <ul>
+
+        <li>Offering easy access online to your data</li>
+        <li>Removing the need for in-house specialists to support your tech</li>
+        <li>more ...</li>
+
+      </ul>
+
+      <h3>With all the API's it's meant to be extenable to fit your unique workflow</h3>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>For our example</h2>
+    </hgroup>
+    <article>
+
+      <h3>I'm going to be using a university / college as a example because:</h3>
+
+      <ul>
+
+        <li>We all have a idea of how they work</li>
+        <li>They serve both internal users (teachers) and customers (students)</li>
+        <li>Very enterprisely to show what Google Apps is capable off</li>
+
+      </ul>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>So let me introduce</h2>
+    </hgroup>
+    <article>
+
+      <h3 style="text-align:center;">MySuperSchool.org</h3>
+
+      <p style="text-align:center;">A fictional university / college we will be using for our demonstration</p>
+
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Your own Google Apps Domain</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Organization, team and user wide calendars</h2>
+    </hgroup>
+    <article>
+
+      <h3>Share calendar for the entire organization, teams / groups or just a user</h3>
+
+      <img src="images/cal.png" />
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The same tool</h2>
+    </hgroup>
+    <article>
+
+      <h3 style="line-height:1.5;">Use Google Calendar ? It's the same all the feature are there. Just with the added ability to share and work with your team.</h3>
+      <br />
+
+      <img src="images/create_cal.png" />
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Your Domain, your branding</h2>
+    </hgroup>
+    <article>
+
+      <h3>Share calendar for the entire organization, teams / groups or just a user</h3>
+
+      <img src="images/cal.png" />
+
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Managing your Domain</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>User Management</h2>
+    </hgroup>
+    <article>
+
+      <img src="images/user_admin.png" />
+
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Single Signin</h2>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Your workflow with Google</h2>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Custom Apps / Workflow</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Let's setup the scenario</h2>
+    </hgroup>
+    <article>
+
+      <h3>Business is good</h3>
+
+      <h4>Scratch that business is very good</h4>
+
+      <h3>The university / college wants to expand to satelite sites.</h3>
+
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Extras</h2>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <img src="images/appengine-logo.png" style="height:340px;" />
+      <h2 style="margin-top: 25px;">Starter Pack for Google Cloud</h2>
+    </hgroup>
+    <article>
+
+
+
+      <h4>Google Cloud Platform Starter Pack allows developers from affiliated partners to receive $2,000 of credit - $1,000 for Google App Engine and $1,000 for Google Compute Engine</h4>
+      <h4 style="margin-top: 15px;"><a href="https://cloud.google.com/starterpack">https://cloud.google.com/starterpack</a></h4>
+
+      
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <center>
+
+        <img src="images/gcdc-2013-logo.png" style="width:32%;" />
+
+      <center>
+
+        <br />
+
+      <h2 style="text-align:center;">Google Cloud Developer Challenge</h2>
+
+      <br />
+
+      <h4 style="text-align:center;">Developers in 6 regions across the world will win prizes that include Android devices and up to $20,000 USD. We are also highlighting innovations of students and female developers!</h4>
+
+      <br />
+
+      <a href="http://www.google.com/events/gcdc2013/" style="text-align:center;">http://www.google.com/events/gcdc2013/</a>
+
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/apps_highres.jpg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+      <p>www.johanndutoit.net</p>
+      <p>hiren website ?</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-13256670-7']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
