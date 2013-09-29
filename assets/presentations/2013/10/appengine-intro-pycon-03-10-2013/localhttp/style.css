@@ -1,0 +1,100 @@
+html, body {
+
+  margin: 0;
+  padding: 0;
+
+  background-color: #6199df;
+  font-family: "CorbelRegular", "helvetica neue", helvetica, arial, geneva, sans-serif;
+
+}
+
+/* line 41, /app/web/views/screen.sass */
+nav {
+  text-align: center;
+}
+/* line 44, /app/web/views/screen.sass */
+nav li {
+  display: inline-block;
+  margin-right: 30px;
+}
+/* line 48, /app/web/views/screen.sass */
+nav li a {
+  text-decoration: none;
+  display: block;
+  font-family: "CorbelRegular", "helvetica neue", helvetica, arial, geneva, sans-serif;
+  font-size: 1.10em;
+  text-decoration: none;
+  text-shadow: 0 0 1px black;
+  width: 150px;
+  color: #a6a6ff;
+  text-shadow: 0 0 6px rgba(120, 120, 255, 0.4);
+  color:black;
+}
+/* line 58, /app/web/views/screen.sass */
+nav li a span {
+  display: block;
+}
+/* line 61, /app/web/views/screen.sass */
+nav li a .icon {
+  background-image: url("os_logos.png");
+  height: 148px;
+  margin-bottom: 0.75em;
+}
+/* line 66, /app/web/views/screen.sass */
+nav li a:hover {
+  color:black;
+  font-weight: bold;
+}
+/* line 70, /app/web/views/screen.sass */
+nav li a.selected {
+  color: #8fbfff;
+  text-shadow: 0 0 6px rgba(56, 187, 253, 0.7);
+}
+/* line 74, /app/web/views/screen.sass */
+nav li:last-child {
+  margin-right: 0;
+}
+/* line 77, /app/web/views/screen.sass */
+nav li.osx a:hover .icon {
+  background-position: 0 -148px;
+}
+/* line 80, /app/web/views/screen.sass */
+nav li.osx a.selected .icon {
+  background-position: 0 -296px;
+}
+/* line 83, /app/web/views/screen.sass */
+nav li.windows .icon {
+  background-position: -150px 0;
+}
+/* line 86, /app/web/views/screen.sass */
+nav li.windows a:hover .icon {
+  background-position: -150px -148px;
+}
+/* line 89, /app/web/views/screen.sass */
+nav li.windows a.selected .icon {
+  background-position: -150px -296px;
+}
+/* line 92, /app/web/views/screen.sass */
+nav li.debian .icon {
+  background-position: -300px 0;
+}
+/* line 95, /app/web/views/screen.sass */
+nav li.debian a:hover .icon {
+  background-position: -300px -148px;
+}
+/* line 98, /app/web/views/screen.sass */
+nav li.debian a.selected .icon {
+  background-position: -300px -296px;
+}
+/* line 101, /app/web/views/screen.sass */
+nav li.standalone .icon {
+  background-position: -450px 0;
+}
+/* line 104, /app/web/views/screen.sass */
+nav li.standalone a:hover .icon {
+  background-position: -448px -147px;
+}
+/* line 107, /app/web/views/screen.sass */
+nav li.standalone a.selected .icon {
+  background-position: -448px -297px;
+}
