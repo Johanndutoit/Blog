@@ -93,25 +93,20 @@
         </center>
     </div>
 
-    <!--
-        
-        Here is where interesting thing start to happen.
-        
-        Each step of the presentation should be an element inside the `#impress` with a class name
-        of `step`. These step elements are positioned, rotated and scaled by impress.js, and
-        the 'camera' shows them on each step of the presentation.
-        
-        Positioning information is passed through data attributes.
-        
-        In the example below we only specify x and y position of the step element with `data-x="-1000"`
-        and `data-y="-1500` attributes. This means that **the center** of the element (yes, the center)
-        will be positioned in point x = -1000px and y = -1500px of the presentation 'canvas'.
-        
-        It will not be rotated or scaled.
-        
-    -->
     <div id="bored" class="step slide" data-x="-1000" data-y="-1500" style="overflow:hidden;">
         <img src="img/johann.jpg" style="position:absolute;top:0;left:0;right:0;bottom:0;width:1000px;margin-left:-50px;" />
+    </div>
+
+    <div  class="step" data-x="-3000" data-y="2000" data-z="0" data-rotate="300" data-scale="1">
+        <center>
+
+            <p style="text-align:center;">Give me a visit on my Blog for the hosted presentation</p>
+
+            <p style="text-align:center;"><strong>johanndutoit.net</strong></p>
+
+            <p style="text-align:center;font-size: 17px;color:green;"><strong>Check under presentations</strong></p>
+
+        </center>
     </div>
 
      <div class="step" data-x="-3000" data-y="0" data-scale="2">
@@ -134,15 +129,23 @@
         </center>
     </div>
 
-    <div id="ing" class="step" data-x="4000" data-y="-850" data-rotate="270" data-scale="6">
+    <div id="ing" class="step" data-x="9000" data-y="-850" data-rotate="270" data-scale="6">
         <p>First we are going to have a quick <b class="positioning">overview</b> of app engine, and get everyone<b class="rotating">setup</b></p>
     </div>
 
-    <div  class="step" data-x="16000" data-y="-10000" data-z="-24000" data-rotate="300" data-scale="1">
-        <p style="text-align:center;font-size: 65px;">then build a Question Guru with App Engine</p>
+    <div  class="step" data-x="12000" data-y="-3000" data-z="-24000" data-rotate="300" data-scale="1">
+        <p style="text-align:center;font-size: 65px;">then build a <br /><strong>Ask the Universe</strong><br /> app with App Engine</p>
     </div>
 
-     <div class="step" data-x="16000" data-y="-10000" data-rotate="180" data-z="-18000" data-scale="6">
+    <div class="step slide" data-x="12000" data-y="-1500" style="overflow:hidden;">
+        <img src="img/question_guru_home.png" style="position:absolute;top:0;left:0;right:0;bottom:0;width:1000px;margin-left:-50px;margin-top:-0px;" />
+    </div>
+
+    <div class="step slide" data-x="12000" data-y="-3000" style="overflow:hidden;">
+        <img src="img/question_guru_none.png" style="position:absolute;top:0;left:0;right:0;bottom:0;width:1000px;margin-left:-50px;margin-top:-0px;" />
+    </div>
+
+     <div class="step" data-x="16000" data-y="-150000" data-rotate="180" data-z="-18000" data-scale="6">
         <p style="text-align:center;">and <b style="font-size: 150px;">DEPLOY</b> it</p>
     </div>
 
@@ -162,7 +165,7 @@
         </center>
     </div>
 
-    <div class="step" data-x="0" data-y="-1500" data-scale="1">
+    <div class="step" data-x="1000" data-y="-1500" data-scale="1">
         <p>Download the <strong>App Engine SDK</strong> from my notebook</p>
         <br />
         <p>http://{myip}:8090/</p>
@@ -170,8 +173,14 @@
         <p>or head to <br /><span style="font-size: 36px;">https://developers.google.com/appengine/downloads</span></p>
     </div>
 
-    <div class="step slide" data-x="1000" data-y="-1500" style="overflow:hidden;">
+    <div class="step slide" data-x="3000" data-y="-1500" style="overflow:hidden;">
         <img src="img/sdk_download.png" style="position:absolute;top:0;left:0;right:0;bottom:0;width:1000px;margin-left:-50px;margin-top:-25px;" />
+    </div>
+
+    <div class="step" data-x="5000" data-y="1500" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;">And grab the template too</p>
+        <br />
+        <p style="text-align:center;">Or go solo ...</p>
     </div>
 
     <div class="step" data-x="10000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
@@ -246,15 +255,15 @@
     </div>
 
     <div class="step" data-x="45000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-        <p style="text-align:center;"><strong>Google</strong> gives you a free qoute of 28 frontend hours and 1GB of storage on the Datastore.</p>
+        <p style="text-align:center;"><strong>Google</strong> gives you a free qouta of 28 frontend hours and 1GB of storage on the Datastore.</p>
         <br />
-        <p style="text-align:center;">Other service <strong class="rotate">API's</strong> have their own <strong class="rotate">quotas</strong>. Like Mail giving you 100 mails free everyday.</p>
+        <p style="text-align:center;">Other service <strong class="rotate">API's</strong> have their own <strong class="rotate">quotas</strong>. Like Mail giving you 100 mails free every day.</p>
     </div>
 
     <div class="step" data-x="50000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
         <p style="text-align:center;" class="rotate">Grow big before you pay</p>
         <br />
-        <p style="text-align:center;">All applications have a default quota configuration, the "free quotas", which should allow for roughly 5 million pageviews a month for an efficient application.</p>
+        <p style="text-align:center;">All applications have a default quota configuration which should allow for roughly 5 million pageviews a month for an efficient application.</p>
     </div>
 
     <div class="step slide" data-x="55000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
@@ -267,12 +276,33 @@
         <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">application: </span><span class="pln">myapp<br></span><span class="kwd">version: </span><span class="pln">1<br></span><span class="kwd">runtime: </span><span class="pln">python27<br></span><span class="kwd">api_version: </span><span class="pln">1<br></span><span class="kwd">threadsafe: true</span></pre>
     
         <br />
-        <p style="font-weight:bold;font-size: 38px;"> <strong>Every App Engine Project has a app.yaml</strong> </p>
+        <p style="font-weight:bold;font-size: 38px;"> <strong>Every App Engine Project has an app.yaml</strong> </p>
 
         <br />
 
         <p>This file defines your application key, the current version various of other options</p>
 
+    </div>
+
+    <div class="step slide" data-x="60000" data-y="15000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <p style="line-height:1.4">Supported Libraries</p>
+
+        <br />
+
+        <p>App Engine comes with a set of builtin libraries that you can use. And that will be available for your App when you deploy.</p>
+
+        <br />
+
+        <p style="font-color:black;font-size: 21px;">For a complete list go to:<br />https://developers.google.com/appengine/docs/python/tools/libraries27</p>
+
+        <br />
+        <p style="line-height:1.4">"require" them by adding</p>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">libraries:<br></span><span class="pun">-</span><span class="pln"> </span><span class="kwd">name: </span><span class="pln">django<br>&nbsp; </span><span class="kwd">version: </span><span class="pln">"1.2" / "latest"<br></span></pre>
+    
+        <br />
     </div>
 
     <div class="step slide" data-x="60000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
@@ -291,7 +321,7 @@
     
         <br />
 
-        <h4 style="font-size: 22px;">And you can filter the these urls with <span style="color:green;">/(.*\.(gif|png|jpg))</span></h4>
+        <h4 style="font-size: 22px;">And you can filter these urls with <span style="color:green;">/(.*\.(gif|png|jpg))</span></h4>
     </div>
 
     <div class="step" data-x="65000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
@@ -299,7 +329,7 @@
     </div>
 
     <div class="step slide" data-x="70000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
-        <p style="line-height:1.4">Included in your SDK are quite a few tools work with your application</p>
+        <p style="line-height:1.4">Included in your SDK are quite a few tools work that with your application</p>
         <br />
         <p style="line-height:1.4">With the biggest for our demo being:</p>
     
@@ -397,9 +427,9 @@
         <p style="text-align:center;" class="rotate">Thanks for listening</p>
         <br />
         <p style="text-align:center;">Access this Presentation at <strong>goo.gl/g5FmbK</strong></p>
-    </div>
 
-    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+        <br />
+        <p style="text-align:center;">Here's to hoping we will make / fill the time limit !</p>
     </div>
 
 </div>
