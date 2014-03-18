@@ -1,0 +1,435 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PHP South-Africa 2014: Realtime apps - lessons learned while working towards deply</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!-- <meta name="viewport" content="initial-scale=0.4"> -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <article>
+
+      <center>
+
+         <img src="http://photos3.meetupstatic.com/photos/member/c/5/2/8/highres_178730472.jpeg" style="width:300px;margin-top:-30px; border: 4px solid #fff;background-color: #fff;border-radius: 5px;-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);box-shadow: 0 1px 1px rgba(0,0,0,.25); " />
+
+         <br />
+
+         <br />
+
+         <h2 style="color: #e6e6e6;">Johann du Toit</h2>
+
+         <img src="images/io-digital-avatar-3950584838-10.png" />
+
+      </center>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>View the Slides on my Blog</h2>
+      <h3>www.johanndutoit.net - check under presentations</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cpt-google-doodle.png);background-position: 0 -30px;">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/IMG_20121202_100602.png);background-position: 0 -120px;">
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+        <p><b>Let me tell you a story ...</b></p>
+        <br />
+        <ul>
+          <li>
+            Quick key points that we will talk about
+          </li>
+          <li>
+            Background on the System
+          </li>
+          <li>
+            How we reached the conclusion at each point
+          </li>
+          <li>
+            What we would change
+          </li>
+          <li>
+            Q&A
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>This talk</h2>
+      <h3>Quick intro ? (Press P)</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2 style="line-height:1.4;">Just a note - This talk is meant to make you think and come up with better ways</h2>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Some background</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/friends.jpg);background-position: 0 0px;">
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article>
+    <center>
+    <img src="images/betnow.png" style="width:45%;" />
+    </center>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Some specs</h2>
+    </hgroup>
+    <article>
+      <ul style="list-style:none;">
+        <li><h3>Plug into their existing infrastructure</h3></li>
+        <li><h3>Start with a soft-launch of 700+ active sessions and scale to thousands once marketing starts</h3></li>
+        <li><h3>Use data received from a remote odds service</h3></li>
+        <li><h3>Allow betting with countdowns to keep it fare</h3></li>
+        <li><h3>Make it responsive to allow mobile betting</h3></li>
+        <li><h3>Run in two data centres for load-balancing and fault-tolerance</h3></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Existing Architecture</h2>
+      <h3>ASPX, and the room goes quiet ..</h3>
+    </hgroup>
+    <article>
+
+    <center>
+
+    <img src="images/existing_architecture.png" style="width:90%;" />
+
+    </center>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article>
+      <img src="images/seperate_system_from_architecture.png" style="width:90%;margin-left:55px;margin-top:-130px;" />
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>On a positive note we have our own state</h2>
+    </hgroup>
+    <article>
+      <img src="images/how_i_draw_the_architecture.png" style="width:90%;margin-left:55px;margin-top:50px;" />
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/US_Flag_Backlit.jpg);background-position: 0 -30px;">
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article>
+      <center>
+        <h1 style="font-size: 260px;margin-top:80px;">2</h1>
+        <h4 style="font-size: 90px;">Connection Limit</h4>
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example of Odds Data</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="XML">
+
+&lt;Match active=&quot;1&quot; betstatus=&quot;started&quot; matchid=&quot;{uid}&quot; matchtime=&quot;15&quot; 
+      score=&quot;0:0&quot; status=&quot;1p&quot;&gt;
+
+  &lt;Odds active=&quot;0&quot; changed=&quot;true&quot; combination=&quot;0&quot; freetext=&quot;Which team has kick off?&quot;
+      id=&quot;{uid}&quot; subtype=&quot;2&quot; type=&quot;ft2w&quot; typeid=&quot;7&quot;&gt;
+      &lt;OddsField active=&quot;1&quot; type=&quot;1&quot;&gt;1.5&lt;/OddsField&gt;
+      &lt;OddsField active=&quot;1&quot; type=&quot;x&quot;&gt;2.25&lt;/OddsField&gt;
+      &lt;OddsField active=&quot;1&quot; type=&quot;2&quot;&gt;3.25&lt;/OddsField&gt;
+  &lt;/Odds&gt;
+
+  &lt;Odds active=&quot;0&quot; changed=&quot;true&quot; combination=&quot;0&quot; freetext=&quot;Who wins the match?&quot;
+      id=&quot;{uid}&quot; subtype=&quot;2&quot; type=&quot;ft2w&quot; typeid=&quot;7&quot;&gt;
+      &lt;OddsField active=&quot;1&quot; type=&quot;o&quot;&gt;1.5&lt;/OddsField&gt;
+      &lt;OddsField active=&quot;x&quot; type=&quot;u&quot;&gt;2.25&lt;/OddsField&gt;
+      &lt;OddsField active=&quot;2&quot; type=&quot;u&quot;&gt;3.25&lt;/OddsField&gt;
+  &lt;/Odds&gt;
+
+&lt;/Match&gt;
+
+      </pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article>
+      <center>
+        <h1 style="font-size: 260px;margin-top:80px;">~3000+</h1>
+        <h4 style="font-size: 60px;">odds coming in per second</h4>
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>So the mind wonders already ...</h2>
+    </hgroup>
+    <article>
+      <img src="images/couch.png" style="float:left;" />
+      <img src="images/postgres.png" style="float:left;margin-left: 25px;" />
+      <img src="images/riak.png" style="float:left;" />
+      <img src="images/mysql.png" style="float:left;margin-left: 45px;" />
+      <img src="images/elasticsearch.png" style="float:left;margin-top:-250px;margin-left: 25px;" />
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    </hgroup>
+    <article>
+      <center style="margin-top:180px;">
+        <img src="images/postgres.png" />
+      </center>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Small specialized components</h2>
+      <h3>Scale them as you need</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Our initial architecture</h2>
+    </hgroup>
+    <article>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Small specialized components</h2>
+      <h3>Scale them as you need</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2 style="line-height:1.1;">Identify what actions are required immediately or can be queued</h2>
+      <h3>Scale them as you need</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Distinguish the REALTIME data</h2>
+      <h3>Keeping your dataset lean by archiving</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Cache like there is no tomorrow</h2>
+      <h3>Scale them as you need</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>PUSH !</h2>
+      <h3>instead of pulling ...</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Vagrant will save you hours</h2>
+      <h3>really ! hours !</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2 style="line-height:1.1;">Check everything never trust a async opt you can't check</h2>
+      <h3>instead of pulling ...</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Key Points</h2>
+    </hgroup>
+    <article>
+      <ul style="padding-top:0px;margin-top:-10px;">
+        <li><h4>Distinguish what data is really realtime</h4></li>
+        <li><h4>Identify what actions are required immediately or can be queued</h4></li>
+        <li><h4>Make your write heavy and your read extremely light</h4></li>
+        <li><h4>Cache like there is no tomorrow</h4></li>
+        <li><h4>Make use of client side state that your app has</h4></li>
+        <li><h4>Push where you can instead of pulling ...</h4></li>
+        <li><h4>Use modules to split complexity and allow you to scale systems as needed</h4></li>
+        <li><h4>Systems Vagrant will save you hours of helping new devs setup</h4></li>
+        <li><h4>Watching metrics to determine traffic and plan resources will save you thousands</h4></li>
+        <li><h4>Check everything, never trust a async operation you can't check</h4></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Q&A</h2>
+      <br />
+      <h4>It's over ...</h4>
+    </hgroup>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-13256670-7']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
