@@ -170,6 +170,45 @@
          </slide>
          <slide>
             <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h1 style="font-size: 260px;margin-top:80px;">~100+</h1>
+                  <h4 style="font-size: 60px;">matches a day</h4>
+               </center>
+            </article>
+         </slide>
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h1 style="font-size: 260px;margin-top:80px;">~240+</h1>
+                  <h4 style="font-size: 60px;">odds for each match</h4>
+               </center>
+            </article>
+         </slide>
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h1 style="font-size: 260px;margin-top:80px;">~1000+</h1>
+                  <h4 style="font-size: 60px;">updates per match for a odd</h4>
+               </center>
+            </article>
+         </slide>
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h4 style="font-size: 110px;margin-top: 110px;">narrow window during the day</h4>
+               </center>
+            </article>
+         </slide>
+         <slide>
+            <hgroup>
                <h2>Specs</h2>
             </hgroup>
             <article>
@@ -506,6 +545,16 @@
             </hgroup>
             <article>
                <center>
+                  <h1 style="font-size: 150px;margin-top:180px;">"BIG DATA"</h1>
+               </center>
+            </article>
+         </slide>
+         
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
                   <h1 style="font-size: 150px;margin-top:180px;">hu<strong>mongo</strong>us</h1>
                </center>
             </article>
@@ -526,7 +575,7 @@
             </hgroup>
             <article>
                <center>
-                  <h1 style="font-size: 150px;margin-top:180px;">TIME-BASED</h1>
+                  <h1 style="font-size: 120px;margin-top:180px;">TIME-SENSITIVE</h1>
                </center>
             </article>
          </slide>
@@ -589,7 +638,7 @@
             <article>
                <ul style="list-style:none;" class="build">
                   <li>
-                     <h3 style="font-weight:bold;line-height:1.3;font-size: 38px;">We were giving Postgres a tough time inserting that ~3K rows per second</h3>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 38px;">We were giving our database a tough time inserting ~3K rows per second</h3>
                   </li>
                   <li>
                      <h3 style="font-weight:bold;line-height:1.3;font-size: 38px;">Making our selects check so much more data than they really need to check</h3>
@@ -598,7 +647,7 @@
                      <h3 style="font-weight:bold;line-height:1.3;font-size: 38px;">And causing a lag in the stream of data.</h3>
                   </li>
                   <li>
-                     <h3 style="font-weight:bold;line-height:1.3;font-size: 38px;">Filling up our database with just didn't need after the match</h3>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 38px;">Filling up our database with data we just don't need after the match</h3>
                   </li>
                </ul>
             </article>
@@ -627,22 +676,10 @@
                      <h3 style="font-weight:bold;line-height:1.3;font-size: 62px;">How often is this data accessed ?</h3>
                   </li>
                </ul>
-               <h3 class="build" style="color:green;font-weight:bold;text-align:center;font-size: 65px;margin-top: 25px;line-height: 1.1;">Isolate any "non-realtime" data to a seperate datastore</h3>
+               <h3 class="build" style="color:green;font-weight:bold;text-align:center;font-size: 65px;margin-top: 25px;line-height: 1.1;">Isolate any archived data to a seperate datastore</h3>
             </article>
          </slide>
          
-         <slide>
-            <hgroup>
-            </hgroup>
-            <article>
-               <center>
-                  <h1 style="font-size: 60px;margin-top:100px;"><strong>Small set of</strong></h1>
-                  <h1 style="font-size: 120px;margin-top:80px;"><strong>RELEVANT</strong></h1>
-                  <h1 style="font-size: 60px;margin-top:80px;"><strong>data in SQL</strong></h1>
-               </center>
-            </article>
-         </slide>
-
          <slide>
             <hgroup>
             </hgroup>
@@ -786,7 +823,7 @@
             </hgroup>
             <article>
                <center>
-                  <h1 style="font-size: 90px;margin-top:110px;"><strong>all your components of the system will not attract a equal amount of visitors</strong></h1>
+                  <h1 style="font-size: 90px;margin-top:110px;"><strong>all your components of the system will not attract a equal amount of attention</strong></h1>
                </center>
             </article>
          </slide>
@@ -838,9 +875,19 @@
                      <h3 style="font-weight:bold;line-height:1.3;font-size: 52px;">Do you want to have the task processed and used as soon as resources free up ?</h3>
                   </li>
                   <li>
-                     <h3 style="font-weight:bold;line-height:1.3;font-size: 52px;">Can you do the task in a batches</h3>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 52px;">Can you do the task in batches</h3>
                   </li>
                </ul>
+            </article>
+         </slide>
+         
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h1 style="font-size: 80px;margin-top:180px;"><strong>but ALL my actions are from users that require immediat response</strong></h1>
+               </center>
             </article>
          </slide>
          
@@ -1082,22 +1129,15 @@
                <h2>Moral of the Story</h2>
             </hgroup>
             <article>
+               <br />
                <h3 style="line-height:1.3;font-size: 38px;">Build your API with the option for the client to manage their state.</h3>
                <br />
                <br />
-               <h3 style="line-height:1.3;font-size: 38px;">If your client is smart enough to handle how much and what it you'll users will user plain be happier and your servers will give you hug.</h3>
+               <h3 style="line-height:1.3;font-size: 38px;">If your client is smart enough to handle how much and what it needs, why not let it hint the server ?</h3>
+               <br />
+               <br />
+               <h3 style="line-height:1.3;font-size: 38px;">But keep checking as your server is now the authority</h3>
             </article>
-         </slide>
-         <slide class="segue dark nobackground">
-            <aside class="note">
-               <section>
-               </section>
-            </aside>
-            <aside class="gdbar"><img src="http://res.cloudinary.com/hrscywv4p/image/upload/c_limit,h_900,w_1200/dqxatt4slzkmhbuj7qxs.png"></aside>
-            <hgroup class="auto-fadein">
-               <h2>Cache like there is no tomorrow</h2>
-               <h3>You ain't never had a friend like me</h3>
-            </hgroup>
          </slide>
          <slide class="segue dark nobackground">
             <aside class="note">
@@ -1110,8 +1150,73 @@
                <h3>estimates are not my strong point ..</h3>
             </hgroup>
          </slide>
+         
          <slide class="fill nobackground" style="background-image: url(images/vagrant_header_background.png);background-position: -220px 45px;">
          </slide>
+
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <ul style="list-style:none;padding-top: 45px;" class="build">
+                  <li>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 45px;">Setup and run Redis</h3>
+                  </li>
+                  <li>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 45px;">then setup some database</h3>
+                  </li>
+                  <li>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 45px;">connect to a remote server to feed you data</h3>
+                  </li>
+                  <li>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 45px;">start a apache server with the webapp</h3>
+                  </li>
+                  <li>
+                     <h3 style="font-weight:bold;line-height:1.3;font-size: 45px;">connect to it on your local machine</h3>
+                  </li>
+               </ul>
+            </article>
+         </slide>
+
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h1 style="font-size: 140px;margin-top:80px;">BLA BLA BLA</h1>
+                  <br />
+                  <br />
+                  <br />
+                  <h4 class="build" style="font-size: 60px;">PLEAD ME TO SETUP IT UP FOR YOU 10 MINUTES LATER</h4>
+               </center>
+            </article>
+         </slide>
+         
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h1 style="font-size: 110px;margin-top:80px;">SOMETHING ABOUT APACHE ?</h1>
+                  <br />
+                  <br />
+                  <br />
+                  <h4 class="build" style="font-size: 60px;">PLEAD ME TO SETUP IT UP FOR YOU 10 MINUTES LATER</h4>
+               </center>
+            </article>
+         </slide>
+
+         <slide>
+            <hgroup>
+            </hgroup>
+            <article>
+               <center>
+                  <h1 style="font-size: 130px;margin-top:160px;">"VAGRANT UP"</h1>
+                  <h4 class="build" style="font-size: 60px;">and start hacking</h4>
+               </center>
+            </article>
+         </slide>
+
          <slide>
             <hgroup>
                <h2>Key Points</h2>
@@ -1119,25 +1224,19 @@
             <article>
                <ul style="padding-top:0px;margin-top:-10px;">
                   <li>
-                     <h3 style="font-weight: bold;font-size: 33px;line-height:1.4;">Metrics</h3>
+                     <h3 style="font-weight: bold;font-size: 50px;line-height:1.4;">Metrics</h3>
                   </li>
                   <li>
-                     <h3 style="font-weight: bold;font-size: 33px;line-height:1.4;">Distinguish realtime data</h3>
+                     <h3 style="font-weight: bold;font-size: 50px;line-height:1.4;">Distinguish realtime data</h3>
                   </li>
                   <li>
-                     <h3 style="font-weight: bold;font-size: 33px;line-height:1.4;">Identify what actions are required immediately or can be queued</h3>
+                     <h3 style="font-weight: bold;font-size: 50px;line-height:1.4;">Plan according to required tasks</h3>
                   </li>
                   <li>
-                     <h3 style="font-weight: bold;font-size: 33px;line-height:1.4;">Cache like there is no tomorrow</h3>
+                     <h3 style="font-weight: bold;font-size: 50px;line-height:1.4;">Make use of client side state that your app has</h3>
                   </li>
                   <li>
-                     <h3 style="font-weight: bold;font-size: 33px;line-height:1.4;">Make use of client side state that your app has</h3>
-                  </li>
-                  <li>
-                     <h3 style="font-weight: bold;font-size: 33px;line-height:1.4;">Use modules to split complexity and allow you to scale systems as needed</h3>
-                  </li>
-                  <li>
-                     <h3 style="font-weight: bold;font-size: 33px;line-height:1.4;">Systems Vagrant will save you hours of helping new devs setup</h3>
+                     <h3 style="font-weight: bold;font-size: 50px;line-height:1.4;">VAGRANT !</h3>
                   </li>
                </ul>
             </article>
