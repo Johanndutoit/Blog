@@ -2,7 +2,7 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'Realtime apps - lessons while working towards deploy',
-    subtitle: 'http://goo.gl/oKBA49',
+    subtitle: 'http://goo.gl/bWwd3d',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
