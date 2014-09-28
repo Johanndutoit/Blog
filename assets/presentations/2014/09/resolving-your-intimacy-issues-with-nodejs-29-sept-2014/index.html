@@ -1,0 +1,1362 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Node Meetup - Cape Town 29 May 2013</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!-- <meta name="viewport" content="initial-scale=0.4"> -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/nodejs_logo.png" style="height:300px;width:600px;"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <article>
+
+      <center>
+
+         <img src="http://www.johanndutoit.net/img/johann.png" style="width:300px;margin-top:-30px; border: 4px solid #fff;background-color: #fff;border-radius: 5px;-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.25);box-shadow: 0 1px 1px rgba(0,0,0,.25); " />
+
+         <br />
+
+         <br />
+
+         <h2 style="color: #e6e6e6;">Johann du Toit</h2>
+
+         <br />
+         <br />
+
+          <p>Based in Cape Town / Malmesbury</p>
+         <br />
+
+      <p>Developer at Digital Pro, visit us at <a href="http://www.digitalpro.co.za/">www.digitalpro.co.za/</a></p>
+      <br />
+         <img src="images/dp.png" />
+
+      </center>
+
+    
+
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>View the Slides on my Blog</h2>
+      <h3>www.johanndutoit.net - check under presentations</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/cpt-google-doodle.png);background-position: 0 -30px;">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/IMG_20121202_100602.png);background-position: 0 -120px;">
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+        <p><b>We'll start at the beginging and end with implementation</b></p>
+        <br />
+        <ul>
+          <li>
+            What is NodeJs, how it works and it's various components
+          </li>
+          <li>
+            Writing TCP Servers in NodeJS (Live Session)
+          </li>
+          <li>
+            Common NodeJS libraries / frameworks - we have our Rails too !
+          </li>
+          <li>
+            Guide to Writing a Simple Website with Node
+          </li>
+          <li>
+            Writing a Website in NodeJS (Live Session)
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Introduction to NodeJS</h2>
+      <h3>What are we going to be doing ? (Press P)</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Disclaimer</h2>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Intro to NodeJS</h2>
+      <h3>Part 1</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Our Approach</h2>
+    </hgroup>
+    <article>
+
+      <center>
+        <img src="images/node_slides_quick_overview.png", style="margin-top:-30px;" />
+      </center>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>How Node Started</h2>
+      <h3>When a miracle is born</h3>
+    </hgroup>
+    <article>
+      <p>In 2009 Ryan was playing with building a framework to make building push based apps like GMail much easier.</p>
+      <p>He tried a few languages but then settled on the V8 engine and javascript. Node is now developed under Joyent the organization founded for NodeJS.</p>
+      <p>And from there it took off, now being used at:</p>
+      <ul>
+        <li>LinkedIn - New Mobile Touch site is written in NodejS</li>
+        <li>Microsoft - Hosting on the Azure Cloud</li>
+        <li>Github - Download Server (Don't know if they still use it)</li>
+        <li>MySpace - The New One...</li>
+        <li>And you probably know more !</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>What is Node</h2>
+      <h3>Let's get to it</h3>
+    </hgroup>
+    <article>
+      <p>Node is a Evented IO API built around V8 engine.</p>
+      <p>Along with normal IO the Node API contains libraries for just about everything:</p>
+      <ul>
+        <li>Networking (Sockets)</li>
+        <li>HTTP Server / Client</li>
+        <li>File Library</li>
+        <li>Crypto Library</li>
+        <li>Streams</li>
+        <li>And much more - View more at <a href="http://nodejs.org/api/">nodejs.org/api</a></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:0;">
+        <img src="images/node_platform.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>The Node Executable</h2>
+      <h3>Running Node</h3>
+    </hgroup>
+    <article>
+      <p>When you install / compile node you get access to the node executable.</p>
+      <p>This executable will run your server / script.</p>
+
+      <pre class="prettyprint" data-lang="BASH">node app.js</pre>
+
+      <p>Can also be run as REPL (READ-EVAL-PRINT-LOOP):</p>
+
+      <pre class="prettyprint" data-lang="BASH">node
+> 4 + 4
+8
+> </pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>How would you deploy a Node App</h2>
+      <h3>Deployment is important</h3>
+    </hgroup>
+    <article>
+      
+      <div style="width:48%;float:left;">
+
+        <p>Node runs itself. This means the normal setup would be much like the normal ruby Setup.</p>
+
+        <p>Node would be started and restarted when needed by a few scripts that were written for this:</p>
+        <ul>
+          <li>Forever</li>
+          <li>Always</li>
+        </ul>
+
+        <p>But this is a multi server setup. All these services are usually run on a single machine for smaller site.</p>
+
+      </div>
+      <div style="width:48%;float:left;margin-top:-90px;">
+
+        <center>
+          <img src="images/multiple_server_diagram.png" />
+        </center>
+
+      </div>
+
+      <div style="clear:both;"></div>
+
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/why-so-asynchronous.jpg);background-position: 0 -120px;">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Asynchronous vs Synchronous</h2>
+    </hgroup>
+    <article>
+      <p><strong>Synchronous</strong>: Commands are executed step by step and we have to wait for all those blocking calculations...</p>
+      <br />
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var result = db.query("select * from T");
+console.log(result);</pre>
+      <br />
+      <p><strong>Asynchronous</strong>: In Node's case means that the event is added to the relevant thread pool and executed when the specific event is called.</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">db.query("select * from T", function (err, result) { 
+    // Use result 
+    console.log(result);
+}); </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:25px;">
+        <img src="images/sync_request.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:25px;">
+        <h3>The Normal solution to the problem</h3>
+        <h2>Create multiple threads / processes of the App</h2>
+        <br />
+        <img src="images/multiple_threads.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:25px;">
+        <h3>Moving IO operations to a seperate thread pool</h3>
+        <br />
+        <img src="images/breaking_away_libs.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:45px;">
+        <img src="images/node_event_loop.png" style="width:98%;" />
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <center style="margin-top:50px;">
+        <h2>1 Thread !</h2>
+        <br />
+        <p>Due to this architecture any CPU intensive operations should be avoided.</p>
+        <br />
+        <p>This does not mean that Node won't be able to handle them but it will affect the other actions waiting in your queue.</p>
+        <br />
+        <p>Rather let a backend process handle that.</p>
+      </center>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Why Javascript ?</h2>
+    </hgroup>
+    <article>
+      <p>The reason Javascript was chosen as the language it was that there was a lack of IO libraries. This allowed Ryan to create async functions that he envisioned.</p>
+      <p>All Callback in NodeJS follow the same principle. Of first passing back the error and second the results and additional parameters.</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">function(err, user_obj) { 
+
+  if(err) {
+    // Log the error and do what's needed !
+  } else {
+    // Do Something with the user obj
+  }
+
+}</pre>
+      <p>Most if not all methods form the Node API also have Synchronous methods</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Forking & the Cluster Module</h2>
+      <h3>No more waiting</h3>
+    </hgroup>
+    <article>
+      <p>NodeJS runs in a single thread and a single event loop.</p>
+
+      <br />
+      <div style="float:right;with:48%;">
+
+        <center>
+          <img src="images/fork_model.png" style="width:85%;margin-top:-35px;" />
+        </center>
+
+      </div>
+
+      <div style="float:left;width:48%;">
+
+        <p>Node includes a cluster module in it's core API.</p>
+
+        <p>This module allows you to fork and create multiple running instances of your app load sharing accross a single port.</p>
+
+        <p>So you could use that big 16 core processor if you really wanted to ...</p>
+
+      </div>
+
+      <div style="clear:both;"></div>
+      
+    </article>
+  </slide>
+
+   <slide>
+    <article>
+      <h2 style="text-align:center;margin-top:80px;">Considerations when Writing for Node</h2>
+      <h4 style="text-align:center;margin-top:10px;">As Developers we have grown used to writing for a request that will start and do a cleanup after the request is done.</h4>
+      <br />
+      <center>
+        <img src="images/normal_web_request.png" />
+      </center>
+      <h4 style="text-align:center;margin-top:10px;">When writing your site / server in node you must remember that you are writing a long running service. Not a single request.</h4>
+      <br />
+      <h5>In Node you are writing Network Servers and that should be kept in mind.</h5>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>So Javascript on the Server ?</h2>
+    </hgroup>
+    <article>
+      <br />
+      <br />
+      <p>As Developers we all have probably used:</p>
+      <br />
+      <br />
+      <pre class="prettyprint" data-lang="JAVASCRIPT">setTimeout(function() {
+  console.log('test');
+},2000);</pre>
+      <br />
+      <br />
+    <p>Would it be such a strange concept to write server code in this same manner ?</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example of Socket server from NodeJS Site</h2>
+      <h3>Sample Code, That's why !</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var net = require('net');
+
+var server = net.createServer(function (socket) {
+
+  socket.write('Echo server\r\n');
+  socket.pipe(socket);
+
+});</pre>
+      <pre class="prettyprint" data-lang="BASH">node example.js
+Server running at http://127.0.0.1:1337/</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Example of HTTP server from NodeJS Site</h2>
+      <h3>Sample Code, That's why !</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var http = require('http');
+
+http.createServer(function (req, res) {
+
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+
+}).listen(1337, '127.0.0.1');
+
+console.log('Server running at http://127.0.0.1:1337/');</pre>
+      <pre class="prettyprint" data-lang="BASH">node example.js
+Server running at http://127.0.0.1:1337/</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Handling Large Files with Streams</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var fs = require('fs');
+var stream = fs.createReadStream('huge.txt');
+
+stream.on('data', function(data){
+  console.log(data);
+});
+
+stream.on('end', function(){
+  console.log('done');
+});
+
+stream.on('error', function(err) {
+  console.log(err);
+});</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Configuration for your Node Server</h2>
+    </hgroup>
+    <article>
+      <p>You can do it any way you like but most commonly in one of the following ways:</p>
+      <p>1 - YAML / JSON Settings File</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var settings = require('./settings.json');</pre>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var database url = settings.database_url;</pre>
+      <p>2 - ENVIRONMENT Variables</p>
+      <pre class="prettyprint" data-lang="BASH">EXPORT database_url="{url here}"
+node app.js</pre>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var database url = process.env.database_url;</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Global Scopes</h2>
+    </hgroup>
+    <article>
+      <p>In the browser you have <code>window</code> and in Node you have <code>GLOBAL</code>. When anything is assigned to global any files in the server can access them.</p>
+
+      <p><code>main.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func = function() { return 2 * 2; }</pre>
+
+      <p><code>other.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">GLOBAL.global_test_func()</pre>
+
+      <p>I use it mainly when I have data that has to be accessed by the entire application / modules. But only if I can't pass it directly as it does make debugging a bit harder.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Modules</h2>
+      <h3>Feel Modular ?</h3>
+    </hgroup>
+    <article>
+      <p>Node uses Modules which are "libraries" in a sense. These libraries can be installed. Much like the idea of Gems in Ruby.</p>
+      <p>Each module contains a package.json (as mentioned previosly) which specifies the version, name etc.</p>
+      <p>Modules are installed in the node_modules directory, so normal node app folder would look like this:</p>
+      <pre class="prettyprint" data-lang="FOLDER / FILESYSTEM">app.js
+package.json
+node_modules/</pre>
+    <p>These modules are installed using NPM, which we will be getting to shortly</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Require</h2>
+      <h3>Know #include , import and using? Well come right in !</h3>
+    </hgroup>
+    <article>
+      <p>Require can be used to load local files in your app and modules that were installed. The require function is smart enough for you to exlude the extension. It will load the file based on the extension.</p>
+      <p>Loading a Local / Global Module:</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var net = require('networking');
+var _ = require('underscore');</pre>
+      <p>Loading a Local File in your App:</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var mylib = require('./mylib');
+var samelib = require('./mylib.js');
+// Up one folder
+var otherlib = require('../myotherlib');</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>module.exports / exports</h2>
+      <h3>What do you want to expose</h3>
+    </hgroup>
+    <article>
+      <p>Any code in a file will just be executed when it is called. But what if you want to expose certain methods / variables ?</p>
+      <p>For this we have module.exports / exports. With these we define what is returned when we <code>require</code> the file</p>
+      <p><code>mylib.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">exports.public_name = 'test';
+var private_name = 'here ?';</pre>
+      <p><code>app.js</code></p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var lib = require('./mylib');
+console.log(lib.public_name); // test
+console.log(lib.private_name); // undefined
+console.log(private_name); // undefined</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="images/npm_logo.png" alt="NPM" title="Node Package Manager">
+      <h3 class="build">Node Package manager</h3>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Node Package Manager</h2>
+      <h3>Cough Cough Gems</h3>
+    </hgroup>
+    <article>
+      <p>Started as a seperate project but grown the default package manager</p>
+      <p>Each Node App / Module contains a <code>package.json</code> file which specifies:</p>
+      <ul>
+          <li>The Dependent Modules and their versions Required</li>
+          <li>Repo of the Project</li>
+          <li>Version of the Project</li>
+          <li>Authors</li>
+          <li>for more check <code>npm --help</code></li>
+      </ul>
+      <p>View more at <a href="https://npmjs.org">npmjs.org</a></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>npmjs.org</h2>
+      <h3>Publishing a Module</h3>
+    </hgroup>
+    <article>
+      <p>All Modules that are installed with NPM have been published to <code>npmjs.org</code></p>
+      <p>These modules can be searched and this gives all node developers a central repository where all modules are listed and accessible queries.</p>
+      <p>Anyone can create a account and publish a module.</p>
+
+      <p>Example of Publishing:</p>
+      <pre class="prettyprint" data-lang="JSON">npm publish {tarball}
+npm publish {folder}</article>
+  </pre>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Node Package Manager</h2>
+      <h3>Package Definition File</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JSON">{
+  "name": "project-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "underscore": ">= 1.0"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Node Package Manager</h2>
+      <h3>Command Samples</h3>
+    </hgroup>
+    <article>
+      <p>Interactive prompts to quickly create a new <code>package.json</code></p>
+      <pre class="prettyprint" data-lang="BASH">npm init</pre>
+      <p>Read all the required modules from <code>package.json</code> and update / install them</p>
+      <pre class="prettyprint" data-lang="BASH">npm update</pre>
+      <p>Example of installing underscore (we'll see what is does later)</p>
+      <pre class="prettyprint" data-lang="BASH">npm install underscore</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Private Packages ?</h2>
+      <h3>A recently released version allows direct modules repo urls</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JSON">{
+  "name": "project-name",
+  "dependencies": {
+    "underscore": ">= 1.0",
+    "company-core-lib": "git+ssh://git@github.com/core-lib.git#v0.0.1", 
+    "company-core-lib": "git+ssh://git@github.com:my-account/core-lib.git#v0.0.1 (AUTH)"
+  }
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Global Modules</h2>
+      <h3>Install a module globally</h3>
+    </hgroup>
+    <article>
+      <p></p>
+      <p>Globally install underscore for example</p>
+      <pre class="prettyprint" data-lang="BASH">npm install -g underscore</pre>
+      <p>Any NodeJS application will have access to this module without installing it at a application level</p>
+      <p>Modules with executables will have the PATH registered</p>
+      <p>For example after installing the CoffeeScript Interpreter</p>
+      <pre class="prettyprint" data-lang="BASH">coffee -v</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Installing Node</h2>
+      <h3>Feel the Source, Luke ...</h3>
+    </hgroup>
+    <article>
+      <p>Head over to <code>nodejs.org</code> and download either the executable for Windows or Download the Source for Linux / Mac</p>
+      <p>Install from Source:</p>
+      <pre class="prettyprint" data-lang="BASH">./configure
+make
+make install</pre>
+      <p>Check your Installation:</p>
+      <pre class="prettyprint" data-lang="BASH">node -v
+npm -v</pre>
+    </article>
+  </slide>
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>Break to Install Node</q>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Writing a TCP Server in NodeJS</h2>
+      <h3>Part 2</h3>
+      <h4>https://github.com/Johanndutoit/GDG-Node-Broadcast-Chat-Server</h4>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Popular NodeJS Libraries</h2>
+      <br />
+      <h4>The Eco-System</h4>
+      <h3>Part 3</h3>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <article>
+
+      <center>
+
+         <br />
+
+         <br />
+
+         <h2 style="color: #e6e6e6;">List of Modules</h2>
+
+         <br />
+         <br />
+
+          <p>Community kept list of modules <br /><br /><code style="color:white;">https://github.com/joyent/node/wiki/modules</code><br /><br /> for quick easy browsing or just go to <code style="color:white;">npmjs.org</code></p>
+      <br />
+        
+
+      </center>
+
+       <img style="width:100%;float:left;" src="images/npm_screenshot.png" />
+    
+
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/npm_search.png);background-position: 0 0px;">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/npm_mongodb.png);background-position: 0 -120px;">
+  </slide>
+
+
+  <slide>
+    <hgroup>
+
+      <img src="images/coffeescript.png" />
+
+      <br />
+
+      <br />
+
+      <br />
+      <h2>Do you Coffee ?</h2>
+      <h3>My recent language change</h3>
+      <h4><a href="http://coffeescript.org/">coffeescript.org</a></h4>
+    </hgroup>
+    <article>
+
+      <p>I've recently switched all my NodeJS development to CoffeeScript.</p>
+      <p>Why ? Then you haven't checked the site yet !</p>
+
+      <p>Was using the language for a while but not in NodeJS</p>
+
+      <p>Till I Found a way to write NodeJS code in Coffeescript without compiling to JS, before running everytime</p>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+
+      <h2>Running NodeJS Code in Coffeescript</h2>
+    </hgroup>
+    <article>
+
+      <p>Create a Main Coffeescript file that would contain your logic.</p>
+
+      <pre class="prettyprint" data-lang="COFFEESCRIPT">words = [ 'h', 'e', 'l', 'l', 'o' ]
+console.log words.join('')</pre>
+
+      <br />
+
+      <p>And create a index / main file so you can start your app with a js file.</p>
+
+      <pre class="prettyprint" data-lang="JAVSCRIPT">require('coffee-script');
+require('./main');</pre>
+
+      <p>Running CoffeeScript for NodeJS, SWEET !</p>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Express</h2>
+      <h3>The defacto Web Framework for Node</h3>
+      <h4><a href="http://expressjs.com/">expressjs.com</a></h4>
+    </hgroup>
+    <article>
+      <p>Quick to start a service</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var express = require('express');
+var app = express();
+app.listen(3000);</pre>
+      <p>Also use the tool to quick start a project, much like rails huh ?</p>
+      <pre class="prettyprint" data-lang="BASH">npm install -g express
+express --sessions --css stylus --ejs myapp</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Handling Requests in Express</h2>
+    </hgroup>
+    <article>
+      <p style="margin-top:-25px;">Handling a Get</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.get('/getrequest', function(req, res) {
+  res.send('HELLO!');
+});</pre>
+      <p>Handling a POST</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.post('/postrequest', function(req, res) {
+  res.send('Hi ' + req.body.name + '!');
+});</pre>
+      <p>Handling a PUT</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.put('/postrequest', function(req, res) {
+  res.send('Hi ' + req.body.name + '!');
+});</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Middleware</h2>
+      <h3>Anyone know Rack for Rails ?</h3>
+    </hgroup>
+    <article>
+      <p>You can build a chain of events that should fire and pass data to a request</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">
+var handle_some_other_item = function(req, res, next) {
+  var params = [req.params.user_item];
+  db.query('select * from users where id=$', params, function(err, user_obj){
+
+    req.requested_user_obj = user_obj;
+    next();
+
+  });
+};
+app.get('/user/:user_item', handle_some_other_item, function(req, res) {
+  res.send('Hi ' + req.requested_user_obj.name + ' !');
+});</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Middleware</h2>
+      <h3>Listen for all parameters</h3>
+    </hgroup>
+    <article>
+      <p>You can build a chain of events that should fire and pass data to a request</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">
+app.param('user_item', function(req, res, next, user_item) {
+  db.query('select * from users where id=$', [user_item], function(err, user_obj){
+
+    req.requested_user_obj = user_obj;
+    next();
+
+  });
+});
+app.get('/user/:user_item', function(req, res) {
+  res.send('Hi ' + req.requested_user_obj.name + ' !');
+});</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Also handles all the other Jazz</h2>
+    </hgroup>
+    <article>
+      <p>Sessions</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">req.session.user_id = 'test';
+res.send(req.session.user_id);</pre>
+      <p>CSRF Protection</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.use(express.csrf());</pre>
+      <p>View Rendering - Set any template library you want</p>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.get('/', function(req, res) {
+  res.render 'homepage', {
+    "title": "Homepage !"
+  }
+});</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Jade</h2>
+      <h3>My Favourite Template Engine that we'll be using</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+
+    title Test Title
+
+  body
+    p A
+    p
+      a(href="test.com") C</pre>
+    <p>Produces</p>
+    <pre class="prettyprint" data-lang="HTML">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;A&lt;/p&gt;<br />&lt;p&gt;&lt;a href=&quot;test.com&quot;&gt;C&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>Variables</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="JADE">p #{page_name} !{raw_html}</pre>
+
+      <p>Mixins</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="JADE">mixin my_block_func(a, b)
+  p #{a * b}
+
+mixin my_block_func(1, 2)</pre>
+
+      <p>Includes</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="JADE">include template_block.jade</pre>
+
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Inheritance</h2>
+    </hgroup>
+    <article>
+
+      <p>'Master Template' <code>layout.jade</code></p>
+
+      <pre class="prettyprint" data-lang="JADE">p Main page
+block layout_content</pre>
+
+      <p>'Page Template' <code>somepage.jade</code></p>
+
+      <pre class="prettyprint" data-lang="JADE">extends layout.jade
+
+block layout_content
+  p testing testing testing</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Async</h2>
+      <h3>Asynchronous Utilities</h3>
+    </hgroup>
+    <article>
+      <p>Execution Flow util library that allows you to write very powerfull scripts / functions with minimal code.</p>
+      <p>Use it in your Browser or install for node with:</p>
+      <pre class="prettyprint" data-lang="BASH">npm install async</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>forEach(arr, iterator, callback)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">text_vals = ['a', 'b', 'c'];
+async.forEach(text_vals, console.log, function(err){
+    // Output all the Values and Call this when done !
+});</pre>
+
+      <p>forEachSeries(arr, iterator, callback)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">text_vals = ['a', 'b', 'c'];
+async.forEach(text_vals, console.log, function(err){
+    // Output all the Values in series and Call this when done !
+});</pre>
+
+      <p>forEachLimit(arr, limit, iterator, callback)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">text_vals = ['a', 'b', 'c'];
+async.forEachLimit(text_vals, 5, console.log, function(err){
+    // Output all the Values and Call this when done !
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>parallel(tasks, [callback])</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">async.parallel([
+    function(callback){
+        setTimeout(function(){
+            callback(null, 'one');
+        }, 200);
+    },
+    function(callback){
+        setTimeout(function(){
+            callback(null, 'two');
+        }, 100);
+    }
+],
+// optional callback
+function(err, results){
+    // the results array will equal ['one','two'] even though
+    // the second function had a shorter timeout.
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>queue(worker, concurrency)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">var q = async.queue(function (task, callback) {
+    console.log('hello ' + task.name);
+    callback();
+}, 2);
+
+
+// assign a callback
+q.drain = function() {
+    console.log('all items have been processed');
+}
+
+// add some items to the queue
+
+q.push({name: 'foo'}, function (err) {
+    console.log('finished processing foo');
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Underscore</h2>
+      <h3>Collection and Util Library for Node</h3>
+    </hgroup>
+    <article>
+      <p>Advance Filtering, Sorting and Grouping Libraries giving the Javascript Array SO much more power.</p>
+      <p>Can be used in the browser or in Node</p>
+      <pre class="prettyprint" data-lang="BASH">npm install underscore</pre>
+      <p>View the docs at <a href="#">underscorejs.org</a></p>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>_.find(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">obj = _.find([1,2,3,4], function(value_numb){
+  return value_numb == 2;
+});</pre>
+
+      <p>_.filter(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">objs = _.filter([1,2,3,4], function(value_numb){
+  return value_numb > 2;
+});</pre>
+
+<p>_.reject(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">obj = _.reject([1,2,3,4], function(value_numb){
+  return value_numb < 2;
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+
+      <p>_.groupBy(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">obj = _.find([1,2,3,4], function(value_numb){
+  return value_numb == 2;
+});</pre>
+
+      <p>_.sortBy(values, iterator)</p>
+      <br />
+
+      <pre class="prettyprint" data-lang="javascript">objs = _.filter([1,2,3,4], function(value_numb){
+  return value_numb > 2;
+});</pre>
+
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>StringJS</h2>
+      <h3>Collection and Util Library for String on Javascript / Node</h3>
+    </hgroup>
+    <article>
+      <p>String in Javascript made epic !</p>
+      <pre class="prettyprint" data-lang="BASH">npm install string</pre>
+      <p>View the docs at <a href="http://stringjs.com/">stringjs.com</a></p>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/stringjs_screenshot.png);background-position: 0 -390px;">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Moment</h2>
+      <h3>Collection and Util Library for Dates on Javascript / Node</h3>
+    </hgroup>
+    <article>
+      <p>Dates in Javascript made epic too !</p>
+      <pre class="prettyprint" data-lang="BASH">npm install moment</pre>
+      <p>View the docs at <a href="http://momentjs.com/">momentjs.com</a></p>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/moment_samples.png);background-position: 0 -30px;">
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Guide to Writing a Web App</h2>
+      <h3>Part 4</h3>
+    </hgroup>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>INIT</h2>
+    </hgroup>
+    <article>
+      <p>We start by creating our <code>package.json</code></p>
+      <pre class="prettyprint" data-lang="BASH">npm init</pre>
+      <p>And update our package.json with the modules we are going to need:</p>
+      <pre class="prettyprint" data-lang="JSON">"dependencies": {
+  "express": "latest",
+  "mongodb": "latest",
+  "jade": "latest"
+},</pre>
+      <p>And then install / update the packages</p>
+      <pre class="prettyprint" data-lang="BASE">npm update</pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Setup Express for a Basic Page</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var express = require('express');
+var app = express();
+app.configure(function(){
+  
+  app.use(express.static(__dirname + '/public/'))
+  app.set('views', './views')
+  app.set('view engine', 'jade')
+  app.use(express.favicon())
+  app.use(express.bodyParser())
+
+});
+app.get('/', function(req, res){
+  res.render 'homepage', {
+    'title': 'Welcome to the super cool site !'
+  }
+});
+app.listen(3000);</pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>View Page</h2>
+    </hgroup>
+    <article>
+      <p><code>homepage.jade</code></p>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+    title Test Title
+
+  body
+    p Super Test</pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Edit to Show List of Uploaded Files</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">var fs = require('fs');
+app.get('/', function(req, res){
+
+  fs.readdir('uploaded_files', function(err, files){
+
+    res.render('homepage', {
+      'title': 'Welcome to the super cool site !',
+      'files': files
+    });
+
+  });
+
+  
+});</pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Edit to Show List of Uploaded Files</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JADE">doctype 5
+html
+  head
+    title Test Title
+
+  body
+    p Upload new File
+    form(method="post",action="/post",enctype="multipart/form-data")
+      input(type="file",name="new_file_to_upload")
+      button Upload my File
+    p Uploaded Files
+    ul
+      // or just files
+      -each file in locals.files
+        li #{file}
+      </pre>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Edit to Show List of Uploaded Files</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="JAVASCRIPT">app.post('/post', function(req, res){
+  var tmp_path = req.files.new_file_to_upload.path;
+  var target_path = 'uploaded_files/' + req.files.new_file_to_upload.name;
+  fs.rename(tmp_path, target_path, function(err) {
+    if (err) throw err;
+    // Delete the TMP file
+    fs.unlink(tmp_path, function() {
+      if (err) throw err;
+
+        // Redirect back to frontpage
+        res.redirect('/');
+
+    });
+  });
+});</pre>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Writing Web App (Maybe)</h2>
+      <h3>Part 5</h3>
+      <h4>Make sure you have NodeJS and MongoDB installed</h4>
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="note">
+      <section>
+      </section>
+    </aside>
+    <aside class="gdbar"><img src="images/js_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Questions ?</h2>
+      <br />
+      <h4>Don't make me look too dumb ...</h4>
+    </hgroup>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/js_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thank You!</h2>
+      <p>www.johanndutoit.net</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-13256670-7']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
