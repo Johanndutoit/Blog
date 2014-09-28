@@ -84,7 +84,7 @@ Let's execute the Blog Read Method.
 read_blog_posts (posts, years) ->
 	# Now that we have the posts start creating the files.
 
-	path.exists 'site', (site_dir_exists) ->
+	fs.exists 'site', (site_dir_exists) ->
 		if site_dir_exists == false
 			fs.mkdirSync 'site', 2
 
@@ -125,7 +125,7 @@ read_blog_posts (posts, years) ->
 
 		# Create a Page for all Posts
 		posts.forEach (post) ->
-			path.exists 'site/' + post.year + "/" + post.month + "/" + post.day , (post_dir_exists) ->
+			fs.exists 'site/' + post.year + "/" + post.month + "/" + post.day , (post_dir_exists) ->
 				if post_dir_exists == false
 					wrench.mkdirSyncRecursive 'site/' + post.year + "/" + post.month + "/" + post.day, 777
 
