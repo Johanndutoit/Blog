@@ -8,6 +8,27 @@ html, body {
 
 }
 
+.clouds {
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -moz-user-select: -moz-none;
+  background: url("cloud.png");
+  background-repeat: repeat-x;
+  background-position: bottom center;
+  position: relative;
+  height: 139px;
+
+  position: fixed;
+  bottom:0;
+  right:0;
+  left:0;
+
+}
+
 /* line 41, /app/web/views/screen.sass */
 nav {
   text-align: center;

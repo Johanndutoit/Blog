@@ -1,0 +1,549 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Intro to Javascript</title>
+    
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <!--
+        
+        Impress.js doesn't depend on any external stylesheet. Script adds all styles it needs for
+        presentation to work.
+        
+        This style below contains styles only for demo presentation. Browse it to see how impress.js
+        classes are used to style presentation steps, or how to apply fallback styles, but I don't want
+        you to use them directly in your presentation.
+        
+        Be creative, build your own. We don't really want all impress.js presentations to look the same,
+        do we?
+        
+        When creating your own presentation get rid of this file. Start from scratch, it's fun!
+        
+    -->
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<!--
+    
+    Body element is used by impress.js to set some useful class names, that will allow you to detect
+    the support and state of the presentation in CSS or other scripts.
+    
+    First very useful class name is `impress-not-supported`. This class means, that browser doesn't
+    support features required by impress.js, so you should apply some fallback styles in your CSS.
+    It's not necessary to add it manually on this element. If the script detects that browser is not
+    good enough it will add this class, but keeping it in HTML means that users without JavaScript
+    will also get fallback styles.
+    
+    When impress.js script detects that browser supports all required features, this class name will
+    be removed.
+    
+    The class name on body element also depends on currently active presentation step. More details about
+    it can be found later, when `hint` element is being described.
+    
+-->
+<body class="impress-not-supported">
+
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<!--
+    
+    Now that's the core element used by impress.js.
+    
+    That's the wrapper for your presentation steps. In this element all the impress.js magic happens.
+    It doesn't have to be a `<div>`. Only `id` is important here as that's how the script find it.
+    
+    You probably won't need it now, but there are some configuration options that can be set on this element.
+    
+    To change the duration of the transition between slides use `data-transition-duration="2000"` giving it
+    a number of ms. It defaults to 1000 (1s).
+    
+    You can also control the perspective with `data-perspective="500"` giving it a number of pixels.
+    It defaults to 1000. You can set it to 0 if you don't want any 3D effects.
+    If you are willing to change this value make sure you understand how CSS perspective works:
+    https://developer.mozilla.org/en/CSS/perspective
+    
+    But as I said, you won't need it for now, so don't worry - there are some simple but interesing things
+    right around the corner of this tag ;)
+    
+-->
+<div id="impress">
+
+    <div id="home" class="step slide" data-x="0" data-y="0" style="overflow:hidden;">
+        <img src="img/js-logo.png" style="position:absolute;top:-260px;left:0;right:0;bottom:0;width:1000px;margin-left:-50px;" />
+    </div>
+
+    <div id="bored" class="step slide" data-x="-1000" data-y="-1500" style="overflow:hidden;">
+        <img src="img/johann.jpg" style="position:absolute;top:0;left:0;right:0;bottom:0;width:1000px;margin-left:-50px;" />
+    </div>
+
+    <div  class="step" data-x="-3000" data-y="2000" data-z="0" data-rotate="300" data-scale="1">
+        <center>
+
+            <p style="text-align:center;">Give me a visit on my Blog for the hosted presentation</p>
+
+            <p style="text-align:center;"><strong>johanndutoit.net</strong></p>
+
+            <p style="text-align:center;font-size: 17px;color:green;"><strong>Check under presentations</strong></p>
+
+        </center>
+    </div>
+
+     <div class="step" data-x="-6000" data-y="0" data-scale="2">
+        <center>
+            <img src="img/appengine-logo.png" style="width:512px;" />
+            <br />
+            <h2 style="font-size: 45px;">Google Cloud Starter Pack</h2>
+            <h3 style="font-size: 25px;">Google Cloud Platform Starter Pack allows developers from affiliated partners to receive $2,000 of credit - $1,000 for Google App Engine and $1,000 for Google Compute Engine</h4>
+            <h4 style="margin-top: 15px;background-color:inherit;"><a style="background-color:inherit;" href="https://cloud.google.com/starterpack">https://cloud.google.com/starterpack</a></h4>
+        </center>
+    </div>
+
+    <div id="ing" class="step" data-x="9000" data-y="-850" data-rotate="270" data-scale="6">
+        <p>First we'll be doing a intro to javascript including things like <b class="positioning">what it is</b>, <b class="positioning">the language itself</b> and <b class="rotating">popular libraries</b></p>
+    </div>
+
+    <div  class="step" data-x="12000" data-y="-3000" data-z="-24000" data-rotate="300" data-scale="1">
+        <p style="text-align:center;font-size: 65px;">then build a <br /><strong>Realtime</strong><br /> app with Google Maps and Backbone</p>
+    </div>
+
+    <div class="step slide" data-x="12000" data-y="-1500" style="overflow:hidden;">
+        <img src="img/map.png" style="position:absolute;top:0;left:0;right:0;bottom:0;height:800px;margin-left:-50px;margin-top:-0px;" />
+    </div>
+
+    <div class="step slide" data-x="12000" data-y="-3000" style="overflow:hidden;">
+        <img src="img/posting_to_map.png" style="position:absolute;top:0;left:0;right:0;bottom:0;width:1000px;margin-left:-5px;margin-top:-0px;" />
+    </div>
+
+     <div class="step" data-x="16000" data-y="-150000" data-rotate="180" data-z="-18000" data-scale="6">
+        <p style="text-align:center;">and <b style="font-size: 150px;">DEPLOY</b> it</p>
+    </div>
+
+    <div  class="step" data-x="16000" data-y="10000" data-z="0" data-rotate="300" data-scale="1">
+        <center>
+
+            <p style="text-align:center;">watch it update</p>
+
+        </center>
+    </div>
+
+    <div  class="step" data-x="16000" data-y="10000" data-z="-30000" data-rotate="300" data-scale="1">
+        <center>
+
+            <p style="text-align:center;">and (of course) <br />Discussion and Questions</p>
+
+        </center>
+    </div>
+
+    <div class="step" data-x="1000" data-y="-1500" data-scale="1">
+        <p>Download the <strong>App Engine SDK</strong> and install it for our demo app</p>
+        <br />
+        <p>Head to <br /><span style="font-size: 36px;">https://developers.google.com/appengine/downloads</span></p>
+    </div>
+
+    <div class="step" data-x="10000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p>Let's get started ...</p>
+    </div>
+
+    <div class="step" data-x="15000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <center>
+            <img src="img/js-logo.png" style="width:256px;" />
+            <p>We all know about Javascript or at least heard of it</p>
+        </center>
+    </div>
+
+    <div class="step" data-x="10000" data-y="25000" data-z="0" data-rotate-x="0" data-rotate-y="0" data-scale="2">
+        <center>
+            <p>The name ?? Java What !?!?</p>
+            <br />
+            <p>Due to some unfortunate marketing where they tried to hitch a ride on Java's fame</p>
+            <br />
+            <p>Few of it's naming conventions etc. were inspired by C and Java but nothing more</p>
+        </center>
+    </div>
+
+    <div class="step" data-x="15000" data-y="25000" data-z="0" data-rotate-x="0" data-rotate-y="0" data-scale="2">
+        <center>
+
+            <p>Runs Pretty much everywhere</p>
+            <br />
+            <p>Your phone, servers (node.js) and web browsers etc. etc. etc.</p>
+        </center>
+    </div>
+
+    <div class="step" data-x="20000" data-y="25000" data-z="0" data-rotate-x="0" data-rotate-y="0" data-scale="2">
+        <center>
+
+            <img src="img/nodejs_logo.png" />
+            <p>http://www.meetup.com/nodecpt/</p>
+
+        </center>
+    </div>
+
+    <div class="step" data-x="25000" data-y="25000" data-z="0" data-rotate-x="0" data-rotate-y="0" data-scale="2">
+        <center>
+            <br />
+            <p>Javascript is a prototype based language</p>
+            <br />
+            <p style="font-size: 35px;">Which means behaviour reuse is done using prototypes. And the objects are mutable which means you can change the prototype of the function after it's been created.</p>
+        </center>
+    </div>
+
+    <div class="step" data-x="30000" data-y="25000" data-z="0" data-rotate-x="0" data-rotate-y="0" data-scale="2">
+        <center>
+
+            <img src="img/v8-logo.png" style="width:40%;" />
+            <p>Google made a amazing VM for Javascript that running in NodeJS and Chrome. And it's Open Source ...</p>
+
+        </center>
+    </div>
+
+    <div class="step" data-x="20000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <center>
+            <img src="http://www.jaredstenquist.com/wp-content/uploads/2011/01/chrome-logo-elements.jpg" style="width:80%;" />
+        </center>
+    </div>
+
+    <div class="step" data-x="25000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <center>
+            <p>Browsers like Chrome then give you access to the DOM with objects they expose the Javascript VM.</p>
+        </center>
+    </div>
+
+    <div class="step" data-x="30000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <center>
+            <p>This means some of your functions are limited as you are allowed what the browser gives you</p>
+        </center>
+    </div>
+
+    <div class="step" data-x="35000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <center>
+            <p>You can't do things like:</p>
+            <p>Access in Memory Javascript from another Tab, Browsers stop cross-domain javascript from interacting for security, No File access</p>
+        </center>
+    </div>
+
+    <div class="step" data-x="40000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <center>
+
+            <a href="http://www.w3.org/html/logo/">
+            <img src="http://www.w3.org/html/logo/badge/html5-badge-h-solo.png" width="63" height="64" alt="HTML5 Powered" title="HTML5 Powered">
+            </a>
+            <p style="text-align:center;">But luckily HTML5 came along</p>
+
+        </center>
+    </div>
+
+    <div class="step" data-x="45000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;">
+            Easiest way to play with JS is using the Chrome developer tools
+        </p>
+        <br />
+        <p style="text-align:center;">Firefox has Firebug but we like Chrome, right ? RIGHT ?</p>
+    </div>
+
+    <div class="step" data-x="50000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <center>
+            <img src="img/chrome_console.png" style="width:160%;margin-left:-250px;" />
+        </center>
+    </div>
+
+    <div class="step" data-x="50000" data-y="12000" data-z="-10000" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <center>
+            <img src="img/chrome_repl.png" style="width:160%;margin-left:-250px;" />
+        </center>
+    </div>
+
+    <div class="step" data-x="50000" data-y="12000" data-z="-20000" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <center>
+            <img src="img/chrome_cpu_snapshot.png" style="width:160%;margin-left:-250px;" />
+        </center>
+    </div>
+
+    <div class="step slide" data-x="55000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <p style="line-height:1.4">So ... Let's see some JS ...</p>
+        <br />
+        <p style="line-height:1.4">3000 mph intro to JS</p>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">var a = 2;</span><span class="pln"><br></span><span class="kwd">var b = 3;</span><span class="pln"><br></span><span class="kwd">console.log(a+b);</span></pre>
+    
+        <br />
+        <p style="line-height:1.4"> Functions are just as cool </p>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">var function_name = function(a,b) {
+    return (a + b);
+};</span></pre>
+
+    </div>
+
+    <div class="step slide" data-x="60000" data-y="15000" data-z="-100" data-rotate-y="10" data-scale="2">
+
+        <p style="line-height:1.4">This is where the fun starts ...</p>
+
+        <br />
+
+        <p>Javascript does autotype coercion. Meaning 1 == '1' will be true, as the types are converted when compared.</p>
+
+        <br />
+
+        <p style="font-color:black;">We can use strict checking where 1 === '1' will be fasle but 1 === 1 true</p>
+
+        <br />
+        <p style="line-height:1.4">So as a "tip" always look at doing strict it will save you a lot of hair pulling.</p>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">if(a === 1) {
+    console.log("SOMETHING COOL");
+}<br></span></pre>
+    
+        <br />
+    </div>
+
+    <div class="step slide" data-x="60000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <p style="line-height:1.4">Scope, the dreaded this</p>
+        <br />
+        <p style="line-height:1.4">Web Browsers open up a global object. window, anything assigned to this object will be accessible in the global namespace. Along with any variables you define while working in a open js file.</p>
+
+        <br />
+
+        <p style="line-height:1.4">Ever seen a JS file start and end like this ?</p>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">(function(){
+
+    // Do something VERY cool
+
+})();<br></span></pre>
+
+        <br />
+    </div>
+
+    <div class="step" data-x="65000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;">But the unique way of <strong>scoping</strong> does give us some interesting features.</p>
+    </div>
+
+    <div class="step slide" data-x="70000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <p style="line-height:1.4">Closures, your new best friend</p>
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">function test(a, b) {
+    return a * b;
+};<br></span></pre>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">function test(b) {
+    return function(a){
+        return a * b;
+    };
+};<br></span></pre>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">var a = test(2);
+a(2); // would be 4<br></span></pre>
+
+    </div>
+
+    <div class="step" data-x="75000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;font-size: 40px;">Now to the strengths all these features give us</p>
+    </div>
+
+    <div class="step slide" data-x="80000" data-y="12000" data-z="-100" data-rotate-y="10" style="overflow:hidden;">
+
+        <p style="line-height:1.4">Events, your time to shine JS</p>
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">var callback = function test(a, b, sum) {
+    console.log("Heard back from event");
+};<br></span></pre>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">$("#somebutton").click(callback);<br></span></pre>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">var our_super_cool_function = function(a,b,callback) {
+    
+    callback(a, b, a * b);
+
+};
+
+our_super_cool_function(1, 2, callback);</span></pre>
+
+    </div>
+
+    <div class="step" data-x="85000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;font-size: 40px;">CONSOLE TIME<br />it's gonna be legen-wait-for-it-DARY</p>
+    </div>
+
+    <div class="step slide" data-x="90000" data-y="12000" data-z="-100" data-rotate-y="10" data-scale="2">
+        <p style="line-height:1.4">Great so you can code like a Ninja now</p>
+        <br />
+        <p style="line-height:1.4">But how do you make your Javascript execute from say a button click ?</p>
+    
+        <br />
+        <br />
+
+        <p>The HTML spec includes a list of predefined actions that certain HTML tags can do. And you can link with your functions to them</p>
+
+        <br />
+        <br />
+
+        <p style="font-weight:bold;font-size: 38px;"> <strong>Fiddle Time !</strong> </p>
+
+    </div>
+
+    <div class="step" data-x="95000" data-y="12000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;font-size: 40px;">Ok that works ...</p>
+        <br />
+        <p style="text-align:center;font-size: 40px;">But it's not every elegant ...</p>
+        <br />
+        <p style="text-align:center;font-size: 40px;">That's why we have libraries like JQuery</p>
+    </div>
+
+    <div class="step slide" data-x="100000" data-y="12000" data-z="-100" data-rotate-y="10" style="overflow:hidden;">
+
+        <p style="line-height:1.4">Now stuff like</p>
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">&lt;a onclick=&quot;test();&quot; href=&quot;#&quot;&gt;Click Me&lt;/a&gt;</span></pre>
+
+        <br />
+
+        <p>becomes</p>
+
+        <br />
+
+        <pre style="padding: 6px 10px;background-color: #FAFAFA;border: 1px solid #bbb;overflow: auto;" class="prettyprint lang-yaml"><span class="kwd">&lt;a id=&quot;somebutton&quot; href=&quot;#&quot;&gt;Click Me&lt;/a&gt;
+
+// With your JS like this
+$("#somebutton").click(test);</span></pre>
+
+        <br />
+
+        <p>Also handles Cross Browser Problems and gives you TONS of functions to show like hide(), show(), parent(), find() and MUCH more. Which you would have needed to write yourself. <strong>Jip you got it, FIDDLE time</strong></p>
+
+    </div>
+
+    <div class="step slide" data-x="110000" data-y="12000" data-z="-100" data-rotate-y="10" style="overflow:hidden;">
+
+        <p style="line-height:1.4">Backbone</p>
+        <br />
+
+    </div>
+
+    <div class="step slide" data-x="115000" data-y="12000" data-z="-100" data-rotate-y="10" style="overflow:hidden;">
+
+        <p style="line-height:1.4">Backbone</p>
+        <br />
+
+    </div>
+
+    <div class="step" data-x="120000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate">Some tips for Deploying your wonderfull code and keeping it manageable</p>
+    </div>
+
+    <div class="step" data-x="125000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate">Use a CDN to host common libraries</p>
+        <br />
+        <p style="text-align:center;">Google does this for free - http://goo.gl/nj4kP</p>
+        <br />
+        <p style="font-size: 19px;color:green;font-weight:bold;text-align:center;">consider hosting your own JS on a CDN too - easiest way to do this is something like cloudflare</p>
+    </div>
+
+    <div class="step" data-x="130000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate">Minify your Javascript. </p>
+        <p style="text-align:center;" class="rotate">Let me introduce you to:</p>
+
+        <center>
+
+            <img src="http://gruntjs.com/img/grunt-logo.png" style="width:55%;" />
+
+        </center>
+    </div>
+
+    <div class="step" data-x="135000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate">Keep your Javascript files small and geared toward small sections of the site.</p>
+    </div>
+
+    <div class="step" data-x="140000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate"> Avoid spamming the global namespace for sanity and security </p>
+    </div>
+
+    <div class="step" data-x="145000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate"> Scripts at the bottom of the page </p>
+    </div>
+
+    <div class="step" data-x="150000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate"> Watch file size on your minified JS files </p>
+    </div>
+
+    <div class="step" data-x="155000" data-y="15000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate"> Watch file size on your minified JS files </p>
+    </div>
+
+    <div class="step" data-x="160000" data-y="21000" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+        <p style="text-align:center;" class="rotate">Thanks for listening</p>
+        <br />
+        <p style="text-align:center;">Access this Presentation at <strong>goo.gl/g5FmbK</strong></p>
+
+        <br />
+        <p style="text-align:center;">Next up building our realtime map, let's hope it works ...</p>
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<!--
+    
+    Last, but not least.
+    
+    To make all described above really work, you need to include impress.js in the page.
+    I strongly encourage to minify it first.
+    
+    In here I just include full source of the script to make it more readable.
+    
+    You also need to call a `impress().init()` function to initialize impress.js presentation.
+    And you should do it in the end of your document. Not only because it's a good practice, but also
+    because it should be done when the whole document is ready.
+    Of course you can wrap it in any kind of "DOM ready" event, but I was too lazy to do so ;)
+    
+-->
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+
+</body>
+</html>
+
